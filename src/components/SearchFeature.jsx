@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { Marker } from "react-map-gl"
 import { SearchBox } from '@mapbox/search-js-react';
 import './SearchFeature.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -29,6 +28,7 @@ const SearchFeature = () => {
 	}, []);
 
 	const handleRetrieve = (res) => {
+		// Remove old marker from previous search (if present)
 		if (markerRef.current) {
 			markerRef.current.remove();
 		}
@@ -41,12 +41,13 @@ const SearchFeature = () => {
 			longitude: res.features[0].properties.coordinates.longitude,
 			latitude: res.features[0].properties.coordinates.latitude,
 		})
+		// Create marker for current search
 		const marker = new mapboxgl.Marker()
 			.setLngLat([res.features[0].properties.coordinates.longitude, res.features[0].properties.coordinates.latitude])
 			.addTo(map);
+		// Update marker reference
 		markerRef.current = marker;
 	}
-	console.log(resultData)
 
 	return (
 		<div className='search-feature__container'>
