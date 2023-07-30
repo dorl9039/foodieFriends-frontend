@@ -1,11 +1,15 @@
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { Marker } from "react-map-gl"
 import { SearchBox } from '@mapbox/search-js-react';
 import './SearchFeature.css'
+
+import ResultCard from './ResultCard';
 
 const SearchFeature = () => {
 	const [map, setMap] = useState(null);
 	const [value, setValue] = useState('');
+	const [resultData, setResultData] = useState({})
 
 	const mapContainerRef = useRef(null);
 
@@ -21,6 +25,19 @@ const SearchFeature = () => {
 		return () => map.remove();
 	}, []);
 
+	const handleRetrieve = (res) => {
+		setResultData({
+			restaurantName: res.features[0].properties.name,
+			address1: res.features[0].properties.address,
+			city: res.features[0].properties.context.place.name,
+			state: res.features[0].properties.context.region.region_code,
+			country: res.features[0].properties.context.country.country_code,
+			longitude: res.features[0].properties.coordinates.longitude,
+			latitude: res.features[0].properties.coordinates.latitude,
+		})
+	}
+	console.log(resultData)
+
 	return (
 		<div className='search-feature__container'>
 			<div className='search-feature__searchbox'>
@@ -30,16 +47,18 @@ const SearchFeature = () => {
 					onChange={(res) => {
 						setValue(res);
 					}}
-					// onRetrieve={(res)=> console.log('retrieve', res)}
+					onRetrieve={handleRetrieve}
 					map={map}
 				/>
 			</div>
+			<ResultCard resultData={resultData} />
 			<br></br>
 			<div
 				className='map-container'
 				style={{height: '500px', width: '500px', margin: '20px'}}
 				ref={mapContainerRef}
-		/>
+			/>
+			
 		</div>
 	)
 };         
