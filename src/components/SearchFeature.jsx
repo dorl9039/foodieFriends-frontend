@@ -62,6 +62,7 @@ const SearchFeature = () => {
 					map={map}
 				/>
 			</div>
+			<h3> Search Result: </h3>
 			<ResultCard resultData={resultData} />
 			<br></br>
 			<div

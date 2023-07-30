@@ -9,12 +9,3 @@
     width: '500px';
     margin: '20px'
 }
-
-
-.mapboxgl-marker {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border:1px solid gray;
-    background-color:yellow;
-}
