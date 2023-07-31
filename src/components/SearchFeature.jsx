@@ -4,12 +4,10 @@ import { SearchBox } from '@mapbox/search-js-react';
 import './SearchFeature.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-import ResultCard from './ResultCard';
 
 const SearchFeature = ({ onRetrieve }) => {
     const [map, setMap] = useState(null);
     const [value, setValue] = useState('');
-    const [resultData, setResultData] = useState({})
 
     const mapContainerRef = useRef(null);
     const markerRef = useRef(null);
@@ -33,13 +31,7 @@ const SearchFeature = ({ onRetrieve }) => {
             markerRef.current.remove();
         }
         onRetrieve(res)
-        setResultData({
-            restaurantName: res.features[0].properties.name,
-            address1: res.features[0].properties.address,
-            city: res.features[0].properties.context.place.name,
-            state: res.features[0].properties.context.region.region_code,
-            country: res.features[0].properties.context.country.country_code
-        })
+        
         // Create marker for current search
         const marker = new mapboxgl.Marker()
             .setLngLat([res.features[0].properties.coordinates.longitude, res.features[0].properties.coordinates.latitude])
@@ -61,8 +53,6 @@ const SearchFeature = ({ onRetrieve }) => {
                     map={map}
                 />
             </div>
-            <h3> Search Result: </h3>
-            <ResultCard resultData={resultData} />
             <br></br>
             <div
                 className='map-container'

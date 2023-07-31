@@ -1,11 +1,11 @@
 import './ResultCard.css'
 
-const ResultCard = ({ resultData }) => {
-    if (resultData.restaurantName) {
+const ResultCard = ({ restaurantData }) => {
+    if (restaurantData.restaurantName) {
         return (
             <ul className='result-card__container'>
-                <li>Restaurant: {resultData.restaurantName}</li>
-                <li>Address: {resultData.address1}, {resultData.city}, {resultData.state}, {resultData.country}</li>
+                <li>Restaurant: {restaurantData.restaurantName}</li>
+                <li>Address: {restaurantData.address1}, {restaurantData.city}, {restaurantData.state}, {restaurantData.country}</li>
             </ul>
         )
     }

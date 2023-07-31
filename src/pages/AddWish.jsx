@@ -1,8 +1,11 @@
 import { useState } from 'react';
+
 import SearchFeature from '../components/SearchFeature';
 import NewWishForm from '../components/NewWishForm';
+import ResultCard from '../components/ResultCard';
 
-const AddWish = () => {
+
+const AddWish = ({createNewWish}) => {
     const [restaurantData, setRestaurantData] = useState({})
     const [validForm, setValidForm] = useState(false)
 
@@ -18,13 +21,22 @@ const AddWish = () => {
         })
         setValidForm(true)
     }
-    const handleNewWishSubmit = () => {
-        //Make API calls here
+    const handleNewWishSubmit = (wishData) => {
+        const data = {
+            restaurantData,
+            wishData
+        }
+        console.log('data in AddWish', data)
+        createNewWish(data);
     }
+
+    console.log(restaurantData)
     return (
         <div>
             <h2>AddWish</h2>
             <SearchFeature onRetrieve={handleRetrieve} />
+            <h2> Search Result: </h2>
+            <ResultCard restaurantData={restaurantData} />
             {validForm && (<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>)
             }
         </div>
