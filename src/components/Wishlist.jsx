@@ -1,4 +1,6 @@
-const Wishlist = () => {
+const Wishlist = ({wishlistData}) => {
+
+    
     return(
         <>
         <p>Wishlist goes here</p>

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -9,7 +10,7 @@ import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
 
 import './App.css';
-const user_id = 1
+const userId = 1
 
 // const handleNewWishSubmit = (data) => {
 //   return axios
@@ -20,10 +21,12 @@ const user_id = 1
 // }
 
 function App() {
+
+
   const createNewWish = (data) => {
     console.log('createNewWish data', data)
     axios
-    .post(`http://localhost:5000/users/${user_id}/wishlist`, data)
+    .post(`http://localhost:5000/users/${userId}/wishlist`, data)
     .then(res => {
       console.log('createNewWish result', res)
     })
@@ -37,7 +40,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route index element={<Home />} />
-        <Route element={<UserLists />} path='lists'/>
+        <Route element={<UserLists userId={userId}/>} path='lists'/>
         <Route element={<Home />} path='home'/>
         <Route element={<Friends />} path='friends'/>
         <Route element={<AddWish createNewWish={createNewWish}/>} path='add'/>
