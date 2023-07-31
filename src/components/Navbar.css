@@ -1,0 +1,7 @@
+nav > a {
+    margin: 0px 10px;
+}
+
+a.active {
+    border-bottom: 2px solid black;
+}
