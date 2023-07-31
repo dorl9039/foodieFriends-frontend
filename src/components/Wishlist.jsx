@@ -1,5 +1,5 @@
 const Wishlist = ({wishlistData}) => {
-
+    console.log(wishlistData)
     
     return(
         <>

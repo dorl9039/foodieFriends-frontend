@@ -6,23 +6,26 @@ import Wishlist from "../components/Wishlist";
 const UserLists = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
     useEffect(() => {
-        console.log("called")
+        // console.log("called")
         axios
         .get(`http://localhost:5000/users/${userId}/wishlist`)
         .then(response => {
-            console.log("called2 ", response)
+            // console.log("called2 ", response)
             const wishes = []
             for (const wish of response.data) {
-                console.log("wish:", wish)
+                // console.log("wish:", wish)
                 axios
                 .get(`http://localhost:5000/restaurants/${wish.restaurant_id}`)
                 .then(res => {
                     const wishData = {...wish, ...res.data}
-                    console.log('wishData', wishData)
+                    // console.log('wishData', wishData)
                     wishes.push(wishData)
                 })
             }
-            setWishlistData(wishes)
+            return wishes;
+        })
+        .then(res => {
+            setWishlistData(res)
         })
         .catch((err) => {
             console.log("error in UserLists useEffect", err)
