@@ -35,7 +35,6 @@ const AddWish = ({createNewWish}) => {
         <div>
             <h2>AddWish</h2>
             <SearchFeature onRetrieve={handleRetrieve} />
-            <h2> Search Result: </h2>
             <ResultCard restaurantData={restaurantData} />
             {validForm && (<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>)
             }
