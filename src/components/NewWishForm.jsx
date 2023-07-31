@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './NewWishForm.css'
 
 const kInitialFormData = {
     comment: "",
@@ -7,7 +8,7 @@ const kInitialFormData = {
 
 const NewWishForm = ({ onSubmit, restaurant }) => {
     const [formData, setFormData] = useState(kInitialFormData);
-    const [invalidForm, setInvalidForm] = useState(restaurant? false : true)
+
     const handleFormChange = (event) => {
         const name = event.target.name;
         const value = name === "priority" ? parseInt(event.target.value, 10) : event.target.value;
@@ -18,10 +19,8 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
     }
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if (invalidForm) return;
         onSubmit(formData);
         setFormData(kInitialFormData);
-        setInvalidForm(restaurant? false : true)
     }
     return (
         <div className='new-wish-form__container'>
@@ -47,10 +46,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
                     value={formData.comment}
                     onChange={handleFormChange}
                 />
-                {!invalidForm ? 
-                <input type='Submit' className='submit-btn' />
-                :
-                <input type='Submit' className='submit-btn-invalid' disabled />}
+                <input type='Submit' value='Submit' className='submit-btn' />
             </form>
         </div>
     )

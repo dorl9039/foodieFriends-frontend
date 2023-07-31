@@ -4,6 +4,8 @@ import NewWishForm from '../components/NewWishForm';
 
 const AddWish = () => {
     const [restaurantData, setRestaurantData] = useState({})
+    const [validForm, setValidForm] = useState(false)
+
     const handleRetrieve = (result) => {
         setRestaurantData({
             restaurantName: result.features[0].properties.name,
@@ -14,6 +16,7 @@ const AddWish = () => {
             longitude: result.features[0].properties.coordinates.longitude,
             latitude: result.features[0].properties.coordinates.latitude,
         })
+        setValidForm(true)
     }
     const handleNewWishSubmit = () => {
         //Make API calls here
@@ -22,7 +25,8 @@ const AddWish = () => {
         <div>
             <h2>AddWish</h2>
             <SearchFeature onRetrieve={handleRetrieve} />
-            <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>
+            {validForm && (<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>)
+            }
         </div>
     )
 }
