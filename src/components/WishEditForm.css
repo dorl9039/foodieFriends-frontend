@@ -4,6 +4,12 @@
     flex-direction: column;
 
 }
+.edit-wish-form__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
 
 .edit-wish-form__form {
     display: flex;

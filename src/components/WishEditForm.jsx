@@ -23,7 +23,7 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
     }
     return(
         <div className='edit-wish-form__container'>
-            <h3>Edit Wish {wishData.wish_id}</h3>
+            <h3>Edit Wish {wishData.wish_id} for {wishData.restaurant_name}</h3>
             <form className='edit-wish-form__form' onSubmit={handleFormSubmit}>
                 <label htmlFor='wish_priority'>Priority</label>
                 <select 
@@ -48,6 +48,7 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
                     onChange={handleFormChange}
                 /> 
                 <input type='Submit' value='Submit' className='submit-btn' />
+                <button className='historicize-button'>Move to history</button>
             </form>
         </div>
     )
