@@ -16,6 +16,7 @@ const UserLists = ({userId}) => {
             const promises = response.data.map(wish => {
                 return axios.get(`http://localhost:5000/restaurants/${wish.restaurant_id}`)
                 .then(res => {
+                    console.log('in UserLists', res.data)
                     return {...wish, ...res.data}
                 })
             })
@@ -27,7 +28,7 @@ const UserLists = ({userId}) => {
         .catch((err) => {
             console.log("error in UserLists useEffect", err)
         })
-    }, [userId])
+    }, [])
 
     const handleWishDelete = (wishId) => {
         axios.delete(`http://localhost:5000/wishes/${wishId}`)

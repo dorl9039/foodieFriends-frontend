@@ -1,6 +1,6 @@
 import './Wish.css'
 const Wish = (props) => {
-    const onDeleteClick = (e) => {
+    const onDeleteClick = () => {
         const delWish = window.confirm(`Are you sure you want to delete wish ${props.wishId}: ${props.restaurantName}`)
         if (delWish) {
            props.handleDelete(props.wishId);
