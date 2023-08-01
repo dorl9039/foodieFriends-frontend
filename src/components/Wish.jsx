@@ -8,7 +8,7 @@ const Wish = (props) => {
     //        // onWishSelect 
     //     }
     // }
-    // console.log('why')
+    console.log('in Wish', props)
     return(
         <section className='wish'>
         <h3>Wish {props.wishId}</h3>
