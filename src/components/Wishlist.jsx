@@ -2,7 +2,7 @@ import Wish from "./Wish";
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData}) => {
+const Wishlist = ({wishlistData, handleDelete}) => {
     const wishes = wishlistData.map((wish) => {
         return (
             <Wish 
@@ -19,7 +19,7 @@ const Wishlist = ({wishlistData}) => {
             cuisine={wish.cuisine}
             latitude={wish.latitude}
             longitude={wish.longitude}
-
+            handleDelete={handleDelete}
             />
             );
         });

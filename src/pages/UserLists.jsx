@@ -26,11 +26,19 @@ const UserLists = ({userId}) => {
         })
     }, [userId])
 
-    // console.log('in UserList', wishlistData)
+    const handleDelete = (wishId) => {
+        axios.delete(`http://localhost:5000/wishes/${wishId}`)
+        .then(() => {
+            setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId))
+        })
+        .catch((err) => {
+            console.log("Error in handleDelete", err)
+        })
+    }
     return (
         <div>
             <h2>Your Lists</h2>
-            <Wishlist wishlistData={wishlistData}/>
+            <Wishlist wishlistData={wishlistData} handleDelete={handleDelete}/>
             
             <WishlistMap />
         </div>
