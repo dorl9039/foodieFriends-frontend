@@ -8,8 +8,7 @@ const WishCard = ({wishData}) => {
             <ul>
                 <li>Restaurant: {wishData.restaurant_name}</li>
                 <li>Priority: {wishData.wish_priority}</li>
-                <li>Comment: 
-                        {wishData.wish_comment}
+                <li>Comment: {wishData.wish_comment}
                 </li>
 
             </ul>
