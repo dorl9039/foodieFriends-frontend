@@ -20,6 +20,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         onSubmit(formData);
+        
         setFormData(kInitialFormData);
     }
     return (

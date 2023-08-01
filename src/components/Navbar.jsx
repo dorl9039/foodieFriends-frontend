@@ -5,9 +5,11 @@ const Navbar = () => {
     return (
         <nav>
             <NavLink to='/home'>Home</NavLink>
-            <NavLink to='/lists'>Your Lists</NavLink>
+            <NavLink to='/wishlist'>Wishlist</NavLink>
             <NavLink to='/add'>Add Wish</NavLink>
             <NavLink to='/friends'>Friends</NavLink>
+            <NavLink to='/history'>History</NavLink>
+
         </nav>
     )
 }

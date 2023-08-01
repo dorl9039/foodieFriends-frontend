@@ -1,13 +1,26 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import SearchFeature from '../components/SearchFeature';
 import NewWishForm from '../components/NewWishForm';
 import ResultCard from '../components/ResultCard';
 
 
-const AddWish = ({createNewWish}) => {
+const AddWish = ({ userId }) => {
     const [restaurantData, setRestaurantData] = useState({})
     const [validForm, setValidForm] = useState(false)
+
+    const createNewWish = (data) => {
+        console.log('createNewWish data', data)
+        axios
+        .post(`http://localhost:5000/users/${userId}/wishlist`, data)
+        .then(res => {
+          console.log('createNewWish result', res)
+        })
+        .catch(err => {
+          console.log('Error in createNewWish', err)
+        })
+      }
 
     const handleRetrieve = (result) => {
         setRestaurantData({
@@ -28,9 +41,9 @@ const AddWish = ({createNewWish}) => {
         }
         console.log('data in AddWish', data)
         createNewWish(data);
+        setValidForm(false)
     }
 
-    console.log(restaurantData)
     return (
         <div>
             <h2>AddWish</h2>

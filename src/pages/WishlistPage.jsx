@@ -3,7 +3,7 @@ import axios from 'axios';
 import WishlistMap from "../components/WishlistMap";
 import Wishlist from "../components/Wishlist";
 
-const UserLists = ({userId}) => {
+const WishlistPage = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
     const [selectedWishData, setSelectedWishData] = useState({})
 
@@ -69,7 +69,7 @@ const UserLists = ({userId}) => {
     }
     return (
         <div>
-            <h2>Your Lists</h2>
+            <h2>Wishlist</h2>
             <Wishlist 
                 wishlistData={wishlistData} 
                 handleDelete={handleWishDelete} 
@@ -83,4 +83,4 @@ const UserLists = ({userId}) => {
     )
 }
 
-export default UserLists;
+export default WishlistPage;
