@@ -5,6 +5,8 @@ import Wishlist from "../components/Wishlist";
 
 const UserLists = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
+    const [selectedWishId, setSelectedWishId] = useState(null)
+    const [selectedWishData, setSelectedWishData] = useState({})
     
     useEffect(() => {
         axios
@@ -26,7 +28,7 @@ const UserLists = ({userId}) => {
         })
     }, [userId])
 
-    const handleDelete = (wishId) => {
+    const handleWishDelete = (wishId) => {
         axios.delete(`http://localhost:5000/wishes/${wishId}`)
         .then(() => {
             setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId))
@@ -35,10 +37,31 @@ const UserLists = ({userId}) => {
             console.log("Error in handleDelete", err)
         })
     }
+
+    const handleWishEdit = (wishId, editData) => {
+        //Axios call here
+    }
+    const handleWishSelect = (wishId) => {
+        setSelectedWishId(wishId)
+        axios
+        .get(`http://localhost:5000/wishes/${wishId}`)
+        .then(res => {
+            setSelectedWishData(res.data)
+        })
+        .catch(err => {
+            console.log("Error in handleWishSelect", err)
+        })
+    }
     return (
         <div>
             <h2>Your Lists</h2>
-            <Wishlist wishlistData={wishlistData} handleDelete={handleDelete}/>
+            <Wishlist 
+                wishlistData={wishlistData} 
+                handleDelete={handleWishDelete} 
+                handleEdit={handleWishEdit} 
+                handleSelect={handleWishSelect}
+                selectedWishData={selectedWishData}
+                />
             
             <WishlistMap />
         </div>

@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import Wish from "./Wish";
+import WishCard from "./WishCard";
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete}) => {
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
+    console.log(selectedWishData)
+    // const onSelect = () => {
+    //     handleSelect(wishId)
+    // }
+
     const wishes = wishlistData.map((wish) => {
         return (
             <Wish 
@@ -20,22 +27,25 @@ const Wishlist = ({wishlistData, handleDelete}) => {
             latitude={wish.latitude}
             longitude={wish.longitude}
             handleDelete={handleDelete}
+            handleEdit={handleEdit}
+            handleSelect={handleSelect}
             />
             );
         });
-    console.log('in Wishlist', wishlistData)
-        console.log('wishes', wishes)
-        
-
 
 
     return (
-        <section>
-            <p>Wishlist goes here</p>
-            <section className='wishlist__container'>
-            {wishes}
+        <section className='main-list__container'>
+            <section className='wish-list__container'>
+                <h3>Wishlist</h3>
+                <section className='wish__container'>
+                {wishes}
+                </section>
             </section>
-
+            <section className='select-wish__container'>
+                <h3>Selected Wish</h3>
+                <WishCard wishData={selectedWishData}/>
+            </section>
         </section>
     )
 };
