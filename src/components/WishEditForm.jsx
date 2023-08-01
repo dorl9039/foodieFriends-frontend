@@ -5,9 +5,9 @@ import './WishEditForm.css'
 const WishEditForm = ({wishData, handleWishEdit}) => {
     const [formData, setFormData] = useState({})
     const originalWishData = {
-        wishComment: wishData.wish_comment, 
-        wishPriority: wishData.wish_priority}
-
+        wish_comment: wishData.wish_comment, 
+        wish_priority: wishData.wish_priority}
+    
     useEffect(()=> {
         setFormData(originalWishData)
     }, [])
@@ -15,7 +15,7 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
     console.log('formData', formData)
     const handleFormChange = (event) => {
         const name = event.target.name;
-        const value = name === "wishPriority" ? parseInt(event.target.value, 10) : event.target.value;
+        const value = name === "wish_priority" ? parseInt(event.target.value, 10) : event.target.value;
         setFormData((prev) => ({
             ...prev,
             [name]: value
@@ -29,10 +29,10 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
         <div className='edit-wish-form__container'>
             <h3>Edit Wish {wishData.wish_id}</h3>
             <form className='edit-wish-form__form' onSubmit={handleFormSubmit}>
-                <label htmlFor='wishPriority'>Priority</label>
+                <label htmlFor='wish_priority'>Priority</label>
                 <select 
-                    name='wishPriority' 
-                    value={formData.wishPriority}
+                    name='wish_priority' 
+                    value={formData.wish_priority}
                     onChange={handleFormChange}
                 > 
                     <option value='0'>Select</option>
@@ -42,11 +42,11 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
                     <option value='4'>4</option>
                     <option value='5'>5</option>
                 </select>
-                <label htmlFor='wishComment'>Comment</label>
+                <label htmlFor='wish_comment'>Comment</label>
                 <input 
                     type='text'
-                    name='wishComment'
-                    value={formData.wishComment}
+                    name='wish_comment'
+                    value={formData.wish_comment}
                     onChange={handleFormChange}
                 /> 
                 <input type='Submit' value='Submit' className='submit-btn' />

@@ -40,7 +40,20 @@ const UserLists = ({userId}) => {
     }
 
     const handleWishEdit = (wishId, editData) => {
-        
+        axios
+        .patch(`http://localhost:5000/wishes/${wishId}`, editData)
+        .then(res => {
+            setWishlistData(prev => prev.map(wish => {
+                if (wish.wish_id === wishId) {
+                    return {...wish, 
+                        wish_comment: res.data.wish_comment,
+                        wish_priority: res.data.wish_priority}
+                } else {
+                    return wish
+                }
+            }))
+        })
+        .catch(err => console.log("Error in handleWishEdit", err))
     }
     const handleWishSelect = (wishId) => {
         // setSelectedWishId(wishId)
