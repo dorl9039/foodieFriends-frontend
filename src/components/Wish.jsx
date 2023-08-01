@@ -1,6 +1,6 @@
 import './Wish.css'
 const Wish = (props) => {
-    const onDelete = (e) => {
+    const onDeleteClick = (e) => {
         const delWish = window.confirm(`Are you sure you want to delete wish ${props.wishId}: ${props.restaurantName}`)
         if (delWish) {
            props.handleDelete(props.wishId);
@@ -9,25 +9,25 @@ const Wish = (props) => {
         }
     }
 
-    const onEdit = () => {
-        props.handleEdit(props.wishId, editData)
+    const onEditClick = () => {
+        props.handleEditClick(props.wishId)
     }
 
-    const onSelect = () => {
+    const onSelectClick = () => {
         props.handleSelect(props.wishId)
     }
-    
+
     return(
-        <section className='wish' onClick={onSelect}>
+        <section className='wish' onClick={onSelectClick}>
         <h3>Wish {props.wishId}</h3>
         <p>Restaurant: {props.restaurantName}</p>
         <li>
             <button 
                 className='delete-button__container'
-                onClick={onDelete}>X</button>
+                onClick={onDeleteClick}>X</button>
             <button 
                 className='edit-button__container'
-                onClick={onEdit}>✏️</button>
+                onClick={onEditClick}>✏️</button>
         </li>
 
         </section>

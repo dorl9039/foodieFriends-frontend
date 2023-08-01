@@ -7,6 +7,7 @@ const UserLists = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
     // const [selectedWishId, setSelectedWishId] = useState(null)
     const [selectedWishData, setSelectedWishData] = useState({})
+
     
     useEffect(() => {
         axios
@@ -38,8 +39,8 @@ const UserLists = ({userId}) => {
         })
     }
 
-    const handleWishEdit = (wishId) => {
-        //set editmode to true
+    const handleWishEdit = (wishId, editData) => {
+        
     }
     const handleWishSelect = (wishId) => {
         // setSelectedWishId(wishId)

@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import Wish from "./Wish";
 import WishCard from "./WishCard";
+import WishEditForm from './WishEditForm';
 import './Wishlist.css'
 
 
 const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
+    const [editState, setEditState] = useState(false)
     console.log(selectedWishData)
-    // const onSelect = () => {
-    //     handleSelect(wishId)
-    // }
+    const handleEditClick = () => {
+        setEditState(true)
+    }
+
+    const handleWishEdit = (data) => {
+        handleEdit(selectedWishData.wish_id, data)
+    }
+
 
     const wishes = wishlistData.map((wish) => {
         return (
@@ -27,13 +34,13 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
             latitude={wish.latitude}
             longitude={wish.longitude}
             handleDelete={handleDelete}
-            handleEdit={handleEdit}
+            handleEditClick={handleEditClick}
             handleSelect={handleSelect}
             />
             );
         });
-
-
+    
+    console.log(editState)
     return (
         <section className='main-list__container'>
             <section className='wish-list__container'>
@@ -42,10 +49,21 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
                 {wishes}
                 </section>
             </section>
-            <section className='select-wish__container'>
-                <h3>Selected Wish</h3>
-                <WishCard wishData={selectedWishData}/>
-            </section>
+            {editState ? 
+                (<section className='edit-wish__container'>
+                    <h3>Edit Wish</h3>
+                    <WishEditForm 
+                        wishData={selectedWishData}
+                        handleWishEdit={handleWishEdit}/>
+                </section>)
+                :
+                (<section className='select-wish__container'>
+                    <h3>Selected Wish</h3>
+                    <WishCard wishData={selectedWishData}/>
+                </section>)
+            }
+            
+            
         </section>
     )
 };
