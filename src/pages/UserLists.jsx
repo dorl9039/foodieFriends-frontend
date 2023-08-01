@@ -32,6 +32,14 @@ const UserLists = ({userId}) => {
         })
     }, [userId])
 
+    // const handleDelete = (wishId) => {
+        // axios.delete(`http://localhost:5000/wishes/${wishId}`)
+        // .then(() => {
+        //     setWishlistData((prev) => prev.filter((wish) => wish.wish_id !== wishId))
+        // })
+        // .catch(err => console.log('Error in handleDelete', err))
+    // }
+    console.log('in UserList', wishlistData)
     return (
         <div>
             <h2>Your Lists</h2>
