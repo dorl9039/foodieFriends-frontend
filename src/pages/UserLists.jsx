@@ -5,7 +5,7 @@ import Wishlist from "../components/Wishlist";
 
 const UserLists = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
-    const [selectedWishId, setSelectedWishId] = useState(null)
+    // const [selectedWishId, setSelectedWishId] = useState(null)
     const [selectedWishData, setSelectedWishData] = useState({})
     
     useEffect(() => {
@@ -38,11 +38,11 @@ const UserLists = ({userId}) => {
         })
     }
 
-    const handleWishEdit = (wishId, editData) => {
-        //Axios call here
+    const handleWishEdit = (wishId) => {
+        //set editmode to true
     }
     const handleWishSelect = (wishId) => {
-        setSelectedWishId(wishId)
+        // setSelectedWishId(wishId)
         axios
         .get(`http://localhost:5000/wishes/${wishId}`)
         .then(res => {
