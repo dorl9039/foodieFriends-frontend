@@ -5,7 +5,6 @@ import Wishlist from "../components/Wishlist";
 
 const UserLists = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
-    // const [selectedWishId, setSelectedWishId] = useState(null)
     const [selectedWishData, setSelectedWishData] = useState({})
 
     
@@ -16,7 +15,6 @@ const UserLists = ({userId}) => {
             const promises = response.data.map(wish => {
                 return axios.get(`http://localhost:5000/restaurants/${wish.restaurant_id}`)
                 .then(res => {
-                    console.log('in UserLists', res.data)
                     return {...wish, ...res.data}
                 })
             })
@@ -46,18 +44,20 @@ const UserLists = ({userId}) => {
         .then(res => {
             setWishlistData(prev => prev.map(wish => {
                 if (wish.wish_id === wishId) {
-                    return {...wish, 
+                    const newWish = {...wish, 
                         wish_comment: res.data.wish_comment,
                         wish_priority: res.data.wish_priority}
+                    setSelectedWishData(newWish)
+                    return newWish
                 } else {
                     return wish
                 }
+            
             }))
         })
         .catch(err => console.log("Error in handleWishEdit", err))
     }
     const handleWishSelect = (wishId) => {
-        // setSelectedWishId(wishId)
         axios
         .get(`http://localhost:5000/wishes/${wishId}`)
         .then(res => {

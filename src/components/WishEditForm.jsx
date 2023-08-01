@@ -8,11 +8,6 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
         wish_comment: wishData.wish_comment, 
         wish_priority: wishData.wish_priority}
     
-    // useEffect(()=> {
-    //     setFormData(originalWishData)
-    // }, [])
-
-    // console.log('formData', formData)
     const handleFormChange = (event) => {
         const name = event.target.name;
         const value = name === "wish_priority" ? parseInt(event.target.value, 10) : event.target.value;
