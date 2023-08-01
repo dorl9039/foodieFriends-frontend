@@ -1,0 +1,12 @@
+.wish-card__container {
+    border: 1px solid #000;
+  }
+
+.wish-card__container ul {
+    list-style-type: none;
+    padding: 5px;
+}
+
+.wish-card-comment__container {
+    border: 1px solid black;
+}
