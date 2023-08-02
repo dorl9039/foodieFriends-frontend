@@ -1,12 +1,14 @@
+import { useState } from 'react';
+import { Dialog } from '@headlessui/react'
 import './Wish.css'
+
+
 const Wish = (props) => {
-    const onDeleteClick = () => {
-        const delWish = window.confirm(`Are you sure you want to delete wish ${props.wishId}: ${props.restaurantName}`)
-        if (delWish) {
-           props.handleDelete(props.wishId);
-           // set selected wish
-           // onWishSelect 
-        }
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+    const handleDialogDelete = () => {
+        setIsDialogOpen(false)
+        props.handleDelete(props.wishId)
     }
 
     const onEditClick = () => {
@@ -24,12 +26,21 @@ const Wish = (props) => {
         <li>
             <button 
                 className='delete-button__container'
-                onClick={onDeleteClick}>X</button>
+                onClick={() => setIsDialogOpen(true)}>X</button>
             <button 
                 className='edit-button__container'
                 onClick={onEditClick}>✏️</button>
         </li>
-
+        <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
+                <div className='dialog-modal__overlay' aria-hidden="true" />
+                <div className='dialog-modal__container'>
+                    <Dialog.Panel className='dialog-modal'>
+                        <Dialog.Title>Confirm delete?</Dialog.Title>
+                        <button onClick={handleDialogDelete}>Delete</button>
+                        <button onClick={() => setIsDialogOpen(false)}>Nevermind</button>
+                    </Dialog.Panel>
+                </div>
+            </Dialog>
         </section>
     )
 };

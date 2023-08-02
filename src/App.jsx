@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 
 import History from './pages/History';
 import Navbar from './components/Navbar';
