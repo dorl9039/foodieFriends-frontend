@@ -11,11 +11,10 @@ const AddWish = ({ userId }) => {
     const [validForm, setValidForm] = useState(false)
 
     const createNewWish = (data) => {
-        console.log('createNewWish data', data)
         axios
         .post(`http://localhost:5000/users/${userId}/wishlist`, data)
         .then(res => {
-          console.log('createNewWish result', res)
+          console.log('createNewWish result', res.data)
         })
         .catch(err => {
           console.log('Error in createNewWish', err)
@@ -49,8 +48,7 @@ const AddWish = ({ userId }) => {
             <h2>AddWish</h2>
             <SearchFeature onRetrieve={handleRetrieve} />
             <ResultCard restaurantData={restaurantData} />
-            {validForm && (<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>)
-            }
+            <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Dialog } from '@headlessui/react'
 import './NewWishForm.css'
 
 const kInitialFormData = {
@@ -8,6 +9,7 @@ const kInitialFormData = {
 
 const NewWishForm = ({ onSubmit, restaurant }) => {
     const [formData, setFormData] = useState(kInitialFormData);
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
 
     const handleFormChange = (event) => {
         const name = event.target.name;
@@ -20,7 +22,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         onSubmit(formData);
-        
+        setIsDialogOpen(true)
         setFormData(kInitialFormData);
     }
     return (
@@ -49,6 +51,16 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
                 />
                 <input type='Submit' value='Submit' className='submit-btn' />
             </form>
+
+            <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
+            <div className='dialog-modal__overlay' aria-hidden="true" />
+            <div className='dialog-modal__container'>
+                <Dialog.Panel className='dialog-modal'>
+                    <Dialog.Title>Wish added!</Dialog.Title>
+                    <button onClick={()=> setIsDialogOpen(false)}>Got it</button>
+                </Dialog.Panel>
+            </div>
+            </Dialog>
         </div>
     )
 };
