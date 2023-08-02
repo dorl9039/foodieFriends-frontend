@@ -12,7 +12,7 @@ const Wish = (props) => {
     }
 
     const onEditClick = () => {
-        props.handleEditClick(props.wishId)
+        props.handleEditClick()
     }
 
     const onSelectClick = () => {

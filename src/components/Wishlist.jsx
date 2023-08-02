@@ -10,13 +10,14 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 
 
     const handleEditClick = () => {
-        setEditState(true)
+        setEditState(prev => !prev)
     }
 
     const handleWishEdit = (data) => {
         handleEdit(selectedWishData.wish_id, data)
         setEditState(false)
     }
+
 
 
     const wishes = wishlistData.map((wish) => {

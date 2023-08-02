@@ -33,6 +33,7 @@ const WishlistPage = ({userId}) => {
         axios.delete(`http://localhost:5000/wishes/${wishId}`)
         .then(() => {
             setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId))
+            setSelectedWishData({})
         })
         .catch((err) => {
             console.log("Error in handleDelete", err)
