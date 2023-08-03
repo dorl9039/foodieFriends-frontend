@@ -32,7 +32,7 @@ function App() {
         <Route index element={<Home />} />
         <Route element={<WishlistPage userId={userId}/>} path='wishlist'/>
         <Route element={<Home />} path='home'/>
-        <Route element={<History />} path='history'/>
+        <Route element={<History userId={userId}/>} path='history'/>
         <Route element={<Friends />} path='friends'/>
         <Route element={<AddWish userId={userId}/>} path='add'/>
         <Route element={<FourOhFour />} path='*'/>

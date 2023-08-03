@@ -59,7 +59,8 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
                         handleWishEdit={handleWishEdit}/>
                 </section>)
                 :
-                (Object.keys(selectedWishData).length > 0 && <section className='select-wish__container'>
+                (Object.keys(selectedWishData).length > 0 && 
+                <section>
                     <h3>Selected Wish</h3>
                     <WishCard wishData={selectedWishData}/>
                 </section>)
