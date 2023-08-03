@@ -1,13 +1,14 @@
-.main-list__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-}
-
-.wish__container {
+.main-visit-list__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  
+  }
+  
+.visit__container {
     max-height: 15rem;
     min-height: 9rem;
     overflow: scroll;
     margin-right: 2rem;
     border: 2px solid #000;
-  }
+}
+

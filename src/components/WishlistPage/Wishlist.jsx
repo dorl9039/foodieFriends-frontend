@@ -7,14 +7,17 @@ import './Wishlist.css'
 
 const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
     const [editState, setEditState] = useState(false)
+
+
     const handleEditClick = () => {
-        setEditState(true)
+        setEditState(prev => !prev)
     }
 
     const handleWishEdit = (data) => {
         handleEdit(selectedWishData.wish_id, data)
         setEditState(false)
     }
+
 
 
     const wishes = wishlistData.map((wish) => {
@@ -56,7 +59,8 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
                         handleWishEdit={handleWishEdit}/>
                 </section>)
                 :
-                (Object.keys(selectedWishData).length > 0 && <section className='select-wish__container'>
+                (Object.keys(selectedWishData).length > 0 && 
+                <section>
                     <h3>Selected Wish</h3>
                     <WishCard wishData={selectedWishData}/>
                 </section>)

@@ -1,11 +1,11 @@
-.edit-wish-form__container {
+.new-wish-form__container {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
 
 }
 
-.edit-wish-form__form {
+.new-wish-form__form {
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 
-.edit-wish-form__form input {
+.new-wish-form__form input {
     margin: 0px 0px 20px;
 }
 
@@ -36,3 +36,4 @@
     border: red solid 1px;
     box-shadow: 0 0 7px red;
 }
+

@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import './NewWishForm.css'
+import './WishEditForm.css'
 
-const kInitialFormData = {
-    wish_comment: "",
-    wish_priority: 0,
-}
 
-const NewWishForm = ({ onSubmit, restaurant }) => {
-    const [formData, setFormData] = useState(kInitialFormData);
-
+const WishEditForm = ({wishData, handleWishEdit}) => {
+    const [formData, setFormData] = useState({})
+    const originalWishData = {
+        wish_comment: wishData.wish_comment, 
+        wish_priority: wishData.wish_priority}
+    
     const handleFormChange = (event) => {
         const name = event.target.name;
         const value = name === "wish_priority" ? parseInt(event.target.value, 10) : event.target.value;
@@ -19,17 +18,18 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
     }
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        onSubmit(formData);
-        setFormData(kInitialFormData);
+        handleWishEdit(formData);
+
     }
-    return (
-        <div className='new-wish-form__container'>
-            <h3>Add {restaurant} to your wishlist</h3>
-            <form className='new-wish-form__form' onSubmit={handleFormSubmit}>
+    return(
+        <div className='edit-wish-form__container'>
+            <h3>Edit Wish {wishData.wish_id} for {wishData.restaurant_name}</h3>
+            <form className='edit-wish-form__form' onSubmit={handleFormSubmit}>
                 <label htmlFor='wish_priority'>Priority</label>
                 <select 
                     name='wish_priority' 
                     value={formData.wish_priority}
+                    defaultValue={originalWishData.wish_priority}
                     onChange={handleFormChange}
                 > 
                     <option value='0'>Select</option>
@@ -43,13 +43,15 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
                 <input 
                     type='text'
                     name='wish_comment'
+                    defaultValue={originalWishData.wish_comment}
                     value={formData.wish_comment}
                     onChange={handleFormChange}
-                />
+                /> 
                 <input type='Submit' value='Submit' className='submit-btn' />
+                <button className='historicize-button'>Move to history</button>
             </form>
         </div>
     )
 };
 
-export default NewWishForm;
+export default WishEditForm

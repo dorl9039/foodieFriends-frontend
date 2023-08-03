@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import WishlistMap from "../components/WishlistMap";
-import Wishlist from "../components/Wishlist";
+import WishlistMap from "../components/WishlistPage/WishlistMap";
+import Wishlist from "../components/WishlistPage/Wishlist";
 
-const UserLists = ({userId}) => {
+
+const WishlistPage = ({userId}) => {
     const [wishlistData, setWishlistData] = useState([])
     const [selectedWishData, setSelectedWishData] = useState({})
 
@@ -32,6 +33,7 @@ const UserLists = ({userId}) => {
         axios.delete(`http://localhost:5000/wishes/${wishId}`)
         .then(() => {
             setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId))
+            setSelectedWishData({})
         })
         .catch((err) => {
             console.log("Error in handleDelete", err)
@@ -69,7 +71,7 @@ const UserLists = ({userId}) => {
     }
     return (
         <div>
-            <h2>Your Lists</h2>
+            <h2>Wishlist</h2>
             <Wishlist 
                 wishlistData={wishlistData} 
                 handleDelete={handleWishDelete} 
@@ -77,10 +79,9 @@ const UserLists = ({userId}) => {
                 handleSelect={handleWishSelect}
                 selectedWishData={selectedWishData}
                 />
-            
             <WishlistMap />
         </div>
     )
 }
 
-export default UserLists;
+export default WishlistPage;
