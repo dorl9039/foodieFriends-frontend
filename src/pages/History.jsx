@@ -20,7 +20,7 @@ const History = ({ userId }) => {
     return (
         <div>
             <h2>History</h2>
-            <VisitList />
+            <VisitList historyData={historyData}/>
             <VisitDetails />
         </div>
     )
