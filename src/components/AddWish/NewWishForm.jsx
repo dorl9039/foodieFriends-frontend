@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Dialog } from '@headlessui/react'
 import './NewWishForm.css'
 
 const kInitialFormData = {

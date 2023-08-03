@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import WishlistMap from "../components/WishlistMap";
-import Wishlist from "../components/Wishlist";
+import WishlistMap from "../components/WishlistPage/WishlistMap";
+import Wishlist from "../components/WishlistPage/Wishlist";
 
 
 const WishlistPage = ({userId}) => {

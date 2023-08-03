@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Dialog } from '@headlessui/react'
 import axios from 'axios';
 
-import SearchFeature from '../components/SearchFeature';
-import NewWishForm from '../components/NewWishForm';
-import ResultCard from '../components/ResultCard';
+import SearchFeature from '../components/AddWish/SearchFeature';
+import NewWishForm from '../components/AddWish/NewWishForm';
+import ResultCard from '../components/AddWish/ResultCard';
 
 import './AddWish.css'
 
