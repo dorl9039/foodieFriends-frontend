@@ -8,7 +8,7 @@ const History = ({ userId }) => {
 
     useEffect(() => {
         axios
-        .get(`http://localhost:5000/users/${userId}/history`)
+        .get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`)
         .then(res => {
             setHistoryData(res.data)
         })

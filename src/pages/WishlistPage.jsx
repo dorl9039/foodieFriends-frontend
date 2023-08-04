@@ -11,10 +11,10 @@ const WishlistPage = ({userId}) => {
     
     useEffect(() => {
         axios
-        .get(`http://localhost:5000/users/${userId}/wishlist`)
+        .get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
         .then(response => {
             const promises = response.data.map(wish => {
-                return axios.get(`http://localhost:5000/restaurants/${wish.restaurant_id}`)
+                return axios.get(`${import.meta.env.VITE_SERVER_URL}/restaurants/${wish.restaurant_id}`)
                 .then(res => {
                     return {...wish, ...res.data}
                 })
@@ -30,7 +30,7 @@ const WishlistPage = ({userId}) => {
     }, [])
 
     const handleWishDelete = (wishId) => {
-        axios.delete(`http://localhost:5000/wishes/${wishId}`)
+        axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
         .then(() => {
             setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId))
             setSelectedWishData({})
@@ -42,7 +42,7 @@ const WishlistPage = ({userId}) => {
 
     const handleWishEdit = (wishId, editData) => {
         axios
-        .patch(`http://localhost:5000/wishes/${wishId}`, editData)
+        .patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, editData)
         .then(res => {
             setWishlistData(prev => prev.map(wish => {
                 if (wish.wish_id === wishId) {
@@ -61,7 +61,7 @@ const WishlistPage = ({userId}) => {
     }
     const handleWishSelect = (wishId) => {
         axios
-        .get(`http://localhost:5000/wishes/${wishId}`)
+        .get(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
         .then(res => {
             setSelectedWishData(res.data)
         })
