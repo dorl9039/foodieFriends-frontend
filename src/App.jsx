@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+import { useContext } from 'react';
 
+import AuthProvider from './hooks/useAuth';
 import History from './pages/History';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -12,20 +14,8 @@ import './App.css';
 const userId = 1
 
 function App() {
-
-  // const createNewWish = (data) => {
-  //   console.log('createNewWish data', data)
-  //   axios
-  //   .post(`http://localhost:5000/users/${userId}/wishlist`, data)
-  //   .then(res => {
-  //     console.log('createNewWish result', res)
-  //   })
-  //   .catch(err => {
-  //     console.log('Error in createNewWish', err)
-  //   })
-  // }
   return (
-    <div>
+    <AuthProvider>
       <h1>FoodieFriends</h1>
       <Navbar />
       <Routes>
@@ -37,7 +27,7 @@ function App() {
         <Route element={<AddWish userId={userId}/>} path='add'/>
         <Route element={<FourOhFour />} path='*'/>
       </Routes>
-    </div>
+    </AuthProvider>
   )
 }
 
