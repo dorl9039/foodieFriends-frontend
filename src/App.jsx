@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       {user?.loggedIn === null ? (
         ''
-      ) : user?.loggedIn === true ? (
+      ) : user?.loggedIn === true && user?.username? (
         <Routes>
             <Route index element={<Home user={user}/>} />
             <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
@@ -33,6 +33,8 @@ function App() {
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
         </Routes>
+      ) : user?.loggedIn === true && !user?.username? (
+        <RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
       ) : (
         <Login />
       )

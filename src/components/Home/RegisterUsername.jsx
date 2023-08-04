@@ -1,11 +1,14 @@
 import {useState} from 'react';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import './RegisterUsername.css'
 
+
 const RegisterUsername = ({ userId, updateUsername }) => {
     const [formData, setFormData] = useState('')
+    const navigate = useNavigate();
 
     const handleFormChange = (event) => {
         setFormData(event.target.value)
@@ -18,6 +21,7 @@ const RegisterUsername = ({ userId, updateUsername }) => {
         .then(res => {
             console.log('onSetUsername res', res)
             updateUsername(res.data.username)
+            navigate('/home')
         })
         .catch(err => {
             console.log("error in handleRegisterUsername", err)
