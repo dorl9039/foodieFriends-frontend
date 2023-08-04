@@ -23,12 +23,12 @@ function App() {
         ''
       ) : user?.loggedIn === true ? (
         <Routes>
-            <Route index element={<Home />} />
-            <Route element={<WishlistPage userId={user.id}/>} path='wishlist'/>
-            <Route element={<Home />} path='home'/>
-            <Route element={<History userId={user.id}/>} path='history'/>
+            <Route index element={<Home user={user}/>} />
+            <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
+            <Route element={<Home user={user}/>} path='home'/>
+            <Route element={<History userId={user.userId}/>} path='history'/>
             <Route element={<Friends />} path='friends'/>
-            <Route element={<AddWish userId={user.id}/>} path='add'/>
+            <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
         </Routes>
       ) : (
