@@ -21,8 +21,9 @@ const Wish = (props) => {
 
     return(
         <section className='wish' onClick={onSelectClick}>
-        <h3>Wish {props.wishId}</h3>
-        <p>Restaurant: {props.restaurantName}</p>
+        <h3>Wish restaurant: {props.restaurantName}</h3>
+        <p>{props.address1}</p>
+        <p> {props.city}, {props.state}, {props.country}</p>
         <li>
             <button 
                 className='delete-button__container'

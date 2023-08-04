@@ -18,12 +18,11 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
         setEditState(false)
     }
 
-
-
-    const wishes = wishlistData.map((wish) => {
+    const wishes = wishlistData.map((wish, index) => {
         return (
             <Wish 
             key={wish.wish_id}
+            wishNum={index+1}
             wishId={wish.wish_id}
             address1={wish.address_line1}
             city={wish.address_city}
