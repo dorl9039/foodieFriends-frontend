@@ -1,9 +1,10 @@
 // import Login from "../components/Home/Login";
+import {useState} from 'react';
+import axios from 'axios';
 import RegisterUsername from '../components/Home/RegisterUsername';
 import './Home.css'
 
 const Home = ({ user }) => {
-    if (user.username) {
         return (
             <div>
                 <h2>Home</h2>
@@ -15,11 +16,6 @@ const Home = ({ user }) => {
                 </ul>
             </div>
         )
-    } else {
-        return (
-            <RegisterUsername />
-        )
-    }
 
 }
 

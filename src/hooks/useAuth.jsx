@@ -10,10 +10,16 @@ const AuthProvider = ({ children }) => {
         loggedIn: null,
     });
 
+    const handleUsernameUpdate = (username) => {
+        setUser(prev => ({
+            ...prev, username: username
+        })
+        )
+    }
+
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_SERVER_URL}/account`, {withCredentials: 'include'})
         .then(res => {
-            console.log('here is res', res)
             setUser({...res.data})
         })
     }, [])
@@ -21,7 +27,7 @@ const AuthProvider = ({ children }) => {
     console.log('user in useAuth', user)
     return (
         
-        <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{user, handleUsernameUpdate}}>{children}</AuthContext.Provider>
     ) 
 };
 

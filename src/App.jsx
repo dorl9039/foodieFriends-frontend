@@ -9,11 +9,12 @@ import Friends from './pages/Friends';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
 import Login from './components/Home/Login';
+import RegisterUsername from './components/Home/RegisterUsername';
 
 import './App.css';
 
 function App() {
-  const user = useAuth()
+  const {user, handleUsernameUpdate} = useAuth()
   console.log('user in App', user)
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<Home user={user}/>} />
             <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
             <Route element={<Home user={user}/>} path='home'/>
+            <Route element={<RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='register'/>
             <Route element={<History userId={user.userId}/>} path='history'/>
             <Route element={<Friends />} path='friends'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
