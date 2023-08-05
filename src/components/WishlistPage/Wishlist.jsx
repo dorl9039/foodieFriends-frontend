@@ -7,7 +7,7 @@ import './Wishlist.css'
 
 const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
     const [editState, setEditState] = useState(false)
-
+    console.log("in Wishlist, selectedWishData", selectedWishData)
 
     const handleEditClick = () => {
         setEditState(prev => !prev)
