@@ -16,7 +16,7 @@ const AddWish = ({ userId }) => {
 
     const createNewWish = (data) => {
         axios
-        .post(`http://localhost:5000/users/${userId}/wishlist`, data)
+        .post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`, data)
         .then(res => {
           console.log('createNewWish result', res.data)
         })
