@@ -8,8 +8,8 @@ import WishlistPage from './pages/WishlistPage';
 import Friends from './pages/Friends';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
-import Login from './components/Home/Login';
-import RegisterUsername from './components/Home/RegisterUsername';
+import Login from './components/Account/Login';
+import RegisterUsername from './components/Account/RegisterUsername';
 import Profile from './pages/Profile';
 
 import './App.css';
