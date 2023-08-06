@@ -2,14 +2,16 @@ import {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 import './Login.css';
 import LoginBox from './LoginBox';
+import RegisterBox from './RegisterBox'
 import axios from 'axios';
 
 
 const Login = ({updateUser}) => {
+    const navigate = useNavigate();
+    
     const [loginOpen, setLoginOpen] = useState(false);
     const handleLoginOpen = () => setLoginOpen(true);
     const handleLoginClose = () => setLoginOpen(false);
-    const navigate = useNavigate();
 
     const handleLoginSubmit = (loginData) => {
         axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/login`, loginData, {withCredentials: true})
@@ -19,6 +21,20 @@ const Login = ({updateUser}) => {
         })  
         .catch(err => ("Error in handleLoginSubmit", err))
     }
+
+    const [registerOpen, setRegisterOpen] = useState(false);
+    const handleRegisterOpen = () => setRegisterOpen(true);
+    const handleRegisterClose = () => setRegisterOpen(false);
+
+    const handleRegisterSubmit = (registerData) => {
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/register`, registerData, {withCredentials: true})
+        .then((res) => {
+            updateUser({...res.data, loggedIn: true})
+            navigate('/home')
+        })  
+        .catch(err => ("Error in handleRegisterSubmit", err))
+    }
+
 
     const signIn = (e) => {
         console.log("called signIn")
@@ -37,7 +53,11 @@ const Login = ({updateUser}) => {
                     open={loginOpen}
                     handleClose={handleLoginClose}
                     handleSubmit={handleLoginSubmit} />
-                <h4> Register </h4>
+                <button onClick={handleRegisterOpen}> Create an account </button>
+                <RegisterBox 
+                    open={registerOpen}
+                    handleClose={handleRegisterClose}
+                    handleSubmit={handleRegisterSubmit} />
                 <button onClick={signIn}> Sign in with Google</button>
             </div>
         </div>
