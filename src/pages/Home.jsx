@@ -19,7 +19,7 @@ const Home = ({ userId }) => {
     return (
         <div>
             <h2>Your FoodieFriend Recs</h2>
-            <Feed recsData={recsData}/>
+            {/* <Feed recsData={recsData}/> */}
 
         </div>
     )

@@ -15,8 +15,8 @@ import Profile from './pages/Profile';
 import './App.css';
 
 function App() {
-  const {user, handleUsernameUpdate} = useAuth()
-  console.log('user in App', user)
+  const {user, handleUsernameUpdate, handleUserUpdate} = useAuth()
+  console.log('in App, user:', user)
   return (
     <>
       <h1>FoodieFriends</h1>
@@ -30,6 +30,7 @@ function App() {
             <Route element={<Home userId={user.userId}/>} path='home' />
             <Route element={<Profile user={user}/>} path='profile'/>
             <Route element={<RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='register'/>
+            <Route element={<Login updateUser={handleUserUpdate} user={user}/>} path='login' />
             <Route element={<History userId={user.userId}/>} path='history'/>
             <Route element={<Friends />} path='friends'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
@@ -38,7 +39,7 @@ function App() {
       ) : user?.loggedIn === true && !user?.username? (
         <RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
       ) : (
-        <Login />
+        <Login updateUser={handleUserUpdate} user={user}/>
       )
       }
       
