@@ -20,26 +20,29 @@ function App() {
   return (
     <>
       <h1>FoodieFriends</h1>
-      <Navbar />
+
       {user?.loggedIn === null ? (
         ''
       ) : user?.loggedIn === true && user?.username? (
+        <>
+        <Navbar updateUser={handleUserUpdate}/>
         <Routes>
             <Route index element={<Home userId={user.userId}/>} />
             <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
             <Route element={<Home userId={user.userId}/>} path='home' />
             <Route element={<Profile user={user}/>} path='profile'/>
             <Route element={<RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='register'/>
-            <Route element={<Login updateUser={handleUserUpdate} user={user}/>} path='login' />
+            <Route element={<Login updateUser={handleUserUpdate}/>} path='login' />
             <Route element={<History userId={user.userId}/>} path='history'/>
             <Route element={<Friends />} path='friends'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
         </Routes>
+        </>
       ) : user?.loggedIn === true && !user?.username? (
         <RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
       ) : (
-        <Login updateUser={handleUserUpdate} user={user}/>
+        <Login updateUser={handleUserUpdate}/>
       )
       }
       
