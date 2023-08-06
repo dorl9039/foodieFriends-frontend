@@ -1,4 +1,4 @@
-export const Protected = () => {
+export const LoginBox = () => {
 
     const Signin = (e) => {
         e.preventDefault()
@@ -13,11 +13,11 @@ export const Protected = () => {
                 <sub>Track the restaurants you want to try out, and find friends to go with you!</sub>
             </div>
             <button >
-                Sign in with Google
+                Sign in or register
             </button>
             
         </form>
     )
 };
 
-export default Protected;
+export default LoginBox;
