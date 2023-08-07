@@ -15,6 +15,7 @@ const AddFriend = ({ open, handleClose, handleSubmit }) => {
   const onAddSubmit = (event) => {
     event.preventDefault();
     handleSubmit(formData)
+    handleClose()
   }
 	// const onSetUsername = (event) => {
 	// 	event.preventDefault();

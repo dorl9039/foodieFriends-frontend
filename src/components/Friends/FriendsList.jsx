@@ -1,11 +1,12 @@
 import Friend from "./Friend";
 
-const FriendsList = ({friendsData}) => {
+const FriendsList = ({friendsData, handleRemove}) => {
   const friends = friendsData.map(friend => {
     return (
       <Friend 
         key={friend.userId}
         friendData={friend}
+        handleRemove={handleRemove}
         />
     )
   }
