@@ -7,7 +7,7 @@ import WishlistPage from './pages/WishlistPage';
 import Friends from './pages/Friends';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
-import UserAuth from './pages/UserAuth';
+import Authenticate from './pages/Authenticate';
 import SetUsername from './components/Account/SetUsername';
 import Profile from './pages/Profile';
 
@@ -35,13 +35,13 @@ function App() {
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
             <Route element={<SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='set-username'/>
-            <Route element={<UserAuth updateUser={handleUserUpdate}/>} path='login' />
+            <Route element={<Authenticate updateUser={handleUserUpdate}/>} path='login' />
         </Routes>
         </>
       ) : user?.loggedIn === true && !user?.username? (
         <SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
       ) : (
-        <UserAuth updateUser={handleUserUpdate}/>
+        <Authenticate updateUser={handleUserUpdate}/>
       )
       }
     </>

@@ -1,15 +1,16 @@
 import {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
-import './UserAuth.css';
+import './Authenticate.css';
 import LoginBox from '../components/Account/LoginBox'
 import RegisterBox from '../components/Account/RegisterBox'
 import axios from 'axios';
 
 
-const UserAuth = ({updateUser}) => {
+const Authenticate = ({updateUser}) => {
     const navigate = useNavigate();
     
     const [loginOpen, setLoginOpen] = useState(false);
+    const [loginFail, setLoginFail] = useState(false)
     const handleLoginOpen = () => setLoginOpen(true);
     const handleLoginClose = () => setLoginOpen(false);
 
@@ -18,6 +19,9 @@ const UserAuth = ({updateUser}) => {
         .then((res) => {
             updateUser({...res.data, loggedIn: true})
             navigate('/home')
+        }, (err) => {
+            setLoginFail(true)
+            return;
         })  
         .catch(err => ("Error in handleLoginSubmit", err))
     }
@@ -31,7 +35,11 @@ const UserAuth = ({updateUser}) => {
         .then((res) => {
             updateUser({...res.data, loggedIn: true})
             navigate('/home')
-        })  
+        }, (err) => {
+            "username or email already exists"
+            return false;
+            }
+        )  
         .catch(err => ("Error in handleRegisterSubmit", err))
     }
 
@@ -48,6 +56,7 @@ const UserAuth = ({updateUser}) => {
             <h2>FoodieFriends</h2>
             <sub>Track the restaurants you want to try out, and find friends to go with you!</sub>
             <div className='signin-options__container'>
+                {loginFail? <p>The credentials you provided do not match what we have in our system. Please try logging in again</p> : <></>}
                 <button onClick={handleLoginOpen}>Sign in with username</button>
                 <LoginBox 
                     open={loginOpen}
@@ -67,4 +76,4 @@ const UserAuth = ({updateUser}) => {
 };
 
 
-export default UserAuth;
+export default Authenticate;

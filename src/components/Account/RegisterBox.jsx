@@ -35,6 +35,7 @@ const kFormInitialState = {
 
 export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 	const [formData, setFormData] = useState(kFormInitialState);
+	const [validRegistration, setValidRegistration] = useState(true)
 
 	const onFormChange = (event) => {
 		const value = event.target.value;
@@ -46,10 +47,14 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		console.log('handleSubmit fired');
-		handleSubmit(formData);
-		setFormData(kFormInitialState);
-		handleClose();
+		const valid = handleSubmit(formData);
+		if (valid) {
+			setFormData(kFormInitialState);
+			handleClose();
+		} else {
+			setValidRegistration(false)
+		}
+
 	}
 
 	return (
@@ -59,6 +64,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 			onClose={handleClose} 
 			slots={{backdrop: StyledBackdrop}}>                  
 				<form className='modal' onSubmit={onSubmit}>
+					{!validRegistration? <p>The username or email you selected is already taken</p> : <></>}
 					<label htmlFor='registerUsername'>Username</label>
 					<input
 						className='login__field'
