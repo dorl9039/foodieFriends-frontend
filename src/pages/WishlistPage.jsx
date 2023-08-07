@@ -53,7 +53,7 @@ const WishlistPage = ({userId}) => {
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
-			setWishlistData(prev => prev.filter(wish => wish.wish_id !== wishId));
+			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
 			setSelectedWishData({});
 		})
 		.catch((err) => {
