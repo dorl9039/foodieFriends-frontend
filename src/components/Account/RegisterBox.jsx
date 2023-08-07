@@ -1,4 +1,4 @@
-import {useState, forwardRef} from 'react';
+import {useState} from 'react';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 
