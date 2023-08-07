@@ -49,8 +49,6 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
                 />
                 <input type='Submit' value='Submit' className='submit-btn' />
             </form>
-
-            
         </div>
     )
 };
