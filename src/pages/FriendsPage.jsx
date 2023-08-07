@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import FriendsList from "../components/Friends/FriendsList";
 import AddFriend from "../components/Friends/AddFriend";
+import ConfirmationModal from "../components/ConfirmationModal";
+// import ErrorModal from "../components/ErrorModal";
 
 
 const formatUserData = (userData) => {
@@ -10,13 +12,14 @@ const formatUserData = (userData) => {
 		firstName: userData.first_name,
 		lastName: userData.last_name,
 		userId: userData.user_id
-	}
+	}	
 }
+
 const FriendsPage = ({userId}) => {
-	const [modalOpen, setModalOpen] = useState(false)
-	const [friendsData, setFriendsData] = useState([])
-	const [errorAddFriend, setErrorAddFriend] = useState(false)
+	const [showSuccess, setShowSuccess] = useState(false)
+	const [showError, setShowError] = useState(false)
 	const [errorMessage, setErrorMessage] = useState('')
+	const [friendsData, setFriendsData] = useState([])
 
 	useEffect(() => {
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/friends`)
@@ -33,20 +36,20 @@ const FriendsPage = ({userId}) => {
 		.then(res => {
 			const newFriend = formatUserData(res.data)
 			setFriendsData(prev => ([...prev, newFriend]))
+			setShowSuccess(true)
 		})
 		.catch(err => {
-			setErrorAddFriend(true)
+			setShowError(true)
 			setErrorMessage(err.response.data)	
-			//Handle if username doesn't exist
-			console.log("Error in FriendsPage, handleAddFriend", err)
 		} )
 	}
 
 	const handleRemoveFriend = (friendId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/friends/${friendId}`)
-		.then(res => {
+		.then(() => {
 			setFriendsData(prev=> prev.filter(friend=> friend.userId !== friendId))
 		})
+		.catch(err => console.log("Error in FriendsPage, handleRemoveFriend", err))
 
 	}
 
@@ -57,13 +60,17 @@ const FriendsPage = ({userId}) => {
 				friendsData={friendsData}
 				handleRemove={handleRemoveFriend}
 				/>
-			<button onClick={()=>{setModalOpen(true)}}>Add new friend</button>
-			<AddFriend 
-				open={modalOpen} 
-				handleClose={()=>{setModalOpen(false)}} 
-				handleSubmit={handleAddFriend}
+			<AddFriend handleSubmit={handleAddFriend}/>
+			<ConfirmationModal 
+				open={showSuccess} 
+				handleClose={() => setShowSuccess(false)} 
+				message='New friend added!'
 				/>
-				{errorAddFriend? <p>{errorMessage}</p> : ""}
+			<ConfirmationModal 
+				open={showError} 
+				handleClose={() => setShowError(false)} 
+				message={errorMessage}
+				/>
 		</div>
 	)
 }
