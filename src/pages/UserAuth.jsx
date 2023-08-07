@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
-import './Login.css';
-import LoginBox from './LoginBox';
-import RegisterBox from './RegisterBox'
+import './UserAuth.css';
+import LoginBox from '../components/Account/LoginBox'
+import RegisterBox from '../components/Account/RegisterBox'
 import axios from 'axios';
 
 
-const Login = ({updateUser}) => {
+const UserAuth = ({updateUser}) => {
     const navigate = useNavigate();
     
     const [loginOpen, setLoginOpen] = useState(false);
@@ -67,5 +67,4 @@ const Login = ({updateUser}) => {
 };
 
 
-
-export default Login;
+export default UserAuth;

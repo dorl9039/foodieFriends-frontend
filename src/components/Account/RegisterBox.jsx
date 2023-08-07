@@ -2,7 +2,6 @@ import {useState, forwardRef, useEffect} from 'react';
 import Modal from '@mui/base/Modal';
 import { styled } from '@mui/system';
 import clsx from 'clsx';
-import './Login.css';
 
 
 const Backdrop = forwardRef((props, ref) => {

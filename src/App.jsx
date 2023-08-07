@@ -8,8 +8,8 @@ import WishlistPage from './pages/WishlistPage';
 import Friends from './pages/Friends';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
-import Login from './components/Account/Login';
-import RegisterUsername from './components/Account/RegisterUsername';
+import UserAuth from './pages/UserAuth';
+import SetUsername from './components/Account/SetUsername';
 import Profile from './pages/Profile';
 
 import './App.css';
@@ -28,21 +28,21 @@ function App() {
         <Navbar updateUser={handleUserUpdate}/>
         <Routes>
             <Route index element={<Home userId={user.userId}/>} />
-            <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
             <Route element={<Home userId={user.userId}/>} path='home' />
+            <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
             <Route element={<Profile user={user}/>} path='profile'/>
-            <Route element={<RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='register'/>
-            <Route element={<Login updateUser={handleUserUpdate}/>} path='login' />
             <Route element={<History userId={user.userId}/>} path='history'/>
             <Route element={<Friends />} path='friends'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
+            <Route element={<SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='set-username'/>
+            <Route element={<UserAuth updateUser={handleUserUpdate}/>} path='login' />
         </Routes>
         </>
       ) : user?.loggedIn === true && !user?.username? (
-        <RegisterUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
+        <SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>
       ) : (
-        <Login updateUser={handleUserUpdate}/>
+        <UserAuth updateUser={handleUserUpdate}/>
       )
       }
       
