@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-
 import { useAuth } from './hooks/useAuth';
 import History from './pages/History';
 import Navbar from './components/Navbar';
@@ -15,8 +14,8 @@ import Profile from './pages/Profile';
 import './App.css';
 
 function App() {
-  const {user, handleUsernameUpdate, handleUserUpdate} = useAuth()
-  console.log('in App, user:', user)
+  const {user, handleUsernameUpdate, handleUserUpdate} = useAuth();
+  console.log('in App, user:', user);
   return (
     <>
       <h1>FoodieFriends</h1>
@@ -45,9 +44,8 @@ function App() {
         <UserAuth updateUser={handleUserUpdate}/>
       )
       }
-      
     </>
-  )
+  );
 }
 
-export default App
+export default App;
