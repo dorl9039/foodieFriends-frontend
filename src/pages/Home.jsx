@@ -12,14 +12,15 @@ const Home = ({ userId }) => {
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/foodiefriends`)
         .then(res => {
-            if (res.data.wishlist.length > 0) {
-                setRecsExist(true)
-                setRecsData(res.data)
-            }
+            console.log('in Home useEffect', res)
+            if (!res.data) return 
+            setRecsExist(true)
+            setRecsData(res.data)
+            
         })
         .catch(err => console.log("error in Home useEffect", err))
     }, [])
-    
+    console.log('recsData', recsData)
     return (
         <div>
             <h2>Your FoodieFriend Recs</h2>
