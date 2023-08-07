@@ -4,7 +4,7 @@ import History from './pages/History';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import WishlistPage from './pages/WishlistPage';
-import Friends from './pages/Friends';
+import FriendsPage from './pages/FriendsPage';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
 import Authenticate from './pages/Authenticate';
@@ -31,7 +31,7 @@ function App() {
             <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/>
             <Route element={<Profile user={user}/>} path='profile'/>
             <Route element={<History userId={user.userId}/>} path='history'/>
-            <Route element={<Friends />} path='friends'/>
+            <Route element={<FriendsPage userId={user.userId}/>} path='friends'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
             <Route element={<SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='set-username'/>
