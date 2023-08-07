@@ -33,9 +33,17 @@ const kFormInitialState = {
 	email: '',
 };
 
-export const RegisterBox = ({open, handleClose, handleSubmit}) => {
+export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => {
 	const [formData, setFormData] = useState(kFormInitialState);
 	const [validRegistration, setValidRegistration] = useState(true)
+	const [validForm, setValidForm] = useState({
+		username: false,
+		password: false,
+		firstName: false,
+		lastName: false,
+		email: false
+	})
+	
 
 	const onFormChange = (event) => {
 		const value = event.target.value;
@@ -43,6 +51,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 		setFormData(prev => ({
 			...prev, [name]: value
 		}));
+		value ? setValidForm(prev => ({...prev, [name]: true})) : setValidForm(prev => ({...prev, [name]: false}))
 	}
 
 	const onSubmit = (event) => {
@@ -54,7 +63,13 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 		} else {
 			setValidRegistration(false)
 		}
+	}
 
+	const checkFieldsValid = (fields) => {
+		for (const field in fields) {
+			if (!fields[field]) return false
+		}
+		return true
 	}
 
 	return (
@@ -64,7 +79,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 			onClose={handleClose} 
 			slots={{backdrop: StyledBackdrop}}>                  
 				<form className='modal' onSubmit={onSubmit}>
-					{!validRegistration? <p>The username or email you selected is already taken</p> : <></>}
+					{!validRegistration? <p>{errorMessage}</p> : <></>}
 					<label htmlFor='registerUsername'>Username</label>
 					<input
 						className='login__field'
@@ -105,7 +120,16 @@ export const RegisterBox = ({open, handleClose, handleSubmit}) => {
 						value={formData.email}
 						onChange={onFormChange}
 					/>
-					<input type='Submit' value='Create account'/>
+					{checkFieldsValid(validForm) ? 
+						<input type='Submit' value='Create account'/> 
+					:
+					(
+						<>
+						<p>Please fill out all the fields</p>
+						<input type='Submit' value='Create account' disabled/> 
+						</>
+					)
+					}
 				</form>
 		</Modal>
 	);

@@ -11,6 +11,7 @@ const Authenticate = ({updateUser}) => {
     
     const [loginOpen, setLoginOpen] = useState(false);
     const [loginFail, setLoginFail] = useState(false)
+    const [loginFaileMessage, setLoginFailMessage] = useState('')
     const handleLoginOpen = () => setLoginOpen(true);
     const handleLoginClose = () => setLoginOpen(false);
 
@@ -21,6 +22,7 @@ const Authenticate = ({updateUser}) => {
             navigate('/home')
         }, (err) => {
             setLoginFail(true)
+            setLoginFailMessage(err.response.data.message)
             return;
         })  
         .catch(err => ("Error in handleLoginSubmit", err))
@@ -29,6 +31,7 @@ const Authenticate = ({updateUser}) => {
     const [registerOpen, setRegisterOpen] = useState(false);
     const handleRegisterOpen = () => setRegisterOpen(true);
     const handleRegisterClose = () => setRegisterOpen(false);
+    const [registerFailMessage, setRegisterFailMessage] = useState('')
 
     const handleRegisterSubmit = (registerData) => {
         axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/register`, registerData, {withCredentials: true})
@@ -36,8 +39,8 @@ const Authenticate = ({updateUser}) => {
             updateUser({...res.data, loggedIn: true})
             navigate('/home')
         }, (err) => {
-            "username or email already exists"
-            return false;
+            setRegisterFailMessage(err.response.data)
+            return;
             }
         )  
         .catch(err => ("Error in handleRegisterSubmit", err))
@@ -56,7 +59,7 @@ const Authenticate = ({updateUser}) => {
             <h2>FoodieFriends</h2>
             <sub>Track the restaurants you want to try out, and find friends to go with you!</sub>
             <div className='signin-options__container'>
-                {loginFail? <p>The credentials you provided do not match what we have in our system. Please try logging in again</p> : <></>}
+                {loginFail? <p>{loginFaileMessage}</p> : <></>}
                 <button onClick={handleLoginOpen}>Sign in with username</button>
                 <LoginBox 
                     open={loginOpen}
@@ -66,7 +69,8 @@ const Authenticate = ({updateUser}) => {
                 <RegisterBox 
                     open={registerOpen}
                     handleClose={handleRegisterClose}
-                    handleSubmit={handleRegisterSubmit} />
+                    handleSubmit={handleRegisterSubmit}
+                    errorMessage={registerFailMessage} />
                 <button onClick={signIn}> Sign in with Google</button>
             </div>
         </div>
