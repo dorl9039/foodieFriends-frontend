@@ -63,14 +63,6 @@ const WishlistPage = ({userId}) => {
         const thisWish = wishlistData.filter(wish => wishId === wish.wish_id)
         const thisWishData = thisWish[0]
         setSelectedWishData(thisWishData)
-        // axios
-        // .get(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
-        // .then(res => {
-        //     setSelectedWishData(res.data)
-        // })
-        // .catch(err => {
-        //     console.log("Error in handleWishSelect", err)
-        // })
     }
     console.log('selectedWishData', selectedWishData)
     return (
