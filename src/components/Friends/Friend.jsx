@@ -1,6 +1,6 @@
 const Friend = ({friendData, handleRemove}) => {
   
-  const onRemove = (event) => {
+  const onRemove = () => {
     handleRemove(friendData.userId)
   }
 

@@ -2,28 +2,27 @@ import { useState } from 'react';
 import { Dialog } from '@headlessui/react'
 import './Wish.css'
 
-
-const Wish = (props) => {
+const Wish = ({wish, handleDelete, handleEditClick, handleSelect}) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
 
     const handleDialogDelete = () => {
         setIsDialogOpen(false)
-        props.handleDelete(props.wishId)
+        handleDelete(wish.wishId)
     }
 
     const onEditClick = () => {
-        props.handleEditClick()
+        handleEditClick()
     }
 
     const onSelectClick = () => {
-        props.handleSelect(props.wishId)
+        handleSelect(wish.wishId)
     }
 
     return(
         <section className='wish' onClick={onSelectClick}>
-        <h3>{props.restaurantName}</h3>
-        <p>{props.wishPriority}</p>
-        <p>{props.wishComment}</p>
+        <h3>{wish.restaurantName}</h3>
+        <p>{wish.priority}</p>
+        <p>{wish.comment}</p>
         <li>
             <button 
                 className='delete-button__container'
