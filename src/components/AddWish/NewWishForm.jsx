@@ -21,7 +21,6 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         onSubmit(formData);
-
         setFormData(kInitialFormData);
     }
     return (
@@ -50,8 +49,6 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
                 />
                 <input type='Submit' value='Submit' className='submit-btn' />
             </form>
-
-            
         </div>
     )
 };
