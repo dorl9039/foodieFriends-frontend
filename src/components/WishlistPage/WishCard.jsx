@@ -3,7 +3,7 @@ import './WishCard.css'
 const WishCard = ({wishData}) => {
     return(
         <section className='wish-card__container'>
-            <h3>Wish restaurant: {wishData.restaurant_name}</h3>
+            <h3>Wish restaurant: {wishData.restaurantName}</h3>
             <ul>
                 <li>Priority: {wishData.priority}</li>
                 <li>Comment: {wishData.comment}</li>
