@@ -98,7 +98,7 @@ const WishlistPage = ({userId}) => {
 				handleSelect={handleWishSelect}
 				selectedWishData={selectedWishData}
 				/>
-			<WishlistMap />
+			<WishlistMap wishes={wishlistData}/>
 		</div>
 	)
 }
