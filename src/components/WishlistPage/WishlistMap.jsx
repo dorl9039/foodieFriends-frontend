@@ -20,9 +20,9 @@ import Map, {Marker, Popup} from 'react-map-gl';
 //   }]
 
 
-const WishlistMap = ({wishes}) =>{
-		const [showPopup, setShowPopup] = useState(false)
-		const wishMarkers = wishes.map((wish) => (
+const WishlistMap = ({wishes, handleSelect, selectedWish}) =>{
+	console.log(selectedWish)	
+	const wishMarkers = wishes.map((wish) => (
 				<Marker key={wish.wishId}
 					latitude={wish.latitude}
 					longitude={wish.longitude}
@@ -37,21 +37,14 @@ const WishlistMap = ({wishes}) =>{
 			initialViewState={{
 			longitude: -73.98113,
 			latitude: 40.767365,
-			zoom: 14
+			zoom: 9
 			}}
+			// longitude={selectedWish.longitude}
+			// latitude={selectedWish.latitude}
 			style={{width: 600, height: 400}}
 			mapStyle="mapbox://styles/mapbox/streets-v9"
 			>
 				{wishMarkers}
-				{/* {showPopup && (
-					<Popup
-						longitude={testWish.longitude}
-						latitude={testWish.latitude}
-						anchor='bottom'
-						onClose={()=> setShowPopup(false)}>
-							You are here
-					</Popup>
-				)} */}
 		</Map>
 		</>
 	);
