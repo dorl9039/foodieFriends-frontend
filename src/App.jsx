@@ -18,7 +18,7 @@ function App() {
   console.log('in App, user:', user);
   return (
     <>
-      <h1>FoodieFriends</h1>
+      <h1 className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></h1>
 
       {user?.loggedIn === null ? (
         ''
