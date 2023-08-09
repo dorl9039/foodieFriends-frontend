@@ -1,0 +1,14 @@
+.home-page__container {
+  padding:10% 22%;
+}
+
+.home-page__container h2 {
+  font-family: 'Source Serif Pro';
+  text-align: center;
+  color: #405f8b;
+  font-size: 24pt;
+}
+
+.home-feed__container {
+  border: 1px black solid;
+}

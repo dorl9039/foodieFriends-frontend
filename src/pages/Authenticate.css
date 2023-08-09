@@ -53,6 +53,7 @@
     margin-bottom: 10px;
     color: #405f8b;
     padding: 4px 8px;
+    border: .5px solid #405f8b;
 }
 .login__form input:last-child {
     text-align: center;
@@ -126,6 +127,7 @@
     padding: 4px 8px;
     margin: 5px;
     color: #405f8b;
+    border: .5px solid #405f8b;
   }
 
   .register-modal__form .auth-button-invalid {
