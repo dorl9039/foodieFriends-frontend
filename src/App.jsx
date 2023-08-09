@@ -10,20 +10,20 @@ import FourOhFour from './pages/404';
 import Authenticate from './pages/Authenticate';
 import SetUsername from './components/Account/SetUsername';
 import Profile from './pages/Profile';
-
+import './pages/Authenticate.css'
 import './App.css';
+
 
 function App() {
   const {user, handleUsernameUpdate, handleUserUpdate} = useAuth();
   console.log('in App, user:', user);
   return (
     <>
-      <h1 className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></h1>
-
       {user?.loggedIn === null ? (
         ''
       ) : user?.loggedIn === true && user?.username? (
         <>
+         <h1 className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></h1>
         <Navbar updateUser={handleUserUpdate}/>
         <Routes>
             <Route index element={<Home userId={user.userId}/>} />

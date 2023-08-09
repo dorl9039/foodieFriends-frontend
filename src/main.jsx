@@ -5,6 +5,7 @@ import AuthProvider from './hooks/useAuth.jsx'
 import App from './App.jsx'
 import './index.css'
 import '@fontsource/aileron';
+import "@fontsource/source-serif-pro/600.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

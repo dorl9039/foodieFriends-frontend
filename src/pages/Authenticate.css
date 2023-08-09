@@ -1,13 +1,93 @@
-.modal__overlay {
+.authenticate-page__row1 {
+    background-image: url(../media/Sharing-food-with-friends.jpg);
+    background-image: linear-gradient(transparent, #fff5d7 100%), url(../media/Sharing-food-with-friends.jpg); 
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+}
+
+.authenticate-page__row2 {
+    padding: 0 10% 0;
+    font-family: 'Source Serif Pro';
+    font-size: 20pt;
+    margin: 5px;
+    color: #f77d2f
+}
+
+.authenticate-page__header {
+    font-size: 60pt;
+    margin: 40px 0 0;
+}
+
+.authenticate-page__header .title-foodie {
+    color: #405f8b;
+}
+
+.authenticate-page__header .title-friends {
+    color: #f77d2f;
+}
+
+.authenticate-page__row3 {
+    padding: 0 10% 0;
+    display: grid;
+    grid-template-columns: 1fr 10% 1fr 10% 1fr;
+    font-family: "Aileron";
+    color: #f77d2f;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.authenticate-page__row3 .auth-button {
+    text-align: center;
+    justify-content: center;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.login__form input:not(:last-child){
+    background-color: white;
+    margin-bottom: 10px;
+    color: #405f8b;
+    padding: 0px 5px;
+}
+.login__form input:last-child {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.row__divider {
+    font-family: "Source Serif Pro";
+    font-size: 14pt;
+    color: #405f8b;
+    text-align: center;
+    padding: 40% 30%;
+}
+
+.row__divider p {
+    border-bottom: solid 1px #405f8b;
+}
+
+.authentication-page__container {
+    background-color:#fff5d7;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* .modal__overlay {
     position: fixed;
     top: 0; 
     right: 0; 
     bottom: 0; 
     left: 0;
     background-color: rgba(0,0,0,0.3);
-}
+} */
 
-.modal__container {
+/* .modal__container {
     position: fixed;
     top: 0; 
     right: 0; 
@@ -17,7 +97,7 @@
     align-items: center;
     justify-content: center;
     padding: 16px;
-}
+} */
 
 .modal {
     background-color: white;
@@ -29,9 +109,6 @@
     border-radius: 15px;
 }
 
-.signin-options__container {
-    border: .5px solid black;
-}
 
 .login-modal__container {
     position: fixed;

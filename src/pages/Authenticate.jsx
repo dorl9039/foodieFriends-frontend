@@ -1,19 +1,16 @@
 import {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
-import './Authenticate.css';
 import LoginBox from '../components/Account/LoginBox'
 import RegisterBox from '../components/Account/RegisterBox'
 import axios from 'axios';
 
+import './Authenticate.css';
 
 const Authenticate = ({updateUser}) => {
 	const navigate = useNavigate();
 	
-	const [loginOpen, setLoginOpen] = useState(false);
 	const [loginFail, setLoginFail] = useState(false)
-	const [loginFaileMessage, setLoginFailMessage] = useState('')
-	const handleLoginOpen = () => setLoginOpen(true);
-	const handleLoginClose = () => setLoginOpen(false);
+	const [loginFailMessage, setLoginFailMessage] = useState('')
 
 	const handleLoginSubmit = (loginData) => {
 		axios.post(`${import.meta.env.VITE_SERVER_URL}/auth/login`, loginData, {withCredentials: true})
@@ -54,24 +51,35 @@ const Authenticate = ({updateUser}) => {
 	}
 
 	return (
-		<div>
-			<h2>FoodieFriends</h2>
-			<sub>Track the restaurants you want to try out, and find friends to go with you!</sub>
-			<div className='signin-options__container'>
-					{loginFail? <p>{loginFaileMessage}</p> : <></>}
-					<button onClick={handleLoginOpen}>Sign in with username</button>
+		<div className='authentication-page__container'>
+			<section className='authenticate-page__row1' />
+			<section className='authenticate-page__row2'>
+				<h1 className='authenticate-page__header'><span className='title-foodie'>Foodie</span><span className='title-friends'>Friends</span></h1>
+			<p>Organize your restaurant wishlist and connect with friends!</p>
+			</section>
+			<section className='authenticate-page__row3'>
+					{loginFail? <p>{loginFailMessage}</p> : <></>}
 					<LoginBox 
-						open={loginOpen}
-						handleClose={handleLoginClose}
 						handleSubmit={handleLoginSubmit} />
-					<button onClick={handleRegisterOpen}> Create an account </button>
+					<section className='row__divider'>
+						<p>OR</p>
+					</section>
+					<button 
+						className='auth-button' 
+						onClick={handleRegisterOpen}> Create an account 
+					</button>
+					<section className='row__divider'>
+						<p>OR</p>
+					</section>
 					<RegisterBox 
 						open={registerOpen}
 						handleClose={handleRegisterClose}
 						handleSubmit={handleRegisterSubmit}
 						errorMessage={registerFailMessage} />
-					<button onClick={googleSignIn}> Sign in with Google</button>
-			</div>
+					<button className='auth-button' onClick={googleSignIn}> Sign in with Google</button>
+			</section>
+			
+			
 		</div>
 	)
 };

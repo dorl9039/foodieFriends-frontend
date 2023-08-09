@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 } */
+body {
+  background-color: white;
+}
 .header{
   margin: 0;
   padding: 20px 0px 10px;
