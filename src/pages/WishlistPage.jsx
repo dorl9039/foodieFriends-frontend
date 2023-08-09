@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
-import WishlistMap from "../components/WishlistPage/WishlistMap";
 import Wishlist from "../components/WishlistPage/Wishlist";
 
 const formatData = (data) => {
@@ -22,12 +22,19 @@ const formatData = (data) => {
 	}
 };
 
+const initialViewport = {
+	longitude: -73.98113,
+	latitude: 40.767365,
+	zoom: 9
+}
 
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
-	const [selectedWishData, setSelectedWishData] = useState({})
+	const [selectedWishData, setSelectedWishData] = useState({
+		longitude: -73.98113,
+		latitude: 40.767365,
+	})
 
-		
 	useEffect(() => {
 		axios
 		.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
@@ -88,6 +95,10 @@ const WishlistPage = ({userId}) => {
 		setSelectedWishData(thisWishData);
 	}
 
+	const onMarkerClick = (wishId) => {
+		handleWishSelect(wishId)
+	}
+
 	return (
 		<div>
 			<h2>Wishlist</h2>
@@ -98,7 +109,25 @@ const WishlistPage = ({userId}) => {
 				handleSelect={handleWishSelect}
 				selectedWishData={selectedWishData}
 				/>
-			<WishlistMap />
+				<Map
+					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+					initialViewState={initialViewport}
+					style={{width: 600, height: 400}}
+					mapStyle="mapbox://styles/mapbox/streets-v9"
+					longitude={selectedWishData.longitude}
+					latitude={selectedWishData.latitude}
+					zoom={13}
+					>
+					{
+						wishlistData.map((wish) => (
+							<Marker key={wish.wishId}
+								latitude={wish.latitude}
+								longitude={wish.longitude}
+								onClick={() => onMarkerClick(wish.wishId)}>
+							</Marker>
+						))
+					}
+			</Map>
 		</div>
 	)
 }

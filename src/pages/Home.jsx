@@ -3,6 +3,32 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Feed from '../components/Home/Feed';
 
+
+const formatData = (data) => {
+	const friend = {
+		userId: data.friend.user_id,
+		username: data.friend.user_id,
+		firstName: data.friend.first_name,
+		lastName: data.friend.last_name
+	}
+	const wish = {
+		wishId: data.wishRestaurant.wish_id,
+		userId: data.wishRestaurant.user_id,
+		restaurantId: data.wishRestaurant.restaurant_id,
+		restaurantName: data.wishRestaurant.restaurant_name,
+		comment: data.wishRestaurant.wish_comment,
+		priority: data.wishRestaurant.wish_priority,
+		address1: data.wishRestaurant.address_line1,
+		city: data.wishRestaurant.address_city,
+		state: data.wishRestaurant.address_state,
+		country: data.wishRestaurant.address_country,
+		priceRange: data.wishRestaurant.price_range,
+		cuisine: data.wishRestaurant.cuisine,
+	}
+	return {friend, wish}
+};
+
+
 const Home = ({ userId }) => {
 	const [recsData, setRecsData] = useState([]);
 	const [recsExist, setRecsExist] = useState(false);
@@ -13,7 +39,9 @@ const Home = ({ userId }) => {
 		.then(res => {
 			if (!res.data) return; 
 			setRecsExist(true);
-			setRecsData(res.data);
+			const recs = res.data.map(rec => formatData(rec))
+			const sortedRecs = recs.sort((a, b) => b.wish.priority - a.wish.priority);
+			setRecsData(sortedRecs);
 		})
 		.catch(err => console.log("error in Home useEffect", err));
 	}, [])
