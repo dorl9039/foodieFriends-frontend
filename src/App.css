@@ -27,6 +27,17 @@
   border-radius: 999px;
   padding: 3px 10px;
   color: white;
+  transition: border-color 0.25s;
+}
+
+.auth-button:hover {
+  background-color: white;
+  color: #f77d2f;
+  cursor: pointer;
+}
+
+.auth-button:active {
+  transform: translateY(2px)
 }
 
 @keyframes logo-spin {
