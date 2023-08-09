@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/aileron": "^5.0.7",
     "@headlessui/react": "^1.7.16",
     "@mapbox/search-js-react": "^1.0.0-beta.17",
     "@mui/base": "^5.0.0-beta.9",
@@ -22,6 +23,7 @@
     "@types/mapbox-gl": "^2.7.12",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
+    "fontsource-aileron": "^4.0.0",
     "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import AuthProvider from './hooks/useAuth.jsx'
 import App from './App.jsx'
 import './index.css'
+import '@fontsource/aileron';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
