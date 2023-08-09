@@ -52,7 +52,7 @@
     background-color: white;
     margin-bottom: 10px;
     color: #405f8b;
-    padding: 0px 5px;
+    padding: 4px 8px;
 }
 .login__form input:last-child {
     text-align: center;
@@ -99,18 +99,9 @@
     padding: 16px;
 } */
 
-.modal {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    border-radius: 15px;
-}
 
 
-.login-modal__container {
+.register-modal__container {
     position: fixed;
     z-index: 1300;
     inset: 0;
@@ -119,16 +110,33 @@
     justify-content: center;
 }
 
-.login__field {
+.register-modal__form {
+    background-color: #fff5d7;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 16px;
+    font-family: 'Aileron';
+    color: #f77d2f;
+}
+.register-modal__form input:not(:last-child) {
     width: 320px;
-    font-size: 0.875rem;
-    font-family: IBM Plex Sans, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    color: grey;
     background: white;
-    border: 1px solid grey;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 4px 8px;
     margin: 5px;
+    color: #405f8b;
+  }
+
+  .register-modal__form .auth-button-invalid {
+    width: 320px;
+    text-align: center;
+  }
+
+  .register-modal__form .auth-button {
+    width: 320px;
+    text-align: center;
+  }
+  .register-modal__form p {
+    color: #405f8b;
   }
