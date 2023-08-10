@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import Modal from '@mui/base/Modal';
+import StyledBackdrop from '../StyledBackdrop';
+
 import './WishEditForm.css'
 
 
-const WishEditForm = ({wishData, handleWishEdit}) => {
+const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
+    
     const [formData, setFormData] = useState({})
     const originalWishData = {
         wish_comment: wishData.wish_comment, 
@@ -16,15 +20,21 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
             [name]: value
         }));
     }
+
     const handleFormSubmit = (event) => {
         event.preventDefault();
         handleWishEdit(formData);
-
+        handleClose();
     }
+    
     return(
-        <div className='edit-wish-form__container'>
+        <Modal 
+        className='edit-wish__container' 
+        open={open} 
+        onClose={handleClose} 
+        slots={{backdrop: StyledBackdrop}}>                  
+            <form className='edit-wish__form' onSubmit={handleFormSubmit}>
             <h3>Edit Wish {wishData.wish_id} for {wishData.restaurant_name}</h3>
-            <form className='edit-wish-form__form' onSubmit={handleFormSubmit}>
                 <label htmlFor='wish_priority'>Priority</label>
                 <select 
                     name='wish_priority' 
@@ -50,7 +60,7 @@ const WishEditForm = ({wishData, handleWishEdit}) => {
                 <input type='Submit' value='Submit' className='submit-btn' />
                 <button className='historicize-button'>Move to history</button>
             </form>
-        </div>
+    </Modal>  
     )
 };
 

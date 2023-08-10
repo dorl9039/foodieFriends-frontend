@@ -29,12 +29,14 @@ const initialViewport = {
 	zoom: 9
 }
 
+const initialLonlat = {
+	longitude: -73.98113,
+	latitude: 40.767365,
+}
+
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
-	const [selectedWishData, setSelectedWishData] = useState({
-		longitude: -73.98113,
-		latitude: 40.767365,
-	})
+	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
 
 	useEffect(() => {
 		axios
@@ -93,12 +95,11 @@ const WishlistPage = ({userId}) => {
 	}
 	
 
-
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
 			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
-			setSelectedWishData({});
+			setSelectedWishData(initialLonlat);
 		})
 		.catch((err) => {
 			console.log("Error in handleDelete", err);
