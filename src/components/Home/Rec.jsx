@@ -22,7 +22,7 @@ const Rec = ({recData}) => {
 					</section>
 					<button 
 						className='contact-friend__button' 
-						onClick={() => window.location=`mailto:${recData.friend.email}`}>
+						onClick={() => window.location=`mailto:${recData.friend.email}?subject=Want to try out ${recData.wish.restaurantName} together?`}>
 							<div>✉️</div>
 							<div>Connect with {recData.friend.username}</div></button>
 				</div>}
