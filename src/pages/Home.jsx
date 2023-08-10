@@ -10,7 +10,8 @@ const formatData = (data) => {
 		userId: data.friend.user_id,
 		username: data.friend.username,
 		firstName: data.friend.first_name,
-		lastName: data.friend.last_name
+		lastName: data.friend.last_name,
+		email: data.friend.email,
 	}
 	const wish = {
 		wishId: data.wishRestaurant.wish_id,

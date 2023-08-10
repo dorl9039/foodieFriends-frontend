@@ -12,10 +12,19 @@ const Rec = ({recData}) => {
 			</div>
 			{isOpen && 
 				<div className='rec__content'>
-					<p>{recData.wish.address1}, {recData.wish.city}, {recData.wish.state}</p>
+					<section className='rec-restaurant-info'>
+						<p>{recData.wish.address1}, {recData.wish.city}, {recData.wish.state}</p>
 					<p>{recData.wish.cuisine} | {recData.wish.priceRange}</p>
-					<p>Priority: {recData.wish.priority}</p>
-					<p>Comment: {recData.wish.comment}</p>
+					</section>
+					<section className='rec-wish-info'>
+						<p>Your priority: {recData.wish.priority}</p>
+						<p>Your comment: {recData.wish.comment}</p>	
+					</section>
+					<button 
+						className='contact-friend__button' 
+						onClick={() => window.location=`mailto:${recData.friend.email}`}>
+							<div>✉️</div>
+							<div>Connect with {recData.friend.username}</div></button>
 				</div>}
 		</div>
 	)

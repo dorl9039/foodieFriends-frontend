@@ -20,11 +20,11 @@ body {
 }
 .header-title-friends {
   font-family: 'Source Serif Pro';
-  color: #f77d2f;
+  color: #f88c48;
 }
 
 .auth-button {
-  background-color: #f77d2f;
+  background-color: #f88c48;
   font-family: "Aileron";
   font-size: 12pt;
   border-radius: 999px;
@@ -35,7 +35,7 @@ body {
 
 .auth-button:hover {
   background-color: white;
-  color: #f77d2f;
+  color: #f88c48;
   cursor: pointer;
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 .auth-button-invalid {
-  background-color: #f77d2f;
+  background-color: #f88c48;
   font-family: "Aileron";
   font-size: 12pt;
   border-radius: 999px;

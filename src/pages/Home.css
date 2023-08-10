@@ -7,8 +7,76 @@
   text-align: center;
   color: #405f8b;
   font-size: 24pt;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-feed__container {
   border: 1px black solid;
+  max-width: 600px;
+  margin: 2rem auto;
 }
+
+.rec__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #f88c48;
+  font-family: "Aileron";
+  font-size: 14pt;
+  color: white;
+  padding: 5px 15px;
+}
+
+.rec__title:hover {
+  background-color: #f77d2f;
+}
+
+.rec__content {
+  background-color: #ffefbd;
+  padding: 5px 15px;
+  font-family: 'Aileron';
+  color: #405f8b;
+}
+
+.rec-restaurant-info {
+  padding: 5px 10px;
+}
+.rec-restaurant-info p {
+  margin: 0;
+  text-align: center;
+}
+.rec-wish-info {
+  padding: 10px 10px 10px;
+}
+.rec-wish-info p {
+  margin: 0;
+  text-align: center;
+}
+
+.contact-friend__button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 25%;
+  background-color: #405f8b;
+  font-family: "Aileron";
+  font-size: 10pt;
+  border-radius: 999px;
+  padding: 3px 15px;
+  color: white;
+  transition: border-color 0.25s;
+  margin: 0 auto;
+}
+
+.contact-friend__button:hover {
+  background-color: white;
+  color: #405f8b;
+  cursor: pointer;
+}
+
+.contact-friend__button:active {
+  transform: translateY(2px)
+}
+
