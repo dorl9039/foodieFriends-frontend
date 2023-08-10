@@ -153,7 +153,7 @@ const WishlistPage = ({userId}) => {
 					handleDelete={handleWishDelete} 
 					handleEdit={handleWishEdit} 
 					handleSelect={handleWishSelect}
-					selectedWishData={selectedWishData}
+					selectedWish={selectedWishData}
 					sortWishes={sortWishes}
 					/>
 					<Map

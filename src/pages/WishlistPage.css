@@ -62,7 +62,6 @@
 .wish {
   border: 0.5px solid black;
   background-color: #ffefbd;
-
 }
 
 .wish h3 {
@@ -70,7 +69,7 @@
   font-size: 18pt;
   color: #405f8b;
   text-align: center;
-  margin: 1rem auto 0;
+  margin: 1rem auto 0.5rem;
 }
 
 .wish-details {
@@ -81,5 +80,30 @@
   font-size: 12pt;
 }
 .wish-details p {
+  margin: .5rem auto;
+}
+
+.selected-wish {
+  background-color: #f88c48;
+  border: 0.5px solid black;
+}
+
+
+.selected-wish h3 {
+  font-family: 'Source Serif Pro';
+  font-size: 18pt;
+  color: white;
+  text-align: center;
+  margin: 1rem auto .5rem;
+}
+
+.selected-wish-details {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Aileron';
+  color: white;
+  font-size: 12pt;
+}
+.selected-wish-details p {
   margin: .5rem auto;
 }

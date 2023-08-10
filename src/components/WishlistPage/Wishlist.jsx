@@ -4,14 +4,14 @@ import WishCard from "./WishCard";
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData, sortWishes}) => {
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes}) => {
 	const [priceOrder, setPriceOrder] = useState(true)
 	const [recentOrder, setRecentOrder] = useState(true)
 	const [priorityOrder, setPriorityOrder] = useState(true)
 
 
 	const handleWishEdit = (data) => {
-		handleEdit(selectedWishData.wishId, data)
+		handleEdit(selectedWish.wishId, data)
 	}
 
 	const wishes = wishlistData.map((wish) => {
@@ -20,6 +20,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 				key={wish.wishId}
 				wish={wish}
 				handleSelect={handleSelect}
+				selectedWishId={selectedWish.wishId}
 			/>
 			);
 		});
@@ -55,9 +56,9 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 			</section>
 			<section>
 					<h3>Selected Wish</h3>
-					{Object.keys(selectedWishData).length > 2 && 
+					{Object.keys(selectedWish).length > 2 && 
 					<WishCard 
-						wishData={selectedWishData}
+						wishData={selectedWish}
 						handleDelete={handleDelete}
 						handleWishEdit={handleWishEdit}/>}
 			</section>
