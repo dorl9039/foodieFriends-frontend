@@ -19,7 +19,9 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 	}
 
 	return(
-		<section className='wish-card__container'>
+		<section className='selected-wish__container'>
+			<h3 className='wishlist__header'>Selected Wish</h3>
+			<section className='wish-card__container'>
 			<h3>Wish restaurant: {wishData.restaurantName}</h3>
 			<ul>
 				<li>Priority: {wishData.priority}</li>
@@ -36,6 +38,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 					className='edit-button__container'
 					onClick={onEditClick}>✏️</button>
 			</li>
+			</section>
 			<Modal
 					className="dialog-modal__container"
 					open={deleteOpen}

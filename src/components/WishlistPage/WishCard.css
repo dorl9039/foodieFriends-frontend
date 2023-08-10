@@ -1,12 +1,14 @@
 .wish-card__container {
     border: 1px solid #000;
+    background-color: #ffefbd;
+    list-style-type: none;
+    max-height: 18rem;
+    min-height: 9rem;
+    overflow: scroll;
   }
 
-.wish-card__container ul {
-    list-style-type: none;
-    padding: 5px;
-}
-
-.wish-card-comment__container {
-    border: 1px solid black;
-}
+  .selected-wish__container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }

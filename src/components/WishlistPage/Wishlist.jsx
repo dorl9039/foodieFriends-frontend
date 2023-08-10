@@ -54,14 +54,11 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 				{wishes}
 				</section>
 			</section>
-			<section>
-					<h3>Selected Wish</h3>
-					{Object.keys(selectedWish).length > 2 && 
-					<WishCard 
-						wishData={selectedWish}
-						handleDelete={handleDelete}
-						handleWishEdit={handleWishEdit}/>}
-			</section>
+			{Object.keys(selectedWish).length > 2 && 
+			<WishCard 
+				wishData={selectedWish}
+				handleDelete={handleDelete}
+				handleWishEdit={handleWishEdit}/>}
 		</section>
 	)
 };
