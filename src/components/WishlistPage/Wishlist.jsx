@@ -5,8 +5,13 @@ import WishEditForm from './WishEditForm';
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData, sortWishes}) => {
 	const [editState, setEditState] = useState(false)
+	const [priceOrder, setPriceOrder] = useState(true)
+	const [recentOrder, setRecentOrder] = useState(true)
+	const [priorityOrder, setPriorityOrder] = useState(true)
+
+
 
 	const handleEditClick = () => {
 		setEditState(prev => !prev)
@@ -28,11 +33,33 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 			/>
 			);
 		});
+
+	const onPriceSortClick = () => {
+		setPriceOrder((prev) => !prev)
+		sortWishes('price', priceOrder)
+	}
+
+	const onRecentSortClick = () => {
+		setRecentOrder((prev) => !prev)
+		sortWishes('recent', recentOrder)
+	}
+
+	const onPrioritySortClick = () => {
+		setPriorityOrder((prev) => !prev)
+		sortWishes('priority', priorityOrder)
+	}
 	
 	return (
 		<section className='main-list__container'>
 			<section className='wish-list__container'>
 				<h3>Wishlist</h3>
+				<section className='sort-feature__container'>
+					<p>Sort by:</p>
+					<button onClick={onPriceSortClick}>Price</button>
+					<button onClick={onRecentSortClick}>Recent</button>
+					<button onClick={onPrioritySortClick}>Priority</button>
+				</section>
+
 				<section className='wish__container'>
 				{wishes}
 				</section>

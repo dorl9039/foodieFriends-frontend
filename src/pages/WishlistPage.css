@@ -1,0 +1,13 @@
+.wishlist-page__container {
+  padding: 20px 10%;
+}
+
+.wishlist-page__container h2 {
+  font-family: 'Source Serif Pro';
+  text-align: center;
+  color: #405f8b;
+  font-size: 24pt;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}

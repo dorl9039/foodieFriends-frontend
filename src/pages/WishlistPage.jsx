@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
+import './WishlistPage.css'
 
 const formatData = (data) => {
 	return {
@@ -57,6 +58,42 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [])
 
+	const sortWishes = (type, ascending) => {
+		if (type === 'price') {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.priceRange.length - b.priceRange.length)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.priceRange.length - a.priceRange.length)
+				)
+			}
+		} else if (type === 'recent') {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.wishId - b.wishId)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.wishId - a.wishId)
+				)
+			}
+		} else {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.priority - b.priority)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.priority - a.priority)
+				)
+			}
+		}
+	}
+	
+
+
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
@@ -100,14 +137,15 @@ const WishlistPage = ({userId}) => {
 	}
 
 	return (
-		<div>
-			<h2>Wishlist</h2>
+		<div className='wishlist-page__container'>
+			<h2>Your Wishlist</h2>
 			<Wishlist 
 				wishlistData={wishlistData} 
 				handleDelete={handleWishDelete} 
 				handleEdit={handleWishEdit} 
 				handleSelect={handleWishSelect}
 				selectedWishData={selectedWishData}
+				sortWishes={sortWishes}
 				/>
 				<Map
 					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
