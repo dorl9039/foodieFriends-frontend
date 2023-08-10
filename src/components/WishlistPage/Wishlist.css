@@ -1,8 +1,8 @@
-.main-list__container {
+/* .main-list__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-}
+} */
 
 .wish__container {
     max-height: 15rem;

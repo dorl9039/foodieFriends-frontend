@@ -1,5 +1,5 @@
 .wishlist-page__container {
-  padding: 20px 10%;
+  padding: 20px 7%;
 }
 
 .wishlist-page__container h2 {
@@ -10,4 +10,18 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.wishlist-map__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.main-list__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.wish-map {
+  margin: 0 auto;
 }

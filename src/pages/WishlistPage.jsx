@@ -140,33 +140,36 @@ const WishlistPage = ({userId}) => {
 	return (
 		<div className='wishlist-page__container'>
 			<h2>Your Wishlist</h2>
-			<Wishlist 
-				wishlistData={wishlistData} 
-				handleDelete={handleWishDelete} 
-				handleEdit={handleWishEdit} 
-				handleSelect={handleWishSelect}
-				selectedWishData={selectedWishData}
-				sortWishes={sortWishes}
-				/>
-				<Map
-					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-					initialViewState={initialViewport}
-					style={{width: 600, height: 400}}
-					mapStyle="mapbox://styles/mapbox/streets-v9"
-					longitude={selectedWishData.longitude}
-					latitude={selectedWishData.latitude}
-					zoom={13}
-					>
-					{
-						wishlistData.map((wish) => (
-							<Marker key={wish.wishId}
-								latitude={wish.latitude}
-								longitude={wish.longitude}
-								onClick={() => onMarkerClick(wish.wishId)}>
-							</Marker>
-						))
-					}
-			</Map>
+			<div className='wishlist-map__container'>
+				<Wishlist 
+					wishlistData={wishlistData} 
+					handleDelete={handleWishDelete} 
+					handleEdit={handleWishEdit} 
+					handleSelect={handleWishSelect}
+					selectedWishData={selectedWishData}
+					sortWishes={sortWishes}
+					/>
+					<Map
+						// className='wish-map'
+						mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+						initialViewState={initialViewport}
+						style={{width: '100%', height: 400}}
+						mapStyle="mapbox://styles/mapbox/streets-v9"
+						longitude={selectedWishData.longitude}
+						latitude={selectedWishData.latitude}
+						zoom={13}
+						>
+						{
+							wishlistData.map((wish) => (
+								<Marker key={wish.wishId}
+									latitude={wish.latitude}
+									longitude={wish.longitude}
+									onClick={() => onMarkerClick(wish.wishId)}>
+								</Marker>
+							))
+						}
+				</Map>
+			</div>
 		</div>
 	)
 }
