@@ -1,13 +1,14 @@
 .header-navbar {
     display: flex;
     justify-content: space-evenly;
-    background-color: #ffefbd;
+    background-color: #ffeaaa;
     margin: 0;
     text-align: center;
     padding: 10px 5% 20px;
 }
 nav > a {
     font-family: "Aileron";
+    font-weight: 600;
     font-size: 14pt;
     padding: 0;
     color: #f88c48

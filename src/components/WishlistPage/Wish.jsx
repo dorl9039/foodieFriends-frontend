@@ -1,5 +1,3 @@
-import './Wish.css'
-
 const Wish = ({wish, handleSelect}) => {
 
 	const onSelectClick = () => {
@@ -9,8 +7,10 @@ const Wish = ({wish, handleSelect}) => {
 	return(
 		<section className='wish' onClick={onSelectClick}>
 			<h3>{wish.restaurantName}</h3>
-			<p>{wish.priority}</p>
-			<p>{wish.comment}</p>
+			<section className='wish-details'>
+				<p>Priority: {wish.priority}</p>
+				<p>Price: {wish.priceRange}</p>
+			</section>
 		</section>
 	)
 };

@@ -157,10 +157,10 @@ const WishlistPage = ({userId}) => {
 					sortWishes={sortWishes}
 					/>
 					<Map
-						// className='wish-map'
+						className='wish-map'
 						{...viewport}
 						mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-						style={{width: '100%', height: 400}}
+						style={{width: '100%', height: 400, margin: 'auto'}}
 						mapStyle="mapbox://styles/mapbox/streets-v9"
 						onMove={(e)=>setViewport(e.viewState)}
 						>

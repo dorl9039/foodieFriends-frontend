@@ -4,13 +4,6 @@
 
 } */
 
-.wish__container {
-    max-height: 15rem;
-    min-height: 9rem;
-    overflow: scroll;
-    margin-right: 2rem;
-    border: 1px solid #000;
-  }
 
   .edit-wish__container {
     position: fixed;

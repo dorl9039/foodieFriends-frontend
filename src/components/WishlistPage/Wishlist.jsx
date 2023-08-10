@@ -41,9 +41,9 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 	
 	return (
 		<section className='main-list__container'>
-			<section className='wish-list__container'>
-				<h3>Wishlist</h3>
-				<section className='sort-feature__container'>
+			<section className='wishlist__container'>
+				<h3 className='wishlist__header'>Wishes</h3>
+				<section className='wishlist-sort__container'>
 					<p>Sort by:</p>
 					<button onClick={onPriceSortClick}>Price</button>
 					<button onClick={onRecentSortClick}>Recent</button>
