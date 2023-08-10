@@ -37,6 +37,7 @@ const initialLonlat = {
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
 	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
+	const [viewport, setViewport] = useState(initialViewport)
 
 	useEffect(() => {
 		axios
@@ -94,7 +95,6 @@ const WishlistPage = ({userId}) => {
 		}
 	}
 	
-
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
@@ -131,12 +131,24 @@ const WishlistPage = ({userId}) => {
 		const thisWish = wishlistData.filter(wish => wishId === wish.wishId);
 		const thisWishData = thisWish[0];
 		setSelectedWishData(thisWishData);
+		setViewport(prev =>(
+			{ ...prev,
+				latitude: thisWishData.latitude,
+				longitude: thisWishData.longitude,
+			})
+		)
 	}
 
 	const onMarkerClick = (wishId) => {
+		console.log('marker clicked!')
 		handleWishSelect(wishId)
 	}
 
+	const handleMapMove = (newViewport) => {
+		console.log('newViewport.viewState', newViewport.viewState)
+		setViewport(newViewport.viewState)
+	}
+	console.log('viewport:', viewport)
 	return (
 		<div className='wishlist-page__container'>
 			<h2>Your Wishlist</h2>
@@ -155,9 +167,13 @@ const WishlistPage = ({userId}) => {
 						initialViewState={initialViewport}
 						style={{width: '100%', height: 400}}
 						mapStyle="mapbox://styles/mapbox/streets-v9"
-						longitude={selectedWishData.longitude}
-						latitude={selectedWishData.latitude}
+						// longitude={selectedWishData.longitude}
+						// latitude={selectedWishData.latitude}
+						longitude={viewport.longitude}
+						latitude={viewport.latitude}
 						zoom={13}
+						// onZoom={(event)=> handleMapZoom(event)}
+						onMoveEnd={handleMapMove}
 						>
 						{
 							wishlistData.map((wish) => (
