@@ -26,7 +26,7 @@ const formatData = (data) => {
 const initialViewport = {
 	longitude: -73.98113,
 	latitude: 40.767365,
-	zoom: 9
+	zoom: 12
 }
 
 const initialLonlat = {
@@ -144,11 +144,6 @@ const WishlistPage = ({userId}) => {
 		handleWishSelect(wishId)
 	}
 
-	const handleMapMove = (newViewport) => {
-		console.log('newViewport.viewState', newViewport.viewState)
-		setViewport(newViewport.viewState)
-	}
-	console.log('viewport:', viewport)
 	return (
 		<div className='wishlist-page__container'>
 			<h2>Your Wishlist</h2>
@@ -163,17 +158,11 @@ const WishlistPage = ({userId}) => {
 					/>
 					<Map
 						// className='wish-map'
+						{...viewport}
 						mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-						initialViewState={initialViewport}
 						style={{width: '100%', height: 400}}
 						mapStyle="mapbox://styles/mapbox/streets-v9"
-						// longitude={selectedWishData.longitude}
-						// latitude={selectedWishData.latitude}
-						longitude={viewport.longitude}
-						latitude={viewport.latitude}
-						zoom={13}
-						// onZoom={(event)=> handleMapZoom(event)}
-						onMoveEnd={handleMapMove}
+						onMove={(e)=>setViewport(e.viewState)}
 						>
 						{
 							wishlistData.map((wish) => (
