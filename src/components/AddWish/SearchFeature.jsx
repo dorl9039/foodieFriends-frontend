@@ -56,7 +56,7 @@ const SearchFeature = ({ onRetrieve }) => {
             <br></br>
             <div
                 className='map-container'
-                style={{height: '600px', width: '100%', margin: 'auto'}}
+                style={{height: '480px', width: '100%', margin: 'auto'}}
                 ref={mapContainerRef}
             />
             

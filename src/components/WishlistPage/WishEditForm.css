@@ -41,26 +41,7 @@
     border: .5px solid #405f8b;
 }
 
-.edit-wish-submit__button {
-    background-color: #f88c48;
-    font-family: "Aileron";
-    font-size: 12pt;
-    border-radius: 999px;
-    padding: 3px 10px;
-    color: white;
-    transition: border-color 0.25s;
-    margin: .5rem auto;
-    cursor: pointer;
-}
 
-
-.edit-wish-submit__button:hover {
-    background-color: white;
-    color: #405f8b;
-}
-.edit-wish-submit__button:active {
-    transform: translateY(2px)
-}
 /* .edit-wish-form__container {
     align-items: center;
     display: flex;

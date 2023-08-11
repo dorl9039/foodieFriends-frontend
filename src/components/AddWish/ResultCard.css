@@ -1,3 +1,11 @@
 .result-card__container li {
     list-style-type: none;
 }
+
+.result-card__container {
+    background-color: #fff5d7;
+    padding: 10% 5%;
+    font-family: "Aileron";
+    text-align: center;
+}
+

@@ -28,34 +28,7 @@
     column-gap: 2rem;
 }
 
-.result-card__container {
-    background-color: #fff5d7;
-    padding: 10% 5%;
-    font-family: "Aileron";
-    text-align: center;
-}
 
-.new-wish-form__container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-}
-
-.new-wish-form__container h3 {
-    margin: 1rem auto 1rem;;
-}
-
-.new-wish-form__form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2em;
-    width: 100%;
-    justify-content: space-between;
-    background-color: #fff5d7;
-    padding: 10% 5%;
-    font-family: "Aileron";
-    font-size: 12pt;
-}
 
 /* .dialog-modal__overlay {
     position: fixed;
