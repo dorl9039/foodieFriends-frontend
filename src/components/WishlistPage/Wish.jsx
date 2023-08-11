@@ -8,6 +8,7 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit}) => {
 		handleSelect(wish.wishId)
 		setIsOpen(props => !props)
 	}
+
 	return(
 		<section className='wish'>
 			<div className='wish-title__container' onClick={onSelectClick}>

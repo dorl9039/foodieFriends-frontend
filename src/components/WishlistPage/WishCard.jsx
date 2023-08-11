@@ -10,7 +10,6 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 
 	const onConfirmDelete = () => {
 		setDeleteOpen(false)
-		console.log('in Wish, onConfirm Delete, wishId', wishData.wishId)
 		handleDelete(wishData.wishId)
 	}
 

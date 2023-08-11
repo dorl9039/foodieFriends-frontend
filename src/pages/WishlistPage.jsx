@@ -144,7 +144,6 @@ const WishlistPage = ({userId}) => {
 	}
 
 	const onMarkerClick = (wishId) => {
-		console.log('marker clicked!')
 		handleWishSelect(wishId)
 	}
 
