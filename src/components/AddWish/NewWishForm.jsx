@@ -47,7 +47,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 						value={formData.comment}
 						onChange={handleFormChange}
 					/>
-					<input type='Submit' value='Submit' className='submit__button' />
+					<input type='Submit' value='Submit' className='add-submit__button' />
 				</form>
 			</div>
 	)

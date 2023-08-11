@@ -18,6 +18,8 @@
     padding: 5%;
     font-family: "Aileron";
     font-size: 12pt;
+    border-radius: 10px;
+    color: #405f8b
 }
 
 .new-wish-form__form label {
@@ -30,3 +32,24 @@
     background-color: white;
 }
 
+.add-submit__button {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+    margin: .5rem 0;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  
+.add-submit__button:hover {
+background-color: white;
+color: #405f8b;
+}
+.add-submit__button:active {
+transform: translateY(2px)
+}
