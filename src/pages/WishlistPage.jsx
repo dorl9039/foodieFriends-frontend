@@ -133,9 +133,18 @@ const WishlistPage = ({userId}) => {
 		.catch(err => console.log("Error in handleWishEdit", err))
 	}
 
-	const handleWishMove = (wishId, visitData) => {
-		//Make axios call here to delete wish from wishlist
-		// Create new visit with visitdata
+	const handleWishMove = (wish, data) => {
+		const visitData = {
+			...data,
+			restaurantId: wish.restaurantId,
+			restaurantName: wish.restaurantName,
+		}
+		console.log('visitData in handleWishMove:', visitData)
+		axios.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`, visitData)
+		.then(() => {
+			handleWishDelete(wish.wishId)
+		})
+		.catch(err => console.log('Error in POST of handleWishMove', err))
 	}
 
 	const handleWishSelect = (wishId) => {

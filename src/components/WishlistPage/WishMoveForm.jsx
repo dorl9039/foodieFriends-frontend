@@ -12,7 +12,7 @@ const initialVisitData = {
 }
 
 const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
-  const {user, handleUsernameUpdate, handleUserUpdate} = useAuth()
+  const {user} = useAuth()
   const [formData, setFormData] = useState(initialVisitData)
   const [searchInput, setSearchInput] = useState('');
   const [selectedAttendees, setSelectedAttendees] = useState([]);
@@ -32,8 +32,8 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
     setSearchInput(event.target.value)
   }
 
-  const handleAddAttendee = (friendId) => {
-    setSelectedAttendees(prev=> ([...prev, friendId]))
+  const handleAddAttendee = (friend) => {
+    setSelectedAttendees(prev=> ([...prev, friend]))
     setSearchInput('')
   }
 
@@ -49,17 +49,24 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    handleMove(formData);
+    const visitData = {
+      ...formData,
+      attendees: selectedAttendees
+    }
+    console.log('in WishMoveForm, handleFormSubmit, visitData:', visitData)
+    handleMove(wishData, visitData);
     handleClose();
     setFormData(initialVisitData)
+    setSelectedAttendees([])
   }
 		
   return(
     <Modal 
-    className='edit-wish-modal__container' 
-    open={open} 
-    onClose={handleClose} 
-    slots={{backdrop: StyledBackdrop}}>                  
+      className='edit-wish-modal__container' 
+      open={open} 
+      onClose={handleClose} 
+      slots={{backdrop: StyledBackdrop}}
+      >                  
       <form className='edit-wish-modal__form' onSubmit={handleFormSubmit}>
         <h3>Move {wishData.restaurantName} to History</h3>
           <label htmlFor='visitDate'>Visit Date</label>
@@ -69,11 +76,11 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             value={formData.visitDate}
             onChange={handleFormChange}
             /> 
-          <label htmlFor='comment'>Visit comment</label>
+          <label htmlFor='visitComment'>Visit comment</label>
           <input 
             className='edit-wish-comment__field'
               type='text'
-              name='comment'
+              name='visitComment'
               value={formData.comment}
               onChange={handleFormChange}
           /> 
@@ -90,7 +97,7 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
                 {friend.username}
                 <button
                   type='button'
-                  onClick={() => handleAddAttendee(friend.userId)}> Add </button>
+                  onClick={() => handleAddAttendee(friend)}> Add </button>
               </li>
             )}
           </ul>
@@ -98,11 +105,10 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             <p>Selected Attendees:</p>
             <ul>
               {selectedAttendees.map((attendee) => (
-                <li key={attendee}>{attendee}</li>
+                <li key={attendee.username}>{attendee.username}</li>
               ))}
             </ul>
           </div>
-
           <input className='submit__button' type='Submit' defaultValue='Submit' />
       </form>
   </Modal>  
