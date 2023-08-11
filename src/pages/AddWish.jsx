@@ -51,21 +51,27 @@ const AddWish = ({ userId }) => {
 		}
 		
 		return (
-			<div>
+			<div className='add-wish-page__container'>
 				<h2>AddWish</h2>
-				<SearchFeature onRetrieve={handleRetrieve} />
-				<ResultCard restaurantData={restaurantData} />
-				{validForm && <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
-				<ConfirmationModal
-					open={showSuccessMessage}
-					handleClose={() => setShowSuccessMessage(false)}
-					message="Wish added!" 
-					/>
-				<ConfirmationModal
-					open={showErrorMessage}
-					handleClose={() => setShowErrorMessage(false)}
-					message={errorMessage}
-					/>
+				<div className='add-wish-page__content'>
+					<SearchFeature onRetrieve={handleRetrieve} />
+					<div className='add-wish-result__container'>
+						<ResultCard restaurantData={restaurantData} />
+					{validForm && <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
+					</div>
+					
+				</div>
+					<ConfirmationModal
+						open={showSuccessMessage}
+						handleClose={() => setShowSuccessMessage(false)}
+						message="Wish added!" 
+						/>
+					<ConfirmationModal
+						open={showErrorMessage}
+						handleClose={() => setShowErrorMessage(false)}
+						message={errorMessage}
+						/>
+
 			</div>
 		)
 }
