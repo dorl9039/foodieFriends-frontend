@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import FriendsList from "../components/Friends/FriendsList";
-import AddFriend from "../components/Friends/AddFriend";
-import ConfirmationModal from "../components/ConfirmationModal";
+import FriendsList from "./FriendsList";
+import AddFriend from "./AddFriend";
+import ConfirmationModal from "../ConfirmationModal";
 // import ErrorModal from "../components/ErrorModal";
 
 

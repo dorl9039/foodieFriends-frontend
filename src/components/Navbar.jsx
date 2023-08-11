@@ -21,7 +21,6 @@ const Navbar = ({updateUser}) => {
 			<NavLink to='/wishlist'>Wishlist</NavLink>
 			<NavLink to='/add'>Add Wish</NavLink>
 			<NavLink to='/history'>History</NavLink>
-			<NavLink to='/friends'>Friends</NavLink>
 			<NavLink to='/profile'>Profile</NavLink>
 			<button className='logout-button' onClick={handleLogout}>Logout</button>
 		</nav>

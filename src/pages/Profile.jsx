@@ -1,10 +1,12 @@
 import './Profile.css'
 import SetUsername from '../components/Account/SetUsername'
+import FriendsPage from '../components/Profile/FriendsPage'
 
 const Profile = ({ user }) => {
 	console.log("user in Profile", user)
 	return (
-		<div>
+		<div className='profile-page__container'>
+			<div className='profile-content__container'>
 			<h2>Profile</h2>
 			<ul className='user-details__container'>
 				<li>ID: {user.userId}</li>
@@ -13,6 +15,8 @@ const Profile = ({ user }) => {
 				<li>Joined: {user.creationDate.slice(0, 10)}</li>
 			</ul>
 			<SetUsername purpose={'Change your username'}/>
+			</div>
+			<FriendsPage userId={user.userId}/>
 		</div>
 	)
 
