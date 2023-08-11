@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import WishCard from "./WishCard";
 
-const Wish = ({wish, handleSelect, selectedWishId, handleDelete, handleWishEdit}) => {
+const Wish = ({wish, handleSelect, handleDelete, handleWishEdit}) => {
 	const [isOpen, setIsOpen] = useState(false)
 
-	const wishClass = wish.wishId === selectedWishId? 'selected-wish' : 'wish'
-	const wishSectionClass = wish.wishId === selectedWishId? 'selected-wish-details' : 'wish-details'
 	const onSelectClick = () => {
 		handleSelect(wish.wishId)
 		setIsOpen(props => !props)
