@@ -5,15 +5,44 @@
     margin: 0;
     text-align: center;
     padding: 10px 5% 20px;
+    gap: 5px;
 }
+.header{
+    margin: auto 0 0;
+    background-color: #ffeaaa;
+    text-align: center;
+  }
+  .header-title-foodie {
+    font-family: 'Source Serif Pro';
+    color: #405f8b;
+    vertical-align: baseline;
+  }
+  .header-title-friends {
+    font-family: 'Source Serif Pro';
+    color: #f88c48;
+    vertical-align: baseline;
+  }
+
 nav > a {
     font-family: "Aileron";
     font-weight: 600;
     font-size: 14pt;
     padding: 0;
-    color: #f88c48
+    color: #f88c48;
+    margin: auto 0 0;
 }
 
 a.active {
     text-decoration: underline #405f8b;
+}
+
+.logout-button {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+    margin: auto 0 0;
 }

@@ -16,13 +16,14 @@ const Navbar = ({updateUser}) => {
 	
 	return (
 		<nav className='header-navbar'>
+			<h1 className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></h1>
 			<NavLink to='/home'>Home</NavLink>
 			<NavLink to='/wishlist'>Wishlist</NavLink>
 			<NavLink to='/add'>Add Wish</NavLink>
 			<NavLink to='/history'>History</NavLink>
 			<NavLink to='/friends'>Friends</NavLink>
 			<NavLink to='/profile'>Profile</NavLink>
-			<button className='auth-button' onClick={handleLogout}>Logout</button>
+			<button className='logout-button' onClick={handleLogout}>Logout</button>
 		</nav>
 	);
 };

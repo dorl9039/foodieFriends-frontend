@@ -23,7 +23,6 @@ function App() {
         ''
       ) : user?.loggedIn === true && user?.username? (
         <>
-         <h1 className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></h1>
         <Navbar updateUser={handleUserUpdate}/>
         <Routes>
             <Route index element={<Home userId={user.userId}/>} />
