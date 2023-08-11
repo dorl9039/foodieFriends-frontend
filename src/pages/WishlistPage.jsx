@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
+import './WishlistPage.css'
 
 const formatData = (data) => {
 	return {
@@ -25,15 +26,18 @@ const formatData = (data) => {
 const initialViewport = {
 	longitude: -73.98113,
 	latitude: 40.767365,
-	zoom: 9
+	zoom: 14
+}
+
+const initialLonlat = {
+	longitude: -73.98113,
+	latitude: 40.767365,
 }
 
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
-	const [selectedWishData, setSelectedWishData] = useState({
-		longitude: -73.98113,
-		latitude: 40.767365,
-	})
+	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
+	const [viewport, setViewport] = useState(initialViewport)
 
 	useEffect(() => {
 		axios
@@ -57,11 +61,45 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [])
 
+	const sortWishes = (type, ascending) => {
+		if (type === 'price') {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.priceRange.length - b.priceRange.length)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.priceRange.length - a.priceRange.length)
+				)
+			}
+		} else if (type === 'recent') {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.wishId - b.wishId)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.wishId - a.wishId)
+				)
+			}
+		} else {
+			if (ascending) {
+				setWishlistData(prev =>
+					prev.sort((a, b) => a.priority - b.priority)
+				)
+			} else {
+				setWishlistData(prev =>
+					prev.sort((a, b) => b.priority - a.priority)
+				)
+			}
+		}
+	}
+	
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
 			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
-			setSelectedWishData({});
+			setSelectedWishData(initialLonlat);
 		})
 		.catch((err) => {
 			console.log("Error in handleDelete", err);
@@ -69,8 +107,12 @@ const WishlistPage = ({userId}) => {
 	}
 
 	const handleWishEdit = (wishId, editData) => {
+		const data = {
+			wish_comment: editData.comment,
+			wish_priority: editData.priority
+		}
 		axios
-		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, editData)
+		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, data)
 		.then(res => {
 			setWishlistData(prev => prev.map(wish => {
 				if (wish.wishId === wishId) {
@@ -93,6 +135,12 @@ const WishlistPage = ({userId}) => {
 		const thisWish = wishlistData.filter(wish => wishId === wish.wishId);
 		const thisWishData = thisWish[0];
 		setSelectedWishData(thisWishData);
+		setViewport(prev =>(
+			{ ...prev,
+				latitude: thisWishData.latitude,
+				longitude: thisWishData.longitude,
+			})
+		)
 	}
 
 	const onMarkerClick = (wishId) => {
@@ -100,23 +148,24 @@ const WishlistPage = ({userId}) => {
 	}
 
 	return (
-		<div>
-			<h2>Wishlist</h2>
-			<Wishlist 
-				wishlistData={wishlistData} 
-				handleDelete={handleWishDelete} 
-				handleEdit={handleWishEdit} 
-				handleSelect={handleWishSelect}
-				selectedWishData={selectedWishData}
-				/>
+		<div className='wishlist-page__container'>
+			<h2>Your Wishlist</h2>
+			<div className='wishlist-map__container'>
+				<Wishlist 
+					wishlistData={wishlistData} 
+					handleDelete={handleWishDelete} 
+					handleEdit={handleWishEdit} 
+					handleSelect={handleWishSelect}
+					selectedWish={selectedWishData}
+					sortWishes={sortWishes}
+					/>
 				<Map
+					className='wish-map'
+					{...viewport}
 					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-					initialViewState={initialViewport}
-					style={{width: 600, height: 400}}
+					style={{width: '100%', height: '100%', margin: 'auto'}}
 					mapStyle="mapbox://styles/mapbox/streets-v9"
-					longitude={selectedWishData.longitude}
-					latitude={selectedWishData.latitude}
-					zoom={13}
+					onMove={(e)=>setViewport(e.viewState)}
 					>
 					{
 						wishlistData.map((wish) => (
@@ -127,7 +176,8 @@ const WishlistPage = ({userId}) => {
 							</Marker>
 						))
 					}
-			</Map>
+				</Map>
+			</div>
 		</div>
 	)
 }

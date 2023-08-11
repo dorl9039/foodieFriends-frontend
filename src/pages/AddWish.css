@@ -1,4 +1,36 @@
-.dialog-modal__overlay {
+.add-wish-page__container {
+    padding: 20px 7%;
+}
+
+.add-wish-page__container h2 {
+    font-family: 'Source Serif Pro';
+    color: #405f8b;
+    font-size: 24pt;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.add-wish-page__container h3 {
+    font-family: 'Source Serif Pro';
+    color: #f88c48;
+    font-size: 18pt;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.add-wish-page__content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
+}
+
+
+
+/* .dialog-modal__overlay {
     position: fixed;
     top: 0; 
     right: 0; 
@@ -27,4 +59,4 @@
     justify-content: center;
     padding: 16px;
     border-radius: 15px;;
-}
+} */

@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import Wish from "./Wish";
-import WishCard from "./WishCard";
-import WishEditForm from './WishEditForm';
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWishData}) => {
-	const [editState, setEditState] = useState(false)
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes}) => {
+	const [priceOrder, setPriceOrder] = useState(true)
+	const [recentOrder, setRecentOrder] = useState(true)
+	const [priorityOrder, setPriorityOrder] = useState(true)
+	const [sortOption, setSortOption] = useState({
+		price: false,
+		recent: false,
+		priority: false,
+	})
 
-	const handleEditClick = () => {
-		setEditState(prev => !prev)
-	}
 
 	const handleWishEdit = (data) => {
-		handleEdit(selectedWishData.wishId, data)
-		setEditState(false)
+		handleEdit(selectedWish.wishId, data)
 	}
 
 	const wishes = wishlistData.map((wish) => {
@@ -22,35 +23,60 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 			<Wish 
 				key={wish.wishId}
 				wish={wish}
-				handleDelete={handleDelete}
-				handleEditClick={handleEditClick}
 				handleSelect={handleSelect}
+				selectedWishId={selectedWish.wishId}
+				handleDelete={handleDelete}
+				handleWishEdit={handleWishEdit}
 			/>
 			);
 		});
+
+	const onPriceSortClick = () => {
+		setPriceOrder((prev) => !prev)
+		sortWishes('price', priceOrder)
+		setSortOption({
+			price: true,
+			recent: false,
+			priority: false})
+	}
+
+	const onRecentSortClick = () => {
+		setRecentOrder((prev) => !prev)
+		sortWishes('recent', recentOrder)
+		setSortOption({
+			price: false,
+			recent: true,
+			priority: false})
+	}
+
+	const onPrioritySortClick = () => {
+		setPriorityOrder((prev) => !prev)
+		sortWishes('priority', priorityOrder)
+		setSortOption({
+			price: false,
+			recent: false,
+			priority: true})
+	}
 	
 	return (
 		<section className='main-list__container'>
-			<section className='wish-list__container'>
-				<h3>Wishlist</h3>
+			<section className='wishlist__container'>
+				<section className='wishlist-sort__container'>
+					<p>Sort by:</p>
+					<button 
+						className={sortOption.price?'active-sort-option':'inactive-sort-option'} 
+						onClick={onPriceSortClick}>Price</button>
+					<button 
+						className={sortOption.recent?'active-sort-option':'inactive-sort-option'}
+						onClick={onRecentSortClick}>Recent</button>
+					<button 
+						className={sortOption.priority?'active-sort-option':'inactive-sort-option'}
+						onClick={onPrioritySortClick}>Priority</button>
+				</section>
 				<section className='wish__container'>
-				{wishes}
+					{wishes}
 				</section>
 			</section>
-			{editState ? 
-				(<section className='edit-wish__container'>
-						<h3>Edit Wish</h3>
-						<WishEditForm 
-								wishData={selectedWishData}
-								handleWishEdit={handleWishEdit}/>
-				</section>)
-				:
-				(Object.keys(selectedWishData).length > 2 && 
-				<section>
-						<h3>Selected Wish</h3>
-						<WishCard wishData={selectedWishData}/>
-				</section>)
-			}
 		</section>
 	)
 };

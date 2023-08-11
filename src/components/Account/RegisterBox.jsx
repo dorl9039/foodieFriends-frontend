@@ -52,15 +52,14 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 
 	return (
 		<Modal 
-			className='login-modal__container' 
+			className='register-modal__container' 
 			open={open} 
 			onClose={handleClose} 
 			slots={{backdrop: StyledBackdrop}}>                  
-				<form className='modal' onSubmit={onSubmit}>
+				<form className='register-modal__form' onSubmit={onSubmit}>
 					{!validRegistration? <p>{errorMessage}</p> : <></>}
 					<label htmlFor='registerUsername'>Username</label>
 					<input
-						className='login__field'
 						type='text'
 						name='username'
 						value={formData.username}
@@ -68,7 +67,6 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 					/>
 					<label htmlFor='registerPassword'>Password</label>
 					<input
-						className='login__field'
 						type='password'
 						name='password'
 						value={formData.password}
@@ -76,7 +74,6 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 					/>
 					<label htmlFor='registerFirstName'>First name</label>
 					<input
-						className='login__field'
 						type='text'
 						name='firstName'
 						value={formData.firstName}
@@ -84,7 +81,6 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 					/>
 					<label htmlFor='registerLastName'>Last name</label>
 					<input
-						className='login__field'
 						type='text'
 						name='lastName'
 						value={formData.lastName}
@@ -92,19 +88,18 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 					/>
 					<label htmlFor='registerEmailName'>Email</label>
 					<input
-						className='login__field'
 						type='text'
 						name='email'
 						value={formData.email}
 						onChange={onFormChange}
 					/>
 					{checkFieldsValid(validForm) ? 
-						<input type='Submit' value='Create account'/> 
+						<input className='auth-button' type='Submit' value='Create account'/> 
 					:
 					(
 						<>
 						<p>Please fill out all the fields</p>
-						<input type='Submit' value='Create account' disabled/> 
+						<input className='auth-button-invalid' type='Submit' value='Create account' disabled/> 
 						</>
 					)
 					}

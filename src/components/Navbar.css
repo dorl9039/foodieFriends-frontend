@@ -1,7 +1,62 @@
+.header-navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #ffeaaa;
+    margin: 0;
+    text-align: center;
+    padding: 40px 5% 20px;
+    gap: 7px;
+
+}
+.header{
+    margin: 0 0;
+    /* background-color: #fff5d7; */
+    text-align: center;
+    font-size: 32pt;
+    vertical-align: bottom;
+    line-height: .75rem;
+  }
+  .header-title-foodie {
+    font-family: 'Source Serif Pro';
+    color: #405f8b;
+    /* vertical-align: bottom; */
+  }
+  .header-title-friends {
+    font-family: 'Source Serif Pro';
+    color: #f88c48;
+    /* vertical-align: bottom; */
+  }
+
 nav > a {
-    margin: 0px 10px;
+    font-family: "Aileron";
+    font-weight: 600;
+    font-size: 14pt;
+    padding: 0;
+    color: #f88c48;
+    margin: auto 0 0;
 }
 
 a.active {
-    border-bottom: 2px solid black;
+    text-decoration: underline #405f8b;
+}
+
+.logout-button {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+    margin: auto 0 0;
+}
+
+.logout-button:hover {
+  background-color: white;
+  color: #f88c48;
+  cursor: pointer;
+  }
+  
+.logout-button:active {
+transform: translateY(2px)
 }

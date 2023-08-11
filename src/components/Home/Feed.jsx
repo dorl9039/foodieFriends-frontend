@@ -1,5 +1,4 @@
 import Rec from "./Rec";
-import './Feed.css'
 
 const Feed = ({recsData}) => {
 	const recs = recsData.map((rec) => {
@@ -11,7 +10,7 @@ const Feed = ({recsData}) => {
 			);
 		});
 	return (
-		<div className='feed__container'>
+		<div className='home-feed__container'>
 			{recs}
 		</div>
 	)

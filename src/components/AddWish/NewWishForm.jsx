@@ -2,8 +2,8 @@ import { useState } from 'react';
 import './NewWishForm.css'
 
 const kInitialFormData = {
-		wish_comment: "",
-		wish_priority: 0,
+		comment: "",
+		priority: 0,
 }
 
 const NewWishForm = ({ onSubmit, restaurant }) => {
@@ -12,7 +12,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 
 	const handleFormChange = (event) => {
 		const name = event.target.name;
-		const value = name === "wish_priority" ? parseInt(event.target.value, 10) : event.target.value;
+		const value = name === "priority" ? parseInt(event.target.value, 10) : event.target.value;
 		setFormData((prev) => ({
 			...prev,
 			[name]: value
@@ -25,12 +25,12 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 	}
 	return (
 			<div className='new-wish-form__container'>
-				<h3>Add {restaurant} to your wishlist</h3>
+				<h3>Add {restaurant}</h3>
 				<form className='new-wish-form__form' onSubmit={handleFormSubmit}>
-					<label htmlFor='wish_priority'>Priority</label>
+					<label htmlFor='priority'>Priority</label>
 					<select 
-						name='wish_priority' 
-						value={formData.wish_priority}
+						name='priority' 
+						value={formData.priority}
 						onChange={handleFormChange}
 						> 
 						<option value='0'>Select</option>
@@ -40,14 +40,14 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 						<option value='4'>4</option>
 						<option value='5'>5</option>
 					</select>
-					<label htmlFor='wish_comment'>Comment</label>
+					<label htmlFor='comment'>Comment</label>
 					<input 
 						type='text'
-						name='wish_comment'
-						value={formData.wish_comment}
+						name='comment'
+						value={formData.comment}
 						onChange={handleFormChange}
 					/>
-					<input type='Submit' value='Submit' className='submit-btn' />
+					<input type='Submit' value='Submit' className='add-submit__button' />
 				</form>
 			</div>
 	)

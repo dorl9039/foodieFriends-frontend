@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Modal from '@mui/base/Modal';
-import StyledBackdrop from '../StyledBackdrop';
 
 
 const kLoginFormInitialState = {
@@ -8,7 +6,7 @@ const kLoginFormInitialState = {
 	password: '',
 }
 
-export const LoginBox = ({open, handleClose, handleSubmit}) => {
+export const LoginBox = ({ handleSubmit}) => {
 	const [loginFormData, setLoginFormData] = useState(kLoginFormInitialState);
 
 	const onLoginFormChange = (event) => {
@@ -24,19 +22,12 @@ export const LoginBox = ({open, handleClose, handleSubmit}) => {
 		console.log('handleSubmit fired');
 		handleSubmit(loginFormData);
 		setLoginFormData(kLoginFormInitialState);
-		handleClose();
 	};
 
-	return (
-		<Modal 
-			className='login-modal__container' 
-			open={open} 
-			onClose={handleClose} 
-			slots={{backdrop: StyledBackdrop}}>                  
-				<form className='modal' onSubmit={onLoginSubmit}>
+	return (                
+				<form className='login__form' onSubmit={onLoginSubmit}>
 					<label htmlFor='loginUsername'>Username</label>
 					<input
-						className='login__field'
 						type='text'
 						name='username'
 						value={loginFormData.username}
@@ -44,15 +35,13 @@ export const LoginBox = ({open, handleClose, handleSubmit}) => {
 					/>
 					<label htmlFor='loginPassword'>Password</label>
 					<input
-						className='login__field'
 						type='password'
 						name='password'
 						value={loginFormData.password}
 						onChange={onLoginFormChange}
 					/>
-					<input type='Submit'/>
+					<input className='auth-button' value='Sign In' type='Submit'/>
 				</form>
-		</Modal>
 	);
 };
 

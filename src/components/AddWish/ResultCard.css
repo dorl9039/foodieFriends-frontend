@@ -1,3 +1,16 @@
-.result-card__container li {
-    list-style-type: none;
+.result-card__container {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+
 }
+
+.result-card__container {
+    background-color: #ffefbd;
+    padding: 10% 5%;
+    font-family: "Aileron";
+    text-align: center;
+    border-radius: 10px;
+    color: #405f8b;
+}
+

@@ -17,7 +17,6 @@ const AddWish = ({ userId }) => {
 		const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
 		const createNewWish = (data) => {
-			console.log('in createNewWish data', data)		
 			axios
 				.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`, data)
 				.then(() => {
@@ -42,7 +41,7 @@ const AddWish = ({ userId }) => {
 				setValidForm(true)
 		}
 		const handleNewWishSubmit = (wishData) => {
-				const data = {
+			const data = {
 						restaurantData,
 						wishData
 				}
@@ -51,21 +50,29 @@ const AddWish = ({ userId }) => {
 		}
 		
 		return (
-			<div>
-				<h2>AddWish</h2>
-				<SearchFeature onRetrieve={handleRetrieve} />
-				<ResultCard restaurantData={restaurantData} />
-				{validForm && <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
-				<ConfirmationModal
-					open={showSuccessMessage}
-					handleClose={() => setShowSuccessMessage(false)}
-					message="Wish added!" 
-					/>
-				<ConfirmationModal
-					open={showErrorMessage}
-					handleClose={() => setShowErrorMessage(false)}
-					message={errorMessage}
-					/>
+			<div className='add-wish-page__container'>
+				<h2>Add a New Wish</h2>
+				<div className='add-wish-page__content'>
+					<SearchFeature onRetrieve={handleRetrieve} />
+					<div className='add-wish-result__container'>
+						<h3> Search Result </h3>
+						<ResultCard restaurantData={restaurantData} />
+					{validForm && 
+					<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
+					</div>
+					
+				</div>
+					<ConfirmationModal
+						open={showSuccessMessage}
+						handleClose={() => setShowSuccessMessage(false)}
+						message="Wish added!" 
+						/>
+					<ConfirmationModal
+						open={showErrorMessage}
+						handleClose={() => setShowErrorMessage(false)}
+						message={errorMessage}
+						/>
+
 			</div>
 		)
 }

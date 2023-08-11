@@ -2,14 +2,16 @@ import {useState} from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Feed from '../components/Home/Feed';
+import './Home.css'
 
 
 const formatData = (data) => {
 	const friend = {
 		userId: data.friend.user_id,
-		username: data.friend.user_id,
+		username: data.friend.username,
 		firstName: data.friend.first_name,
-		lastName: data.friend.last_name
+		lastName: data.friend.last_name,
+		email: data.friend.email,
 	}
 	const wish = {
 		wishId: data.wishRestaurant.wish_id,
@@ -32,7 +34,6 @@ const formatData = (data) => {
 const Home = ({ userId }) => {
 	const [recsData, setRecsData] = useState([]);
 	const [recsExist, setRecsExist] = useState(false);
-	const [selectedRec, setSelectedRec] = useState({});
 
 	useEffect(() => {
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/foodiefriends`)
@@ -47,12 +48,12 @@ const Home = ({ userId }) => {
 	}, [])
 
 	return (
-		<div>
+		<div className='home-page__container'>
 			<h2>Your FoodieFriend Recs</h2>
 			{recsExist? (
 				<Feed recsData={recsData}/>
 			) : (
-				'No recs at the moment'
+				<p>No recs at the moment</p>
 			)}	
 
 		</div>
