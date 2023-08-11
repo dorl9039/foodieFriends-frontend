@@ -59,19 +59,19 @@
     justify-content: space-around;
 }
 .wish-buttons__container button {
-    background-color: #405f8b;
+    background-color: #f88c48;
     color: white;
     text-align: center;
-    width: 25px;
-    height: 25px;
     line-height: 20px;
     margin: 5px;
-    border-radius: 8px;
+    border-radius: 9999px;
     cursor: pointer;
+    line-height: 20px;
+    padding: 3px 10px;
 }
 
 .wish-buttons__container button:hover {
-    background-color: #f88c48;
+    background-color: #405f8b;
 }
 .wish-buttons__container button:active {
     transform: translateY(2px)

@@ -28,14 +28,14 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 					<p>{wishData.cuisine} | {wishData.priceRange}</p>
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
 				</section>
-				<section className='wish-restaurant-comment'>Wish notes: {wishData.comment}</section>
+				<section className='wish-restaurant-comment'>Wish note: {wishData.comment}</section>
 				<section className='wish-buttons__container'>
 				<button 
 					className='wish-delete__button'
-					onClick={() => setDeleteOpen(true)}>X</button>
+					onClick={() => setDeleteOpen(true)}>Delete wish</button>
 				<button 
 					className='wish-edit__button'
-					onClick={onEditClick}>✏️</button>
+					onClick={onEditClick}>Edit wish</button>
 			</section>
 			</section>
 			</section>
@@ -47,8 +47,8 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 						<div className='delete-modal'>
 							<h3> Are you sure you want to delete this wish?</h3>
 							<section className='delete-modal-buttons__container'>
-							<button onClick={onConfirmDelete}>Delete</button>
-							<button onClick={() => setDeleteOpen(false)}>Nevermind</button>
+								<button onClick={onConfirmDelete}>Delete</button>
+								<button onClick={() => setDeleteOpen(false)}>Nevermind</button>
 							</section>
 
 						</div>	

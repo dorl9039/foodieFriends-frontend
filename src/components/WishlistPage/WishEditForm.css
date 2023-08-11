@@ -1,10 +1,67 @@
-.edit-wish-form__container {
-    align-items: flex-start;
+.edit-wish-modal__container {
+    position: fixed;
+    z-index: 1300;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-wish-modal__form {
+    background-color: #fff5d7;
     display: flex;
     flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 16px;
+    font-family: 'Aileron';
+    color: #f88c48;
+    border-radius: 10px;
+}
+
+.edit-wish-modal__form label {
+    font-family: 'Aileron';
+    color: #f88c48;
+    font-size: 12pt;
+}
+
+.edit-wish-modal__form select {
+    margin: .5rem 0 .5rem;
+    font-size: 11pt;
+    font-family: 'Aileron';
 
 }
-.edit-wish-form__container {
+
+.edit-wish-comment__field {
+    width: 240px;
+    background: white;
+    padding: 4px 8px;
+    color: #405f8b;
+    margin: .5rem 0 .5rem;
+    border: .5px solid #405f8b;
+}
+
+.edit-wish-submit__button {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+    margin: .5rem auto;
+    cursor: pointer;
+}
+
+
+.edit-wish-submit__button:hover {
+    background-color: white;
+    color: #405f8b;
+}
+.edit-wish-submit__button:active {
+    transform: translateY(2px)
+}
+/* .edit-wish-form__container {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -41,4 +98,4 @@
 .invalid-form-input {
     border: red solid 1px;
     box-shadow: 0 0 7px red;
-}
+} */

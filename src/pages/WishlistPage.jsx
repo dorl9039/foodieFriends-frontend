@@ -107,8 +107,12 @@ const WishlistPage = ({userId}) => {
 	}
 
 	const handleWishEdit = (wishId, editData) => {
+		const data = {
+			wish_comment: editData.comment,
+			wish_priority: editData.priority
+		}
 		axios
-		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, editData)
+		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, data)
 		.then(res => {
 			setWishlistData(prev => prev.map(wish => {
 				if (wish.wishId === wishId) {
