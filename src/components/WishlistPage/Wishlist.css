@@ -129,3 +129,15 @@
   font-family: 'Aileron';
   color: #f88c48;
 }
+
+.wish-popup-text{
+  font-family: 'Aileron';
+  font-size: 11pt;
+  color: #405f8b;
+  /* background-color: #ffefbd; */
+  margin: .5rem 0 0;
+}
+
+.mapboxgl-popup-close-button {
+  padding: 0 5px;
+}
