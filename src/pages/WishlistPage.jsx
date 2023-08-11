@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
+import WishPopup from '../components/WishlistPage/WishPopup';
 import './WishlistPage.css'
 
 const formatData = (data) => {
@@ -37,6 +38,7 @@ const initialLonlat = {
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
 	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
+	const [selectedMarker, setSelectedMarker] = useState(null)
 	const [viewport, setViewport] = useState(initialViewport)
 
 	useEffect(() => {
@@ -145,7 +147,9 @@ const WishlistPage = ({userId}) => {
 
 	const onMarkerClick = (wishId) => {
 		handleWishSelect(wishId)
+		setSelectedMarker(wishId)
 	}
+
 
 	return (
 		<div className='wishlist-page__container'>
@@ -157,6 +161,8 @@ const WishlistPage = ({userId}) => {
 					handleEdit={handleWishEdit} 
 					handleSelect={handleWishSelect}
 					selectedWish={selectedWishData}
+					selectedMarker={selectedMarker}
+					setSelectedMarker={setSelectedMarker}
 					sortWishes={sortWishes}
 					/>
 				<Map
@@ -175,6 +181,9 @@ const WishlistPage = ({userId}) => {
 								onClick={() => onMarkerClick(wish.wishId)}>
 							</Marker>
 						))
+					}
+					{selectedMarker &&
+					<WishPopup wish={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
 					}
 				</Map>
 			</div>
