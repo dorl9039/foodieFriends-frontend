@@ -35,7 +35,7 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 			onClose={handleClose} 
 			slots={{backdrop: StyledBackdrop}}>                  
 				<form className='edit-wish-modal__form' onSubmit={handleFormSubmit}>
-					<h3>Edit wish {wishData.wish_id} for {wishData.restaurantName}</h3>
+					<h3>Edit wish for {wishData.restaurantName}</h3>
 						<label htmlFor='priority'>Priority</label>
 						<select 
 							name='priority' 

@@ -133,6 +133,11 @@ const WishlistPage = ({userId}) => {
 		.catch(err => console.log("Error in handleWishEdit", err))
 	}
 
+	const handleWishMove = (wishId, visitData) => {
+		//Make axios call here to delete wish from wishlist
+		// Create new visit with visitdata
+	}
+
 	const handleWishSelect = (wishId) => {
 		const thisWish = wishlistData.filter(wish => wishId === wish.wishId);
 		const thisWishData = thisWish[0];
@@ -164,6 +169,7 @@ const WishlistPage = ({userId}) => {
 					selectedMarker={selectedMarker}
 					setSelectedMarker={setSelectedMarker}
 					sortWishes={sortWishes}
+					handleWishMove={handleWishMove}
 					/>
 				<Map
 					className='wish-map'

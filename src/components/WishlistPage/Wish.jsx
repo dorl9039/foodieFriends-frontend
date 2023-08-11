@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import WishCard from "./WishCard";
 
-const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, setSelectedMarker}) => {
+const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, setSelectedMarker, handleWishMove}) => {
 	const [isOpen, setIsOpen] = useState(false)
 	
 	useEffect(() => {
@@ -32,7 +32,8 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker,
 			<WishCard 
 				wishData={wish}
 				handleDelete={handleDelete}
-				handleWishEdit={handleWishEdit}/>}
+				handleWishEdit={handleWishEdit}
+				handleWishMove={handleWishMove}/>}
 		</section>
 	)
 };

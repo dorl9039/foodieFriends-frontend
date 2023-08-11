@@ -2,11 +2,15 @@ import { useState } from 'react';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 import WishEditForm from './WishEditForm';
-import './WishCard.css'
 
-const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
+import './WishCard.css'
+import WishMoveForm from './WishMoveForm';
+
+const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
+
 	const [deleteOpen, setDeleteOpen] = useState(false)
 	const [editOpen, setEditOpen] = useState(false)
+	const [moveOpen, setMoveOpen] = useState(false)
 
 	const onConfirmDelete = () => {
 		setDeleteOpen(false)
@@ -15,6 +19,10 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 
 	const onEditClick = () => {
 		setEditOpen(true)
+	}
+
+	const onMoveClick = () => {
+		setMoveOpen(true)
 	}
 
 	return(
@@ -32,6 +40,9 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 				<button 
 					className='wish-edit__button'
 					onClick={onEditClick}>Edit wish</button>
+				<button 
+					className='wish-move__button'
+					onClick={onMoveClick}>Move to history</button>
 			</section>
 			</section>
 
@@ -50,10 +61,15 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 						</div>	
 			</Modal>
 			<WishEditForm 
-								wishData={wishData}
-								handleWishEdit={handleWishEdit}
-								handleClose={()=>setEditOpen(false)}
-								open={editOpen}/>    
+				wishData={wishData}
+				handleWishEdit={handleWishEdit}
+				handleClose={()=>setEditOpen(false)}
+				open={editOpen}/>  
+			<WishMoveForm
+				wishData={wishData}
+				handleMove={handleWishMove}
+				handleClose={()=>setMoveOpen(false)}
+				open={moveOpen}/>  
 		</section>
 	)
 };
