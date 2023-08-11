@@ -41,10 +41,6 @@ const AddWish = ({ userId }) => {
 				setValidForm(true)
 		}
 		const handleNewWishSubmit = (wishData) => {
-			// const snakeCaseWishData = {
-			// 	wish_comment: wishData.comment,
-			// 	wish_priority: wishData.priority
-			// }	
 			const data = {
 						restaurantData,
 						wishData

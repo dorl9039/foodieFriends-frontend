@@ -1,8 +1,3 @@
-.main-list__container {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1.5rem; */
-}
 
 .wishlist__header {
   font-family: 'Source Serif Pro';
@@ -58,8 +53,8 @@
 
 .wish__container {
   margin: 0;
-  max-height: 24rem;
-  min-height: 9rem;
+  max-height: 26.5rem;
+  min-height: 10rem;
   overflow-y: scroll;
   border: 1px solid #000;
 }
