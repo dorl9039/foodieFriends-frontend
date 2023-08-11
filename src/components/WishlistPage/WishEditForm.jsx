@@ -9,23 +9,23 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 		const [formData, setFormData] = useState({})
 		
 		const originalWishData = {
-				comment: wishData.comment, 
-				priority: wishData.priority}
+			comment: wishData.comment, 
+			priority: wishData.priority}
 		
 		const handleFormChange = (event) => {
-				const name = event.target.name;
-				const value = name === "priority" ? parseInt(event.target.value, 10) : event.target.value;
-				setFormData((prev) => ({
-						...prev,
-						[name]: value
-				}));
+			const name = event.target.name;
+			const value = name === "priority" ? parseInt(event.target.value, 10) : event.target.value;
+			setFormData((prev) => ({
+				...prev,
+				[name]: value
+			}));
 		}
 
 		const handleFormSubmit = (event) => {
-				event.preventDefault();
-				handleWishEdit(formData);
-				handleClose();
-				setFormData({})
+			event.preventDefault();
+			handleWishEdit(formData);
+			handleClose();
+			setFormData({})
 		}
 		
 		return(

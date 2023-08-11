@@ -20,15 +20,13 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 
 	return(
 		<section className='selected-wish__container'>
-			<section className='selected-wish__content'>
-			<h3 className='selected-wish__header'>Selected Wish</h3>
 			<section className='wish-card__container'>
-				<h3>{wishData.restaurantName}</h3>
 				<section className='wish-restaurant-info'>
-					<p>{wishData.cuisine} | {wishData.priceRange}</p>
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
+					<p>{wishData.cuisine} | {wishData.priceRange}</p>
+
 				</section>
-				<section className='wish-restaurant-comment'>Wish note: {wishData.comment}</section>
+				<section className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</section>
 				<section className='wish-buttons__container'>
 				<button 
 					className='wish-delete__button'
@@ -38,7 +36,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 					onClick={onEditClick}>Edit wish</button>
 			</section>
 			</section>
-			</section>
+
 			<Modal
 					className="delete-modal__container"
 					open={deleteOpen}

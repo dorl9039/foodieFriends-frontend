@@ -1,13 +1,13 @@
 .main-list__container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 1.5rem;
+  column-gap: 1.5rem; */
 }
 
 .wishlist__header {
   font-family: 'Source Serif Pro';
-  font-size: 18pt;
-  color: #f88c48;
+  font-size: 24pt;
+  color: #405f8b;
   text-align: center;
   margin: 0 auto 5px;
 }
@@ -46,7 +46,7 @@
 
 .wish__container {
   margin: 0;
-  max-height: 18rem;
+  max-height: 24rem;
   min-height: 9rem;
   overflow-y: scroll;
   border: 1px solid #000;
@@ -54,12 +54,21 @@
 
 .wish {
   border: 0.5px solid black;
-  background-color: #ffefbd;
+  background-color: #f88c48;
+  ;
+}
+.wish-title__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.wish-title__container div{
+  margin: auto 10px;
+}
 .wish h3 {
   font-family: 'Source Serif Pro';
-  font-size: 18pt;
+  font-size: 14pt;
   color: #405f8b;
   text-align: center;
   margin: 1rem auto 0.5rem;

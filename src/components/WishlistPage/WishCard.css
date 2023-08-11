@@ -34,7 +34,7 @@
     text-align: center;
 }
 .wish-restaurant-info p {
-    margin: 0
+    margin: .5rem;
 }
 
 .wish-restaurant-priority {
@@ -59,7 +59,7 @@
     justify-content: space-around;
 }
 .wish-buttons__container button {
-    background-color: #f88c48;
+    background-color: #405f8b;
     color: white;
     text-align: center;
     line-height: 20px;
@@ -71,7 +71,7 @@
 }
 
 .wish-buttons__container button:hover {
-    background-color: #405f8b;
+    background-color: #f88c48;
 }
 .wish-buttons__container button:active {
     transform: translateY(2px)

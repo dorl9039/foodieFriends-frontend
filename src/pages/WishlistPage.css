@@ -4,7 +4,7 @@
 
 .wishlist-page__container h2 {
   font-family: 'Source Serif Pro';
-  text-align: center;
+
   color: #405f8b;
   font-size: 24pt;
   align-items: center;
@@ -14,6 +14,6 @@
 
 .wishlist-map__container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   column-gap: 1.5rem;
 }

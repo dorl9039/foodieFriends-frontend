@@ -9,7 +9,6 @@ const Feed = ({recsData}) => {
 			/>
 			);
 		});
-		console.log(recsData)
 	return (
 		<div className='home-feed__container'>
 			{recs}
