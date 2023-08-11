@@ -17,7 +17,6 @@ const AddWish = ({ userId }) => {
 		const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
 		const createNewWish = (data) => {
-			console.log('in createNewWish data', data)		
 			axios
 				.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`, data)
 				.then(() => {
@@ -42,7 +41,11 @@ const AddWish = ({ userId }) => {
 				setValidForm(true)
 		}
 		const handleNewWishSubmit = (wishData) => {
-				const data = {
+			// const snakeCaseWishData = {
+			// 	wish_comment: wishData.comment,
+			// 	wish_priority: wishData.priority
+			// }	
+			const data = {
 						restaurantData,
 						wishData
 				}
@@ -52,12 +55,14 @@ const AddWish = ({ userId }) => {
 		
 		return (
 			<div className='add-wish-page__container'>
-				<h2>AddWish</h2>
+				<h2>Add a New Wish</h2>
 				<div className='add-wish-page__content'>
 					<SearchFeature onRetrieve={handleRetrieve} />
 					<div className='add-wish-result__container'>
+						<h3> Search Result </h3>
 						<ResultCard restaurantData={restaurantData} />
-					{validForm && <NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
+					{validForm && 
+					<NewWishForm onSubmit = {handleNewWishSubmit} restaurant={restaurantData.restaurantName}/>}
 					</div>
 					
 				</div>

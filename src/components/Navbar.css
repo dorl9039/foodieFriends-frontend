@@ -50,3 +50,13 @@ a.active {
     transition: border-color 0.25s;
     margin: auto 0 0;
 }
+
+.logout-button:hover {
+  background-color: white;
+  color: #f88c48;
+  cursor: pointer;
+  }
+  
+.logout-button:active {
+transform: translateY(2px)
+}

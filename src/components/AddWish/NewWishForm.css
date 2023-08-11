@@ -1,17 +1,4 @@
-.new-wish-form__container {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
 
-}
-
-.new-wish-form__form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2em;
-    width: 100%;
-    justify-content: space-between;
-}
 
 .new-wish-form__form input {
     margin: 0px 0px 20px;
