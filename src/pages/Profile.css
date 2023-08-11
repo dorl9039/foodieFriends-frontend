@@ -1,4 +1,25 @@
+.profile-page__container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10%;
+    padding: 20px 7%;
+}
+
+.profile-content__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-content__container h2 {
+    font-family: "Source Serif Pro";
+    font-size: 24pt;
+    color: #405f8b;
+    text-align: center;
+}
+
 .user-details__container {
     list-style-type: none;
     font-family: "Aileron";
+    background-color: #ffefbd;
+    padding: 10% 5%;
 }
