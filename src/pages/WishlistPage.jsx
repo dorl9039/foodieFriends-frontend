@@ -38,7 +38,10 @@ const initialLonlat = {
 const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
 	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
-	const [selectedMarker, setSelectedMarker] = useState(null)
+	const [selectedMarker, setSelectedMarker] = useState({
+		wishId: null,
+		isOpen: false
+	})
 	const [viewport, setViewport] = useState(initialViewport)
 
 	useEffect(() => {
@@ -147,7 +150,7 @@ const WishlistPage = ({userId}) => {
 
 	const onMarkerClick = (wishId) => {
 		handleWishSelect(wishId)
-		setSelectedMarker(wishId)
+		setSelectedMarker({wishId, isOpen: true})
 	}
 
 
@@ -161,6 +164,7 @@ const WishlistPage = ({userId}) => {
 					handleEdit={handleWishEdit} 
 					handleSelect={handleWishSelect}
 					selectedWish={selectedWishData}
+					selectedMarker={selectedMarker}
 					sortWishes={sortWishes}
 					/>
 				<Map
@@ -180,8 +184,8 @@ const WishlistPage = ({userId}) => {
 							</Marker>
 						))
 					}
-					{selectedMarker &&
-					<WishPopup wish={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
+					{selectedMarker.wishId &&
+					<WishPopup wish={selectedWishData} closePopup={()=>setSelectedMarker({})}/>
 					}
 				</Map>
 			</div>
