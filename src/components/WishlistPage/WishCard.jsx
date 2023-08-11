@@ -20,34 +20,37 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 
 	return(
 		<section className='selected-wish__container'>
-			<h3 className='wishlist__header'>Selected Wish</h3>
+			<section className='selected-wish__content'>
+			<h3 className='selected-wish__header'>Selected Wish</h3>
 			<section className='wish-card__container'>
-			<h3>Wish restaurant: {wishData.restaurantName}</h3>
-			<ul>
-				<li>Priority: {wishData.priority}</li>
-				<li>Comment: {wishData.comment}</li>
-				<li>Address: {wishData.address1}, {wishData.city}, {wishData.state}, {wishData.country}</li>
-				<li>Cuisine: {wishData.cuisine}</li>
-				<li>Price range: {wishData.priceRange}</li>
-			</ul>
-				<li>
+				<h3>{wishData.restaurantName}</h3>
+				<section className='wish-restaurant-info'>
+					<p>{wishData.cuisine} | {wishData.priceRange}</p>
+					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
+				</section>
+				<section className='wish-restaurant-comment'>Wish notes: {wishData.comment}</section>
+				<section className='wish-buttons__container'>
 				<button 
-					className='delete-button__container'
+					className='wish-delete__button'
 					onClick={() => setDeleteOpen(true)}>X</button>
 				<button 
-					className='edit-button__container'
+					className='wish-edit__button'
 					onClick={onEditClick}>✏️</button>
-			</li>
+			</section>
+			</section>
 			</section>
 			<Modal
-					className="dialog-modal__container"
+					className="delete-modal__container"
 					open={deleteOpen}
 					onClose={() => setDeleteOpen(false)}
 					slots={{backdrop: StyledBackdrop}}>
-						<div className='modal'>
+						<div className='delete-modal'>
 							<h3> Are you sure you want to delete this wish?</h3>
+							<section className='delete-modal-buttons__container'>
 							<button onClick={onConfirmDelete}>Delete</button>
 							<button onClick={() => setDeleteOpen(false)}>Nevermind</button>
+							</section>
+
 						</div>	
 			</Modal>
 			<WishEditForm 

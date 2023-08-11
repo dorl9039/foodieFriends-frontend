@@ -33,13 +33,22 @@
   color: white;
   transition: border-color 0.25s;
   margin: auto;
+  cursor: pointer;
+}
+
+.wishlist-sort__container button:hover {
+  background-color: #f88c48;
+}
+
+.wishlist-sort__container button:active {
+  transform: translateY(2px)
 }
 
 .wish__container {
   margin: 0;
   max-height: 18rem;
   min-height: 9rem;
-  overflow: scroll;
+  overflow-y: scroll;
   border: 1px solid #000;
 }
 

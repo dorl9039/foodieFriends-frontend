@@ -42,6 +42,36 @@
     justify-content: center;
 }
 
+.auth-button {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+  }
+  
+  .auth-button:hover {
+    background-color: white;
+    color: #f88c48;
+    cursor: pointer;
+  }
+  
+  .auth-button:active {
+    transform: translateY(2px)
+  }
+  
+  .auth-button-invalid {
+    background-color: #f88c48;
+    font-family: "Aileron";
+    font-size: 12pt;
+    border-radius: 999px;
+    padding: 3px 10px;
+    color: white;
+    transition: border-color 0.25s;
+  }
+
 .login__form {
     display: flex;
     flex-direction: column;
@@ -120,6 +150,7 @@
     padding: 16px;
     font-family: 'Aileron';
     color: #f88c48;
+    border-radius: 10px;
 }
 .register-modal__form input:not(:last-child) {
     width: 320px;
