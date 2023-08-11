@@ -24,9 +24,8 @@ const WishCard = ({wishData, handleDelete, handleWishEdit}) => {
 				<section className='wish-restaurant-info'>
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
 					<p>{wishData.cuisine} | {wishData.priceRange}</p>
-
+					<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
 				</section>
-				<section className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</section>
 				<section className='wish-buttons__container'>
 				<button 
 					className='wish-delete__button'

@@ -160,23 +160,23 @@ const WishlistPage = ({userId}) => {
 					selectedWish={selectedWishData}
 					sortWishes={sortWishes}
 					/>
-					<Map
-						className='wish-map'
-						{...viewport}
-						mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
-						style={{width: '100%', height: 400, margin: 'auto'}}
-						mapStyle="mapbox://styles/mapbox/streets-v9"
-						onMove={(e)=>setViewport(e.viewState)}
-						>
-						{
-							wishlistData.map((wish) => (
-								<Marker key={wish.wishId}
-									latitude={wish.latitude}
-									longitude={wish.longitude}
-									onClick={() => onMarkerClick(wish.wishId)}>
-								</Marker>
-							))
-						}
+				<Map
+					className='wish-map'
+					{...viewport}
+					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+					style={{width: '100%', height: '100%', margin: 'auto'}}
+					mapStyle="mapbox://styles/mapbox/streets-v9"
+					onMove={(e)=>setViewport(e.viewState)}
+					>
+					{
+						wishlistData.map((wish) => (
+							<Marker key={wish.wishId}
+								latitude={wish.latitude}
+								longitude={wish.longitude}
+								onClick={() => onMarkerClick(wish.wishId)}>
+							</Marker>
+						))
+					}
 				</Map>
 			</div>
 		</div>

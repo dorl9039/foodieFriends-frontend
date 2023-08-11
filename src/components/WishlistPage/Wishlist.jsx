@@ -74,14 +74,9 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 						onClick={onPrioritySortClick}>Priority</button>
 				</section>
 				<section className='wish__container'>
-				{wishes}
+					{wishes}
 				</section>
 			</section>
-			{/* {Object.keys(selectedWish).length > 2 && 
-			<WishCard 
-				wishData={selectedWish}
-				handleDelete={handleDelete}
-				handleWishEdit={handleWishEdit}/>} */}
 		</section>
 	)
 };

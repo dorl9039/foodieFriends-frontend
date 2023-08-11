@@ -19,10 +19,6 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit}) => {
 				wishData={wish}
 				handleDelete={handleDelete}
 				handleWishEdit={handleWishEdit}/>}
-			{/* <section className={wishSectionClass}>
-				<p>Priority: {wish.priority}</p>
-				<p>Price: {wish.priceRange}</p> */}
-			{/* </section> */}
 		</section>
 	)
 };
