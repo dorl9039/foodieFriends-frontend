@@ -192,42 +192,42 @@ const WishlistPage = ({userId}) => {
 		)
 	}
 
-const handleVisitSelect = (visitId) => {
-	const thisVisit = historyData.filter(visit => visitId === visit.visitId);
-	const thisVisitData = thisVisit[0]
-	setSelectedVisit(thisVisitData)
-	setViewport(prev => (
-		{...prev,
-		latitude: thisVisitData.latitude,
-		longitude: thisVisitData.longitude
-		}
-	))
-}
-
-const handleVisitEdit = (visitId, data) => {
-	const visitData = {
-		visit_comment: data.visitComment,
-		rating: data.rating
-	}
-	axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`, visitData)
-	.then(res => {
-		setHistoryData(prev => prev.map(visit => {
-			if (visit.visitId === visitId) {
-				const newVisit = {
-					...visit,
-					visitComment: res.data.visit_comment
-				};
-				setSelectedVisit(newVisit);
-				return newVisit;
-			} else {
-				return visit;
+	const handleVisitSelect = (visitId) => {
+		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
+		const thisVisitData = thisVisit[0]
+		setSelectedVisit(thisVisitData)
+		setViewport(prev => (
+			{...prev,
+			latitude: thisVisitData.latitude,
+			longitude: thisVisitData.longitude
 			}
-		}))
-	})
-	.catch(err => console.log("Error in handleVisitEdit", err))
-}
+		))
+	}
 
-const handleVisitDelete = (visitId) => {
+	const handleVisitEdit = (visitId, data) => {
+		const visitData = {
+			visit_comment: data.visitComment,
+			rating: data.rating
+		}
+		axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`, visitData)
+		.then(res => {
+			setHistoryData(prev => prev.map(visit => {
+				if (visit.visitId === visitId) {
+					const newVisit = {
+						...visit,
+						visitComment: res.data.visit_comment
+					};
+					setSelectedVisit(newVisit);
+					return newVisit;
+				} else {
+					return visit;
+				}
+			}))
+		})
+		.catch(err => console.log("Error in handleVisitEdit", err))
+	}
+
+	const handleVisitDelete = (visitId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`)
 		.then(() => {
 			setHistoryData(prev => prev.filter(visit => visit.visitId !== visitId))
@@ -236,12 +236,53 @@ const handleVisitDelete = (visitId) => {
 		.catch(err => console.log("Error in handleVisitDelete", err))
 	}
 
+	const sortVisits = (type, ascending) => {
+		if (type === 'price') {
+			if (ascending) {
+				setHistoryData(prev =>
+					prev.sort((a, b) => a.priceRange?.length - b.priceRange?.length)
+				)
+			} else {
+				setHistoryData(prev =>
+					prev.sort((a, b) => b.priceRange?.length - a.priceRange?.length)
+				)
+			}
+		} else if (type === 'date') {
+			if (ascending) {
+				setHistoryData(prev =>
+					prev.sort((a, b) => {
+						const c = new Date(a.visitDate);
+						const d = new Date(b.visitDate);
+						return c - d}
+						)
+				)
+			} else {
+				setHistoryData(prev =>
+					prev.sort((a, b) => {
+						const c = new Date(a.visitDate);
+						const d = new Date(b.visitDate);
+						return d - c})
+				)
+			}
+		} else {
+			if (ascending) {
+				setHistoryData(prev =>
+					prev.sort((a, b) => a.rating - b.rating)
+				)
+			} else {
+				setHistoryData(prev =>
+					prev.sort((a, b) => b.rating - a.rating)
+				)
+			}
+		}
+	}
+
 	const onMarkerClick = (wishId) => {
 		handleWishSelect(wishId)
 		setSelectedMarker(wishId)
 	}
 
-
+	console.log('in WishlistPage, historyData', historyData)
 	return (
 		<div className='lists-page__container'>
 			{view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
@@ -268,6 +309,7 @@ const handleVisitDelete = (visitId) => {
 							handleEdit={handleVisitEdit}
 							handleSelect={handleVisitSelect}
 							selectedVisit={selectedVisit}
+							sortVisits={sortVisits}
 							/>
 						}
 					</div>
