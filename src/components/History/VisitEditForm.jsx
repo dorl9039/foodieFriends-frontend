@@ -6,12 +6,13 @@ const VisitEditForm = ({visit, editOpen, handleClose, handleEdit}) => {
   const [formData, setFormData] = useState('')
 
   const handleFormChange = (event) => {
-    setFormData(event.target.name)
+    setFormData(event.target.value)
   }
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
     handleEdit(visit.visitId, formData)
+    console.log("in VisitEditForm, handleFormSubmit. formData:", formData)
     handleClose()
     setFormData('')
   }

@@ -18,9 +18,9 @@ const Navbar = ({updateUser}) => {
 		<nav className='header-navbar'>
 			<div className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></div>
 			<NavLink to='/home'>Home</NavLink>
-			<NavLink to='/wishlist'>Wishlist</NavLink>
+			<NavLink to='/lists'>Your Lists</NavLink>
 			<NavLink to='/add'>Add Wish</NavLink>
-			<NavLink to='/history'>History</NavLink>
+			{/* <NavLink to='/history'>History</NavLink> */}
 			<NavLink to='/profile'>Profile</NavLink>
 			<button className='logout-button' onClick={handleLogout}>Logout</button>
 		</nav>

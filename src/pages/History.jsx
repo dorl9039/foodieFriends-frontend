@@ -7,7 +7,7 @@ import './History.css'
 
 const formatData = (data) => {
 	return {
-		visitId: data.visit_id,
+		id: data.visit_id,
 		visitDate: data.visit_date,
 		visitComment: data.visit_comment,
 		attendees: data.attendees.map(attendee => ({username: attendee.username, userId: attendee.user_id})),
@@ -64,12 +64,30 @@ const History = ({ userId }) => {
 		.catch(err => console.log("Error in handleVisitDelete", err))
 	}
 
-	const handleVisitEdit = () => {
-		// Axios call goes here
+	const handleVisitEdit = (visitId, data) => {
+		const visitData = {
+			visit_comment: data
+		}
+		axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`, visitData)
+		.then(res => {
+			setHistoryData(prev => prev.map(visit => {
+				if (visit.visitId === visitId) {
+					const newVisit = {
+						...visit,
+						visitComment: res.data.visit_comment
+					};
+					setSelectedVisit(newVisit);
+					return newVisit;
+				} else {
+					return visit;
+				}
+			}))
+		})
+		.catch(err => console.log("Error in handleVisitEdit", err))
 	}
 
 	const handleVisitSelect = (visitId) => {
-		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
+		const thisVisit = historyData.filter(visit => visitId === visit.id);
 		const thisVisitData = thisVisit[0]
 		setSelectedVisit(thisVisitData)
 		setViewport(prev => (
@@ -107,7 +125,7 @@ const History = ({ userId }) => {
 						>
 						{
 							historyData.map((visit) => (
-								<Marker key={visit.visitId}
+								<Marker key={visit.id}
 									latitude={visit.latitude}
 									longitude={visit.longitude}
 									onClick={() => onMarkerClick(visit.visitId)}>
