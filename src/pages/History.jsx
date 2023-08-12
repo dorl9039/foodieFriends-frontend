@@ -5,7 +5,7 @@ import Map, {Marker} from 'react-map-gl';
 import MapPopup from '../components/WishlistPage/MapPopup';
 import './History.css'
 
-const formatData = (data) => {
+const formatVisitData = (data) => {
 	return {
 		id: data.visit_id,
 		visitDate: data.visit_date,

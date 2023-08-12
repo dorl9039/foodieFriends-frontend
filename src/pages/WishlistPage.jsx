@@ -3,11 +3,12 @@ import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
 import MapPopup from '../components/WishlistPage/MapPopup';
+import VisitList from '../components/History/VisitList';
 import './WishlistPage.css'
 
-const formatData = (data) => {
+const formatWishData = (data) => {
 	return {
-		id: data.wish_id,
+		wishId: data.wish_id,
 		userId: data.user_id,
 		restaurantId: data.restaurant_id,
 		restaurantName: data.restaurant_name,
@@ -24,22 +25,44 @@ const formatData = (data) => {
 	}
 };
 
+const formatVisitData = (data) => {
+	return {
+		visitId: data.visit_id,
+		visitDate: data.visit_date,
+		visitComment: data.visit_comment,
+		attendees: data.attendees.map(attendee => ({username: attendee.username, userId: attendee.user_id})),
+		restaurantId: data.restaurant_id,
+		restaurantName: data.restaurant_name,
+		address1: data.address_line1,
+		city: data.address_city,
+		state: data.address_state,
+		country: data.address_country,
+		longitude: data.longitude,
+		latitude: data.latitude,
+		cuisine: data.cuisine,
+		priceRange: data.price_range,
+	}
+}
+
 const initialViewport = {
 	longitude: -73.98113,
 	latitude: 40.767365,
 	zoom: 14
 }
 
-const initialLonlat = {
+const initialLonLat = {
 	longitude: -73.98113,
 	latitude: 40.767365,
 }
 
-const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
+const WishlistPage = ({userId}) => {
 	const [wishlistData, setWishlistData] = useState([])
-	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
+	const [selectedWishData, setSelectedWishData] = useState(initialLonLat)
+	const [historyData, setHistoryData] = useState([])
+	const [selectedVisit, setSelectedVisit] = useState(initialLonLat)
 	const [selectedMarker, setSelectedMarker] = useState(null)
 	const [viewport, setViewport] = useState(initialViewport)
+	const [view, setView] = useState(true)
 
 	useEffect(() => {
 		axios
@@ -54,13 +77,23 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 			return Promise.all(promises);
 		})
 		.then(res => {
-			const wishesData = res.map(wish => formatData(wish))
+			const wishesData = res.map(wish => formatWishData(wish))
 			setWishlistData(wishesData)
-			setRecords(wishesData)
 		})
 		.catch((err) => {
 			console.log("error in UserLists useEffect", err)
 		})
+		axios
+		.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`)
+		.then(res => {
+			const visits = res.data.map(visit => formatVisitData(visit))
+			setHistoryData(visits)
+			// setSelectedVisit(initialLonLat)
+		})
+		.catch(err => {
+			console.log("Error in useEffect get history", err)
+		})
+		
 	}, [])
 
 	const sortWishes = (type, ascending) => {
@@ -77,11 +110,11 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 		} else if (type === 'recent') {
 			if (ascending) {
 				setWishlistData(prev =>
-					prev.sort((a, b) => a.id - b.id)
+					prev.sort((a, b) => a.wishId - b.wishId)
 				)
 			} else {
 				setWishlistData(prev =>
-					prev.sort((a, b) => b.id - a.id)
+					prev.sort((a, b) => b.wishId - a.wishId)
 				)
 			}
 		} else {
@@ -101,8 +134,7 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
 			setWishlistData(prev => prev.filter(wish => wish.id !== wishId));
-			setRecords(prev => prev.filter(record => record.id !== wishId))
-			setSelectedWishData(initialLonlat);
+			setSelectedWishData(initialLonLat);
 		})
 		.catch((err) => {
 			console.log("Error in handleDelete", err);
@@ -118,7 +150,7 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, data)
 		.then(res => {
 			setWishlistData(prev => prev.map(wish => {
-				if (wish.id === wishId) {
+				if (wish.wishId === wishId) {
 					const newWish = {
 						...wish, 
 						comment: res.data.wish_comment,
@@ -142,28 +174,70 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 		}
 		axios.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`, visitData)
 		.then(() => {
-			handleWishDelete(wish.id)
+			handleWishDelete(wish.wishId)
 		})
 		.catch(err => console.log('Error in POST of handleWishMove', err))
 	}
 
 	const handleWishSelect = (wishId) => {
-		const thisWish = wishlistData.filter(wish => wishId === wish.id);
+		const thisWish = wishlistData.filter(wish => wishId === wish.wishId);
 		const thisWishData = thisWish[0];
 		setSelectedWishData(thisWishData);
-		handleRecordSelect(wishId)
-		// setViewport(prev =>(
-		// 	{ ...prev,
-		// 		latitude: thisWishData.latitude,
-		// 		longitude: thisWishData.longitude,
-		// 	})
-		
+		setViewport(prev =>(
+			{ ...prev,
+				latitude: thisWishData.latitude,
+				longitude: thisWishData.longitude,
+			})
+		)
 	}
 
-	// const onMarkerClick = (wishId) => {
-	// 	handleWishSelect(wishId)
-	// 	setSelectedMarker(wishId)
-	// }
+const handleVisitSelect = (visitId) => {
+	const thisVisit = historyData.filter(visit => visitId === visit.visitId);
+	const thisVisitData = thisVisit[0]
+	setSelectedVisit(thisVisitData)
+	setViewport(prev => (
+		{...prev,
+		latitude: thisVisitData.latitude,
+		longitude: thisVisitData.longitude
+		}
+	))
+}
+
+const handleVisitEdit = (visitId, data) => {
+	const visitData = {
+		visit_comment: data
+	}
+	axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`, visitData)
+	.then(res => {
+		setHistoryData(prev => prev.map(visit => {
+			if (visit.visitId === visitId) {
+				const newVisit = {
+					...visit,
+					visitComment: res.data.visit_comment
+				};
+				setSelectedVisit(newVisit);
+				return newVisit;
+			} else {
+				return visit;
+			}
+		}))
+	})
+	.catch(err => console.log("Error in handleVisitEdit", err))
+}
+
+const handleVisitDelete = (visitId) => {
+		axios.delete(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`)
+		.then(() => {
+			setHistoryData(prev => prev.filter(visit => visit.visitId !== visitId))
+			setSelectedVisit(initialLonLat)
+		})
+		.catch(err => console.log("Error in handleVisitDelete", err))
+	}
+
+	const onMarkerClick = (wishId) => {
+		handleWishSelect(wishId)
+		setSelectedMarker(wishId)
+	}
 
 
 	return (
@@ -173,6 +247,7 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 				<div className='main-list__container'>
 					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
 					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
+						{view? 
 						<Wishlist 
 							wishlistData={wishlistData} 
 							handleDelete={handleWishDelete} 
@@ -184,8 +259,17 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 							sortWishes={sortWishes}
 							handleWishMove={handleWishMove}
 							/>
+							:
+						<VisitList 
+							historyData={historyData}
+							handleDelete={handleVisitDelete}
+							handleEdit={handleVisitEdit}
+							handleSelect={handleVisitSelect}
+							selectedVisit={selectedVisit}
+							/>
+						}
 					</div>
-				{/* <Map
+				<Map
 					className='wish-map'
 					{...viewport}
 					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
@@ -193,19 +277,28 @@ const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 					mapStyle="mapbox://styles/mapbox/streets-v9"
 					onMove={(e)=>setViewport(e.viewState)}
 					>
-					{
+					{ view? (
 						wishlistData.map((wish) => (
 							<Marker key={wish.wishId}
 								latitude={wish.latitude}
 								longitude={wish.longitude}
 								onClick={() => onMarkerClick(wish.wishId)}>
 							</Marker>
-						))
+						))) :
+						(
+							historyData.map((visit) => (
+								<Marker key={visit.visitId}
+									latitude={visit.latitude}
+									longitude={visit.longitude}
+									onClick={() => onMarkerClick(visit.visitId)}>
+								</Marker>
+							)))
+
 					}
 					{selectedMarker &&
 					<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
 					}
-				</Map> */}
+				</Map>
 			</div>
 		</div>
 	)

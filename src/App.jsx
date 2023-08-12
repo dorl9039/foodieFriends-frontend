@@ -3,13 +3,13 @@ import { useAuth } from './hooks/useAuth';
 // import History from './pages/History';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-// import WishlistPage from './pages/WishlistPage';
+import WishlistPage from './pages/WishlistPage';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
 import Authenticate from './pages/Authenticate';
 import SetUsername from './components/Account/SetUsername';
 import Profile from './pages/Profile';
-import ListsPage from './pages/ListsPage';
+// import ListsPage from './pages/ListsPage';
 import './pages/Authenticate.css'
 import './App.css';
 
@@ -27,12 +27,12 @@ function App() {
         <Routes>
             <Route index element={<Home userId={user.userId}/>} />
             <Route element={<Home userId={user.userId}/>} path='home' />
-            {/* <Route element={<WishlistPage userId={user.userId}/>} path='wishlist'/> */}
+            <Route element={<WishlistPage userId={user.userId}/>} path='lists'/>
             <Route element={<Profile user={user}/>} path='profile'/>
             {/* <Route element={<History userId={user.userId}/>} path='history'/> */}
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
-            <Route element={<ListsPage userId={user.userId}/>} path='lists'/>
+            {/* <Route element={<ListsPage userId={user.userId}/>} path='lists'/> */}
             <Route element={<SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='set-username'/>
             <Route element={<Authenticate updateUser={handleUserUpdate}/>} path='login' />
         </Routes>
