@@ -53,12 +53,12 @@
     text-align: center;
 }
 
-.wish-buttons__container {
+.record-buttons__container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-.wish-buttons__container button {
+.record-buttons__container button {
     background-color: #405f8b;
     color: white;
     text-align: center;
@@ -71,10 +71,10 @@
     padding: 3px 10px;
 }
 
-.wish-buttons__container button:hover {
+.record-buttons__container button:hover {
     background-color: #f88c48;
 }
-.wish-buttons__container button:active {
+.record-buttons__container button:active {
     transform: translateY(2px)
 }
 

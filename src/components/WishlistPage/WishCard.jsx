@@ -33,16 +33,10 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 					<p>{wishData.cuisine} | {wishData.priceRange}</p>
 					<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
 				</section>
-				<section className='wish-buttons__container'>
-				<button 
-					className='wish-delete__button'
-					onClick={() => setDeleteOpen(true)}>Delete</button>
-				<button 
-					className='wish-edit__button'
-					onClick={onEditClick}>Edit</button>
-				<button 
-					className='wish-move__button'
-					onClick={onMoveClick}>Move</button>
+				<section className='record-buttons__container'>
+				<button onClick={() => setDeleteOpen(true)}>Delete</button>
+				<button onClick={onEditClick}>Edit</button>
+				<button onClick={onMoveClick}>Move</button>
 			</section>
 			</section>
 

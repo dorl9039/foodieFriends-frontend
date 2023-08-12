@@ -39,14 +39,10 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedVisi
 							<p>Visit comment: {visitData.visitComment}</p>
 							<p>Went with: {visitAttendees}</p>
 						</div>
-						<div className='visit-card__content-buttons'>
-							<button 
-								className='visit-delete__button'
-								onClick={()=>setDeleteOpen(true)}
+						<div className='record-buttons__container'>
+							<button onClick={()=>setDeleteOpen(true)}
 								>Delete</button>
-							<button
-								className='visit-edit__button'
-								onClick={() => setEditOpen(true)}>Edit</button>
+							<button onClick={() => setEditOpen(true)}>Edit</button>
 						</div>
 					</div>
 				)
