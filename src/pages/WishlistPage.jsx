@@ -30,6 +30,7 @@ const formatVisitData = (data) => {
 		visitId: data.visit_id,
 		visitDate: data.visit_date,
 		visitComment: data.visit_comment,
+		rating: data.rating,
 		attendees: data.attendees.map(attendee => ({username: attendee.username, userId: attendee.user_id})),
 		restaurantId: data.restaurant_id,
 		restaurantName: data.restaurant_name,
@@ -205,7 +206,8 @@ const handleVisitSelect = (visitId) => {
 
 const handleVisitEdit = (visitId, data) => {
 	const visitData = {
-		visit_comment: data
+		visit_comment: data.visitComment,
+		rating: data.rating
 	}
 	axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`, visitData)
 	.then(res => {

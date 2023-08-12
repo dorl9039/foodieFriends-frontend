@@ -1,4 +1,4 @@
-.edit-wish-modal__container {
+.edit-record-modal__container {
     position: fixed;
     z-index: 1300;
     inset: 0;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.edit-wish-modal__form {
+.edit-record-modal__form {
     background-color: #ffefbd;
     display: flex;
     flex-direction: column;
@@ -19,24 +19,24 @@
     border-radius: 10px;
 }
 
-.edit-wish-modal__form h3 {
+.edit-record-modal__form h3 {
     margin: .5rem auto;
 }
 
-.edit-wish-modal__form label {
+.edit-record-modal__form label {
     font-family: 'Aileron';
     color: #f88c48;
     font-size: 12pt;
 }
 
-.edit-wish-modal__form select {
+.edit-record-modal__form select {
     margin: .5rem 0 .5rem;
     font-size: 11pt;
     font-family: 'Aileron';
 
 }
 
-.edit-wish-comment__field {
+.edit-record-text__field {
     width: 240px;
     background: white;
     padding: 4px 8px;

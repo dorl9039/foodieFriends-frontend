@@ -63,12 +63,12 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
 		
   return(
     <Modal 
-      className='edit-wish-modal__container' 
+      className='edit-record-modal__container' 
       open={open} 
       onClose={handleClose} 
       slots={{backdrop: StyledBackdrop}}
       >                  
-      <form className='edit-wish-modal__form' onSubmit={handleFormSubmit}>
+      <form className='edit-record-modal__form' onSubmit={handleFormSubmit}>
         <h3>Move {wishData.restaurantName} to History</h3>
           <label htmlFor='visitDate'>Visit Date</label>
           <input 
@@ -93,7 +93,7 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
 						</select>
           <label htmlFor='visitComment'>Visit comment</label>
           <input 
-            className='edit-wish-comment__field'
+            className='edit-record-text__field'
               type='text'
               name='visitComment'
               value={formData.comment}
@@ -101,7 +101,7 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
           /> 
           <label htmlFor='attendees'>Add Attendees</label>
           <input
-            className='edit-wish-comment__field'
+            className='edit-record-text__field'
             type='text'
             value={searchInput}
             onChange={handleSearchInputChange}

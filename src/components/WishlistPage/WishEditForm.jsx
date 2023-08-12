@@ -30,11 +30,11 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 		
 		return(
 			<Modal 
-			className='edit-wish-modal__container' 
+			className='edit-record-modal__container' 
 			open={open} 
 			onClose={handleClose} 
 			slots={{backdrop: StyledBackdrop}}>                  
-				<form className='edit-wish-modal__form' onSubmit={handleFormSubmit}>
+				<form className='edit-record-modal__form' onSubmit={handleFormSubmit}>
 					<h3>Edit wish for {wishData.restaurantName}</h3>
 						<label htmlFor='priority'>Priority</label>
 						<select 
@@ -53,7 +53,7 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 						</select>
 						<label htmlFor='comment'>Comment</label>
 						<input 
-							className='edit-wish-comment__field'
+							className='edit-record-text__field'
 								type='text'
 								name='comment'
 								defaultValue={originalWishData.comment}

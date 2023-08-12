@@ -3,6 +3,7 @@ import './VisitList.css'
 
 const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selectedVisit}) => {
 		
+	
 	const visits = historyData.map((visit) => {
 		return (
 			<Visit 

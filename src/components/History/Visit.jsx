@@ -35,6 +35,7 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedVisi
 							<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
 							<p>{visitData.cuisine} | {visitData.priceRange}</p>
 							<p>Visited on: {visitDate}</p>
+							<p>Visit rating: {visitData.rating}</p>
 							<p>Visit comment: {visitData.visitComment}</p>
 							<p>Went with: {visitAttendees}</p>
 						</div>
