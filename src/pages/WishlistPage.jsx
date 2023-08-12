@@ -242,7 +242,7 @@ const handleVisitDelete = (visitId) => {
 
 	return (
 		<div className='lists-page__container'>
-			<h2>Your Wishlist</h2>
+			{view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
 			<div className='lists-page__content'>
 				<div className='main-list__container'>
 					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>

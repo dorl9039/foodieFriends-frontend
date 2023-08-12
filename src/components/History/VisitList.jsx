@@ -18,6 +18,12 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 	
 	return (
 			<section className='list__container'>
+				<section className='list-sort-btns__container'>
+					<p>Sort by:</p>
+					<button>Price</button>
+					<button>Date visited</button>
+					<button>Rating</button>
+				</section>
 				<section className='record__container'>
 					{visits}
 				</section>

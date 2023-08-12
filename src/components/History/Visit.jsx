@@ -24,14 +24,14 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedVisi
 
 	
 		return (
-			<section className='visit-card__container'>
-				<section className='visit-card__title' onClick={onSelectClick}>
+			<section className='record'>
+				<section className='record-title__container' onClick={onSelectClick}>
 					<h4>Visit {visitData.visitId} to {visitData.restaurantName}</h4>
 					<div>{isOpen? '-' : '+'}</div>
 				</section>
 				{isOpen && (
-					<div className='visit-card__content'>
-						<div className='visit-card__content-details'>
+					<div className='selected-record__container'>
+						<div className='selected-record__content'>
 							<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
 							<p>{visitData.cuisine} | {visitData.priceRange}</p>
 							<p>Visited on: {visitDate}</p>

@@ -9,6 +9,7 @@ import './WishEditForm.css'
 const initialVisitData = {
   visitDate: '',
   visitComment: '',
+  rating: '',
 }
 
 const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
@@ -40,7 +41,7 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
 
   const handleFormChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value
+    const value = name === 'rating' ? parseInt(event.target.value, 10) : event.target.value
     setFormData((prev) => ({
       ...prev,
       [name]: value
@@ -76,6 +77,20 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             value={formData.visitDate}
             onChange={handleFormChange}
             /> 
+          <label htmlFor='rating'>Rating</label>
+						<select 
+							name='rating' 
+							value={formData.rating}
+							onChange={handleFormChange}
+							size='1'
+							> 
+								<option value='0'>Select</option>
+								<option value='1'>1</option>
+								<option value='2'>2</option>
+								<option value='3'>3</option>
+								<option value='4'>4</option>
+								<option value='5'>5</option>
+						</select>
           <label htmlFor='visitComment'>Visit comment</label>
           <input 
             className='edit-wish-comment__field'

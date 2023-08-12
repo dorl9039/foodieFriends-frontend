@@ -10,7 +10,7 @@
     text-align: center;
     margin: 0 auto 1rem;
   }
-.wish-card__container {
+.selected-record__content {
     background-color: #ffefbd;
     list-style-type: none;
     max-height: 16rem;
@@ -19,7 +19,7 @@
     padding: .5rem;
 }
 
-.wish-card__container h3 {
+.selected-record__content h3 {
     font-family: 'Source Serif Pro';
     font-size: 16pt;
     color: #405f8b;
