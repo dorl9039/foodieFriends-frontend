@@ -7,7 +7,7 @@ import './WishlistPage.css'
 
 const formatData = (data) => {
 	return {
-		wishId: data.wish_id,
+		id: data.wish_id,
 		userId: data.user_id,
 		restaurantId: data.restaurant_id,
 		restaurantName: data.restaurant_name,
@@ -35,7 +35,7 @@ const initialLonlat = {
 	latitude: 40.767365,
 }
 
-const WishlistPage = ({userId, setView}) => {
+const WishlistPage = ({userId, setRecords, handleRecordSelect}) => {
 	const [wishlistData, setWishlistData] = useState([])
 	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
 	const [selectedMarker, setSelectedMarker] = useState(null)
@@ -56,6 +56,7 @@ const WishlistPage = ({userId, setView}) => {
 		.then(res => {
 			const wishesData = res.map(wish => formatData(wish))
 			setWishlistData(wishesData)
+			setRecords(wishesData)
 		})
 		.catch((err) => {
 			console.log("error in UserLists useEffect", err)
@@ -76,11 +77,11 @@ const WishlistPage = ({userId, setView}) => {
 		} else if (type === 'recent') {
 			if (ascending) {
 				setWishlistData(prev =>
-					prev.sort((a, b) => a.wishId - b.wishId)
+					prev.sort((a, b) => a.id - b.id)
 				)
 			} else {
 				setWishlistData(prev =>
-					prev.sort((a, b) => b.wishId - a.wishId)
+					prev.sort((a, b) => b.id - a.id)
 				)
 			}
 		} else {
@@ -99,7 +100,8 @@ const WishlistPage = ({userId, setView}) => {
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
-			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
+			setWishlistData(prev => prev.filter(wish => wish.id !== wishId));
+			setRecords(prev => prev.filter(record => record.id !== wishId))
 			setSelectedWishData(initialLonlat);
 		})
 		.catch((err) => {
@@ -116,7 +118,7 @@ const WishlistPage = ({userId, setView}) => {
 		.patch(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`, data)
 		.then(res => {
 			setWishlistData(prev => prev.map(wish => {
-				if (wish.wishId === wishId) {
+				if (wish.id === wishId) {
 					const newWish = {
 						...wish, 
 						comment: res.data.wish_comment,
@@ -140,27 +142,28 @@ const WishlistPage = ({userId, setView}) => {
 		}
 		axios.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`, visitData)
 		.then(() => {
-			handleWishDelete(wish.wishId)
+			handleWishDelete(wish.id)
 		})
 		.catch(err => console.log('Error in POST of handleWishMove', err))
 	}
 
 	const handleWishSelect = (wishId) => {
-		const thisWish = wishlistData.filter(wish => wishId === wish.wishId);
+		const thisWish = wishlistData.filter(wish => wishId === wish.id);
 		const thisWishData = thisWish[0];
 		setSelectedWishData(thisWishData);
-		setViewport(prev =>(
-			{ ...prev,
-				latitude: thisWishData.latitude,
-				longitude: thisWishData.longitude,
-			})
-		)
+		handleRecordSelect(wishId)
+		// setViewport(prev =>(
+		// 	{ ...prev,
+		// 		latitude: thisWishData.latitude,
+		// 		longitude: thisWishData.longitude,
+		// 	})
+		
 	}
 
-	const onMarkerClick = (wishId) => {
-		handleWishSelect(wishId)
-		setSelectedMarker(wishId)
-	}
+	// const onMarkerClick = (wishId) => {
+	// 	handleWishSelect(wishId)
+	// 	setSelectedMarker(wishId)
+	// }
 
 
 	return (
@@ -182,7 +185,7 @@ const WishlistPage = ({userId, setView}) => {
 							handleWishMove={handleWishMove}
 							/>
 					</div>
-				<Map
+				{/* <Map
 					className='wish-map'
 					{...viewport}
 					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
@@ -202,7 +205,7 @@ const WishlistPage = ({userId, setView}) => {
 					{selectedMarker &&
 					<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
 					}
-				</Map>
+				</Map> */}
 			</div>
 		</div>
 	)
