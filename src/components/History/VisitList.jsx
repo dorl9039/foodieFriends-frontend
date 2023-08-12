@@ -18,14 +18,12 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 		});
 	
 	return (
-		<section className='main-visit-list__container'>
 			<section className='visit-list__container'>
 				<h3>Visits</h3>
 				<section className='visit__container'>
 					{visits}
 				</section>
 			</section>
-		</section>
 	)
 };
 

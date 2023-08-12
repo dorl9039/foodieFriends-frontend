@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Map, {Marker} from 'react-map-gl';
 import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
-import WishPopup from '../components/WishlistPage/WishPopup';
+import MapPopup from '../components/WishlistPage/MapPopup';
 import './WishlistPage.css'
 
 const formatData = (data) => {
@@ -196,7 +196,7 @@ const WishlistPage = ({userId}) => {
 						))
 					}
 					{selectedMarker &&
-					<WishPopup wish={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
+					<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
 					}
 				</Map>
 			</div>

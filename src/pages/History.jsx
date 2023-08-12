@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import VisitList from "../components/History/VisitList";
 import axios from 'axios';
+import Map, {Marker} from 'react-map-gl';
+import MapPopup from '../components/WishlistPage/MapPopup';
+import './History.css'
 
 const formatData = (data) => {
 	return {
@@ -45,6 +48,7 @@ const History = ({ userId }) => {
 			const visits = res.data.map(visit => formatData(visit))
 			console.log("in History useEffect, visits:", visits)
 			setHistoryData(visits)
+			setSelectedVisit(initialLonLat)
 		})
 		.catch(err => {
 			console.log("Error in useEffect get history", err)
@@ -63,18 +67,53 @@ const History = ({ userId }) => {
 		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
 		const thisVisitData = thisVisit[0]
 		setSelectedVisit(thisVisitData)
+		setViewport(prev => (
+			{...prev,
+			latitude: thisVisitData.latitude,
+			longitude: thisVisitData.longitude
+		}
+		))
+	}
+
+	const onMarkerClick = (visitId) => {
+		handleVisitSelect(visitId)
+		setSelectedMarker(visitId)
 	}
 
 	console.log('in History, selectedVisit', selectedVisit)
 	return (
-			<div>
+			<div className='history-page__container'>
 				<h2>History</h2>
-				<VisitList 
-					historyData={historyData}
-					handleDelete={handleVisitDelete}
-					handleEdit={handleVisitEdit}
-					handleSelect={handleVisitSelect}
-					selectedVisit={selectedVisit}/>
+				<div className='history-page__content'>
+					<VisitList 
+						historyData={historyData}
+						handleDelete={handleVisitDelete}
+						handleEdit={handleVisitEdit}
+						handleSelect={handleVisitSelect}
+						selectedVisit={selectedVisit}
+						/>
+					<Map
+						className='history-map'
+						{...viewport}
+						mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+						style={{width: '100%', height: '100%', margin: 'auto'}}
+						mapStyle="mapbox://styles/mapbox/streets-v9"
+						onMove={(e)=>setViewport(e.viewState)}
+						>
+						{
+							historyData.map((visit) => (
+								<Marker key={visit.visitId}
+									latitude={visit.latitude}
+									longitude={visit.longitude}
+									onClick={() => onMarkerClick(visit.visitId)}>
+								</Marker>
+							))
+						}
+						{selectedMarker &&
+							<MapPopup record={selectedVisit} closePopup={()=>setSelectedMarker(null)}/>
+						}
+					</Map>
+				</div>
 			</div>
 	)
 }
