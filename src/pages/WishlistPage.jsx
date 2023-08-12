@@ -94,7 +94,7 @@ const WishlistPage = ({userId}) => {
 			console.log("Error in useEffect get history", err)
 		})
 		
-	}, [])
+	}, [view])
 
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {
@@ -133,7 +133,7 @@ const WishlistPage = ({userId}) => {
 	const handleWishDelete = (wishId) => {
 		axios.delete(`${import.meta.env.VITE_SERVER_URL}/wishes/${wishId}`)
 		.then(() => {
-			setWishlistData(prev => prev.filter(wish => wish.id !== wishId));
+			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
 			setSelectedWishData(initialLonLat);
 		})
 		.catch((err) => {
