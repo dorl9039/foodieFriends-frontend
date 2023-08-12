@@ -35,7 +35,7 @@ const initialLonlat = {
 	latitude: 40.767365,
 }
 
-const WishlistPage = ({userId}) => {
+const WishlistPage = ({userId, setView}) => {
 	const [wishlistData, setWishlistData] = useState([])
 	const [selectedWishData, setSelectedWishData] = useState(initialLonlat)
 	const [selectedMarker, setSelectedMarker] = useState(null)
@@ -167,17 +167,21 @@ const WishlistPage = ({userId}) => {
 		<div className='wishlist-page__container'>
 			<h2>Your Wishlist</h2>
 			<div className='wishlist-map__container'>
-				<Wishlist 
-					wishlistData={wishlistData} 
-					handleDelete={handleWishDelete} 
-					handleEdit={handleWishEdit} 
-					handleSelect={handleWishSelect}
-					selectedWish={selectedWishData}
-					selectedMarker={selectedMarker}
-					setSelectedMarker={setSelectedMarker}
-					sortWishes={sortWishes}
-					handleWishMove={handleWishMove}
-					/>
+				<div className='main-list__container'>
+					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
+					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
+						<Wishlist 
+							wishlistData={wishlistData} 
+							handleDelete={handleWishDelete} 
+							handleEdit={handleWishEdit} 
+							handleSelect={handleWishSelect}
+							selectedWish={selectedWishData}
+							selectedMarker={selectedMarker}
+							setSelectedMarker={setSelectedMarker}
+							sortWishes={sortWishes}
+							handleWishMove={handleWishMove}
+							/>
+					</div>
 				<Map
 					className='wish-map'
 					{...viewport}

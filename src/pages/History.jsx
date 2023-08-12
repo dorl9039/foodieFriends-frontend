@@ -35,7 +35,7 @@ const initialLonLat = {
 	latitude: 40.767365,
 }
 
-const History = ({ userId }) => {
+const History = ({ userId, setView }) => {
 	const [historyData, setHistoryData] = useState([]);
 	const [selectedVisit, setSelectedVisit] = useState(initialLonLat);
 	const [selectedMarker, setSelectedMarker] = useState(null);
@@ -108,6 +108,9 @@ const History = ({ userId }) => {
 			<div className='history-page__container'>
 				<h2>History</h2>
 				<div className='history-page__content'>
+				<div className='main-list__container'>
+					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
+					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
 					<VisitList 
 						historyData={historyData}
 						handleDelete={handleVisitDelete}
@@ -115,6 +118,7 @@ const History = ({ userId }) => {
 						handleSelect={handleVisitSelect}
 						selectedVisit={selectedVisit}
 						/>
+						</div>
 					<Map
 						className='history-map'
 						{...viewport}

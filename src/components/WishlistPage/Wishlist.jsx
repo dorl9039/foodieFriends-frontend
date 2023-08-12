@@ -61,7 +61,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 	}
 	
 	return (
-		<section className='main-list__container'>
+		<section>
 			<section className='wishlist__container'>
 				<section className='wishlist-sort__container'>
 					<p>Sort by:</p>
