@@ -87,7 +87,7 @@ const History = ({ userId, setView }) => {
 	}
 
 	const handleVisitSelect = (visitId) => {
-		const thisVisit = historyData.filter(visit => visitId === visit.id);
+		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
 		const thisVisitData = thisVisit[0]
 		setSelectedVisit(thisVisitData)
 		setViewport(prev => (
@@ -105,9 +105,9 @@ const History = ({ userId, setView }) => {
 
 	console.log('in History, selectedVisit', selectedVisit)
 	return (
-			<div className='history-page__container'>
+			<div className='lists-page__container'>
 				<h2>History</h2>
-				<div className='history-page__content'>
+				<div className='lists-page__content'>
 				<div className='main-list__container'>
 					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
 					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
@@ -129,7 +129,7 @@ const History = ({ userId, setView }) => {
 						>
 						{
 							historyData.map((visit) => (
-								<Marker key={visit.id}
+								<Marker key={visit.visitId}
 									latitude={visit.latitude}
 									longitude={visit.longitude}
 									onClick={() => onMarkerClick(visit.visitId)}>

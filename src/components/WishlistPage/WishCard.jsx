@@ -26,7 +26,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 	}
 
 	return(
-		<section className='selected-wish__container'>
+		<section className='selected-record__container'>
 			<section className='wish-card__container'>
 				<section className='wish-restaurant-info'>
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>

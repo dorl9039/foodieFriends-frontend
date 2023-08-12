@@ -23,8 +23,8 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker,
 	}
 
 	return(
-		<section className='wish'>
-			<div className='wish-title__container' onClick={onSelectClick}>
+		<section className='record'>
+			<div className='record-title__container' onClick={onSelectClick}>
 				<h3 >{wish.restaurantName}</h3>
 				<div>{isOpen? '-' : '+'}</div>
 			</div>

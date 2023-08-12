@@ -1,8 +1,8 @@
-.wishlist-page__container {
+.lists-page__container {
   padding: 20px 7%;
 }
 
-.wishlist-page__container h2 {
+.lists-page__container h2 {
   font-family: 'Source Serif Pro';
   color: #405f8b;
   font-size: 24pt;
@@ -11,7 +11,7 @@
   margin-bottom: 2rem;
 }
 
-.wishlist-map__container {
+.lists-page__content {
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 1.5rem;

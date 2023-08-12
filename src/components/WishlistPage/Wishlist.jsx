@@ -62,8 +62,8 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 	
 	return (
 		<section>
-			<section className='wishlist__container'>
-				<section className='wishlist-sort__container'>
+			<section className='list__container'>
+				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button 
 						className={sortOption.price?'active-sort-option':'inactive-sort-option'} 
@@ -75,7 +75,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 						className={sortOption.priority?'active-sort-option':'inactive-sort-option'}
 						onClick={onPrioritySortClick}>Priority</button>
 				</section>
-				<section className='wish__container'>
+				<section className='record__container'>
 					{wishes}
 				</section>
 			</section>

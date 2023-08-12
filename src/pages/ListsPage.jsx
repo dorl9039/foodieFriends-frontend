@@ -9,7 +9,7 @@ const ListsPage = ({userId}) => {
 
 
   return (
-    <div className='lists-page__container'>
+    <div>
       {view? 
       <WishlistPage 
         userId={userId}

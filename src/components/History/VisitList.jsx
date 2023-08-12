@@ -17,9 +17,8 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 		});
 	
 	return (
-			<section className='visit-list__container'>
-				<h3>Visits</h3>
-				<section className='visit__container'>
+			<section className='list__container'>
+				<section className='record__container'>
 					{visits}
 				</section>
 			</section>

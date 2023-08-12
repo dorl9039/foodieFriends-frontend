@@ -6,12 +6,12 @@
   margin: 0 auto 5px;
 }
 
-.wishlist__container {
+.list__container {
   display: flex;
   flex-direction: column;
 }
 
-.wishlist-sort__container {
+.list-sort-btns__container {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   font-family: "Aileron";
@@ -50,7 +50,7 @@
   color: white
 }
 
-.wish__container {
+.record__container {
   margin: 0;
   max-height: 28rem;
   min-height: 10rem;
@@ -58,24 +58,24 @@
   border: 1px solid #000;
 }
 
-.wish {
+.record {
   border: 0.5px solid black;
   background-color: #f88c48;
   ;
 }
-.wish-title__container {
+.record-title__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   cursor: pointer;
 }
 
-.wish-title__container div{
+.record-title__container div{
   margin: auto 10px;
   color: white;
   font-size: 18pt;
 }
-.wish h3 {
+.record h3 {
   font-family: 'Source Serif Pro';
   font-size: 16pt;
   color: white;
@@ -83,30 +83,6 @@
   margin: .75rem auto .75rem;
 }
 
-.selected-wish {
-  background-color: #f88c48;
-  border: 0.5px solid black;
-}
-
-.selected-wish h3 {
-  font-family: 'Source Serif Pro';
-  font-size: 18pt;
-  color: white;
-  text-align: center;
-  margin: 1rem auto .5rem;
-}
-
-.selected-wish-details {
-  display: flex;
-  flex-direction: row;
-  font-family: 'Aileron';
-  color: white;
-  font-size: 12pt;
-}
-
-.selected-wish-details p {
-  margin: .5rem auto;
-}
 
 
 .edit-wish__container {
@@ -140,3 +116,27 @@
 .mapboxgl-popup-close-button {
   padding: 0 5px;
 }
+/* .selected-wish {
+  background-color: #f88c48;
+  border: 0.5px solid black;
+}
+
+.selected-wish h3 {
+  font-family: 'Source Serif Pro';
+  font-size: 18pt;
+  color: white;
+  text-align: center;
+  margin: 1rem auto .5rem;
+}
+
+.selected-wish-details {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Aileron';
+  color: white;
+  font-size: 12pt;
+}
+
+.selected-wish-details p {
+  margin: .5rem auto;
+} */

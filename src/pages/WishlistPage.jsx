@@ -164,9 +164,9 @@ const WishlistPage = ({userId, setView}) => {
 
 
 	return (
-		<div className='wishlist-page__container'>
+		<div className='lists-page__container'>
 			<h2>Your Wishlist</h2>
-			<div className='wishlist-map__container'>
+			<div className='lists-page__content'>
 				<div className='main-list__container'>
 					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
 					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
