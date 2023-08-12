@@ -61,7 +61,6 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 								onChange={handleFormChange}
 						/> 
 						<input className='submit__button' type='Submit' value='Submit' />
-						{/* <button className='historicize-button'>Move to history</button> */}
 				</form>
 		</Modal>  
 		)

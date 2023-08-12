@@ -36,13 +36,13 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 				<section className='wish-buttons__container'>
 				<button 
 					className='wish-delete__button'
-					onClick={() => setDeleteOpen(true)}>Delete wish</button>
+					onClick={() => setDeleteOpen(true)}>Delete</button>
 				<button 
 					className='wish-edit__button'
-					onClick={onEditClick}>Edit wish</button>
+					onClick={onEditClick}>Edit</button>
 				<button 
 					className='wish-move__button'
-					onClick={onMoveClick}>Move to history</button>
+					onClick={onMoveClick}>Move</button>
 			</section>
 			</section>
 

@@ -55,7 +55,6 @@ const WishlistPage = ({userId}) => {
 		})
 		.then(res => {
 			const wishesData = res.map(wish => formatData(wish))
-			console.log('in WishlistPage useEffect, reformated wishesdata', wishesData)	
 			setWishlistData(wishesData)
 		})
 		.catch((err) => {
@@ -139,7 +138,6 @@ const WishlistPage = ({userId}) => {
 			restaurantId: wish.restaurantId,
 			restaurantName: wish.restaurantName,
 		}
-		console.log('visitData in handleWishMove:', visitData)
 		axios.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`, visitData)
 		.then(() => {
 			handleWishDelete(wish.wishId)
