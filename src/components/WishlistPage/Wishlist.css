@@ -1,4 +1,3 @@
-
 .wishlist__header {
   font-family: 'Source Serif Pro';
   font-size: 24pt;
@@ -53,7 +52,7 @@
 
 .wish__container {
   margin: 0;
-  max-height: 26.5rem;
+  max-height: 28rem;
   min-height: 10rem;
   overflow-y: scroll;
   border: 1px solid #000;

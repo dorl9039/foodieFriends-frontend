@@ -1,7 +1,7 @@
   .visit__container {
-    max-height: 15rem;
+    max-height: 28rem;
     min-height: 9rem;
     overflow: scroll;
-    border: 2px solid #000;
+    border: .5px solid #000;
 }
 

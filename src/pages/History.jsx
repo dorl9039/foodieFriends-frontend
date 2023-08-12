@@ -55,8 +55,13 @@ const History = ({ userId }) => {
 		})
 	}, [])
 
-	const handleVisitDelete = () => {
-		// Axios call goes here
+	const handleVisitDelete = (visitId) => {
+		axios.delete(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history/${visitId}`)
+		.then(() => {
+			setHistoryData(prev => prev.filter(visit => visit.visitId !== visitId))
+			setSelectedVisit(initialLonLat)
+		})
+		.catch(err => console.log("Error in handleVisitDelete", err))
 	}
 
 	const handleVisitEdit = () => {
@@ -71,7 +76,7 @@ const History = ({ userId }) => {
 			{...prev,
 			latitude: thisVisitData.latitude,
 			longitude: thisVisitData.longitude
-		}
+			}
 		))
 	}
 

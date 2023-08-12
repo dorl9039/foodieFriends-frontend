@@ -1,5 +1,4 @@
 import Visit from "./Visit";
-import VisitCard from "./VisitCard";
 import './VisitList.css'
 
 const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selectedVisit}) => {
