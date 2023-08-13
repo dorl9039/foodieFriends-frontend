@@ -20,7 +20,6 @@ const Navbar = ({updateUser}) => {
 			<NavLink to='/home'>Home</NavLink>
 			<NavLink to='/lists'>Your Lists</NavLink>
 			<NavLink to='/add'>Add Wish</NavLink>
-			{/* <NavLink to='/history'>History</NavLink> */}
 			<NavLink to='/profile'>Profile</NavLink>
 			<button className='logout-button' onClick={handleLogout}>Logout</button>
 		</nav>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Wishlist from "../components/WishlistPage/Wishlist";
 import MapPopup from '../components/WishlistPage/MapPopup';
 import VisitList from '../components/History/VisitList';
+import ViewToggle from '../components/WishlistPage/ViewToggle';
 import './WishlistPage.css'
 
 const formatWishData = (data) => {
@@ -288,9 +289,8 @@ const WishlistPage = ({userId}) => {
 			{view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
 			<div className='lists-page__content'>
 				<div className='main-list__container'>
-					<button className='list-view__button' onClick={()=>setView(true)}>Wishlist</button>
-					<button className='list-view__button' onClick={()=>setView(false)}>History</button>
-						{view? 
+					<span>Wishlist</span> <ViewToggle isToggled={view} onToggle={() => setView(prev => !prev)}/><span>History</span>
+						{!view? 
 						<Wishlist 
 							wishlistData={wishlistData} 
 							handleDelete={handleWishDelete} 
