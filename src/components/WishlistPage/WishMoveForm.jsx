@@ -38,7 +38,6 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
     setSearchInput('')
   }
 
-
   const handleFormChange = (event) => {
     const name = event.target.name;
     const value = name === 'rating' ? parseInt(event.target.value, 10) : event.target.value

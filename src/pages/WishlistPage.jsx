@@ -67,6 +67,7 @@ const WishlistPage = ({userId}) => {
 	// default false sets Wishlist view 
 	const [view, setView] = useState(false)
 
+
 	useEffect(() => {
 		axios
 		.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
@@ -283,7 +284,7 @@ const WishlistPage = ({userId}) => {
 		setSelectedMarker(wishId)
 	}
 
-	console.log('in WishlistPage, historyData', historyData)
+
 	return (
 		<div className='lists-page__container'>
 			{!view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}

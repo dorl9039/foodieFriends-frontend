@@ -11,6 +11,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 		date: false,
 		rating: false,
 	})
+	const [searchInput, setSearchInput] = useState('');
 
 	const onPriceSortClick = () => {
 		setPriceOrder(prev => !prev);
@@ -42,7 +43,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 		})
 	}
 
-	const visits = historyData.map((visit) => {
+	const visits = historyData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
 		return (
 			<Visit 
 			key={visit.visitId}
@@ -54,9 +55,20 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 			/>
 			);
 		});
-	console.log(dateOrder? 'ascending' : 'descending')
+
+	const handleSearchInputChange = (event) => {
+		event.preventDefault();
+		setSearchInput(event.target.value)
+	}
+
 	return (
 			<section className='list__container'>
+				<input
+						className='search-record__field'
+						type='text'
+						value={searchInput}
+						onChange={handleSearchInputChange}
+						placeholder='Search' />
 				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button

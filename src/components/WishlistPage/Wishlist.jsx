@@ -12,13 +12,13 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 		recent: false,
 		priority: false,
 	})
-
+	const [searchInput, setSearchInput] = useState('');
 
 	const handleWishEdit = (data) => {
 		handleEdit(selectedWish.wishId, data)
 	}
 
-	const wishes = wishlistData.map((wish) => {
+	const wishes = wishlistData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase())).map((wish) => {
 		return (
 			<Wish 
 				key={wish.wishId}
@@ -60,9 +60,21 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 			priority: true})
 	}
 	
+	const handleSearchInputChange = (event) => {
+		event.preventDefault();
+		setSearchInput(event.target.value)
+	}
+
 	return (
 		<section>
 			<section className='list__container'>
+				<input
+						className='search-record__field'
+						type='text'
+						value={searchInput}
+						onChange={handleSearchInputChange}
+						placeholder='Search' />
+
 				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button 
