@@ -17,7 +17,6 @@ const Navbar = ({updateUser}) => {
 	return (
 		<nav className='header-navbar'>
 			<div className='header'><span className='header-title-foodie'>Foodie</span><span className='header-title-friends'>Friends</span></div>
-			<NavLink to='/home'>Home</NavLink>
 			<NavLink to='/lists'>Your Lists</NavLink>
 			<NavLink to='/add'>Add Wish</NavLink>
 			<NavLink to='/profile'>Profile</NavLink>

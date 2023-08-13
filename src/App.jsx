@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import WishlistPage from './pages/WishlistPage';
 import AddWish from './pages/AddWish';
 import FourOhFour from './pages/404';
@@ -23,8 +22,7 @@ function App() {
         <>
         <Navbar updateUser={handleUserUpdate}/>
         <Routes>
-            <Route index element={<Home userId={user.userId}/>} />
-            <Route element={<Home userId={user.userId}/>} path='home' />
+            <Route index element={<WishlistPage userId={user.userId}/>} />
             <Route element={<WishlistPage userId={user.userId}/>} path='lists'/>
             <Route element={<Profile user={user}/>} path='profile'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
