@@ -324,7 +324,7 @@ const WishlistPage = ({userId}) => {
 					mapStyle="mapbox://styles/mapbox/streets-v9"
 					onMove={(e)=>setViewport(e.viewState)}
 					>
-					{ view? (
+					{ !view? (
 						wishlistData.map((wish) => (
 							<Marker key={wish.wishId}
 								latitude={wish.latitude}
