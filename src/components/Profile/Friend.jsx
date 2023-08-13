@@ -1,3 +1,5 @@
+import './Friend.css'
+
 const Friend = ({friendData, handleRemove}) => {
   
   const onRemove = () => {
@@ -5,10 +7,10 @@ const Friend = ({friendData, handleRemove}) => {
   }
 
   return (
-    <div>
-      {friendData.username}
-      {friendData.firstName}
-      {friendData.lastName}
+    <div className='friend-item__container'>
+      <p>{friendData.username}</p>
+      <p>{friendData.firstName}</p>
+      <p>{friendData.lastName}</p>
       <button onClick={onRemove}>Remove</button>
     </div>
   )

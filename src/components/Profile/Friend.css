@@ -1,0 +1,31 @@
+.friend-item__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: .5px solid black;
+  align-items: center;
+}
+
+.friend-item__container p {
+  margin: 0;
+}
+
+.friend-item__container button {
+  background-color: #405f8b;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  margin: 5px;
+  margin-bottom: 7px;
+  border-radius: 9999px;
+  cursor: pointer;
+  line-height: 20px;
+  padding: 3px 10px;
+}
+
+.friend-item__container button:hover {
+  background-color: #f88c48;
+}
+.friend-item__container button:active {
+  transform: translateY(2px)
+}

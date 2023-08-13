@@ -49,7 +49,7 @@ const formatVisitData = (data) => {
 const initialViewport = {
 	longitude: -73.98113,
 	latitude: 40.767365,
-	zoom: 14
+	zoom: 12
 }
 
 const initialLonLat = {

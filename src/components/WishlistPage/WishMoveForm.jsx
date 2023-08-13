@@ -107,12 +107,12 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             placeholder='Search for usernames' />
           <ul>
             {friends.filter(friend => friend.username.includes(searchInput)).map(friend =>
-              <li key={friend.username}>
+              (searchInput.length > 0? <li key={friend.username}>
                 {friend.username}
                 <button
                   type='button'
                   onClick={() => handleAddAttendee(friend)}> Add </button>
-              </li>
+              </li> : <></>)
             )}
           </ul>
           <div>
