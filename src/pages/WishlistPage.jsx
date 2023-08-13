@@ -23,7 +23,8 @@ const formatWishData = (data) => {
 		cuisine: data.cuisine,
 		latitude: data.latitude,
 		longitude: data.longitude,
-		photo: data.photo
+		photo: data.photo,
+		foodieFriends: data.foodieFriends
 	}
 };
 
@@ -71,26 +72,16 @@ const WishlistPage = ({userId}) => {
 
 
 	useEffect(() => {
-		axios
-		.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
-		.then(response => {
-			const promises = response.data.map(wish => {
-				return axios.get(`${import.meta.env.VITE_SERVER_URL}/restaurants/${wish.restaurant_id}`)
-				.then(res => {
-					return {...wish, ...res.data}
-				})
-			})
-			return Promise.all(promises);
-		})
+		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
 		.then(res => {
-			const wishesData = res.map(wish => formatWishData(wish))
+			const wishesData = res.data.map(wish => formatWishData(wish))
 			setWishlistData(wishesData)
 		})
 		.catch((err) => {
 			console.log("error in UserLists useEffect", err)
 		})
-		axios
-		.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`)
+
+		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`)
 		.then(res => {
 			const visits = res.data.map(visit => formatVisitData(visit))
 			setHistoryData(visits)
@@ -98,9 +89,10 @@ const WishlistPage = ({userId}) => {
 		.catch(err => {
 			console.log("Error in useEffect get history", err)
 		})
-		
 	}, [view])
 
+	console.log('in WishlistPage, wishlistData', wishlistData);
+	
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {
 			if (ascending) {
