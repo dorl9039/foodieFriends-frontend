@@ -33,6 +33,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
 					<p>{wishData.cuisine} | {wishData.priceRange}</p>
 					<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
+					<p>FoodieFriends: {wishData.foodieFriends.length > 0? wishData.foodieFriends.map(friend => friend.username) : 'None yet!'}</p>
 				</section>
 				<section className='record-buttons__container'>
 				<button onClick={() => setDeleteOpen(true)}>Delete</button>
