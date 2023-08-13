@@ -279,11 +279,20 @@ const WishlistPage = ({userId}) => {
 		}
 	}
 
-	const onMarkerClick = (wishId) => {
-		handleWishSelect(wishId)
-		setSelectedMarker(wishId)
-	}
+	const onMarkerClick = (id) => {
+		if (view) {
+			handleVisitSelect(id)
+		} else {
+			handleWishSelect(id)
+		}
 
+		setSelectedMarker(id)
+	}
+	
+	const handleViewToggle = () => {
+		setView(prev => !prev);
+		setSelectedMarker(null)
+	}
 
 	return (
 		<div className='lists-page__container'>
@@ -291,7 +300,7 @@ const WishlistPage = ({userId}) => {
 			<div className='lists-page__content'>
 				<div className='main-list__container'>
 					<div className='view-state-toggle__container'>
-					<span>Wishlist</span> <ViewToggle isToggled={view} onToggle={() => setView(prev => !prev)}/><span>History</span>
+					<span>Wishlist</span> <ViewToggle isToggled={view} onToggle={handleViewToggle}/><span>History</span>
 					</div>
 						{!view? 
 						<Wishlist 
@@ -313,6 +322,7 @@ const WishlistPage = ({userId}) => {
 							handleSelect={handleVisitSelect}
 							selectedVisit={selectedVisit}
 							sortVisits={sortVisits}
+							selectedMarker={selectedMarker}
 							/>
 						}
 					</div>
@@ -342,8 +352,11 @@ const WishlistPage = ({userId}) => {
 							)))
 
 					}
-					{selectedMarker &&
-					<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/>
+					{selectedMarker && (!view ? 
+						<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/> :
+						<MapPopup record={selectedVisit} closePopup={()=>setSelectedMarker(null)}/>
+					)
+
 					}
 				</Map>
 			</div>

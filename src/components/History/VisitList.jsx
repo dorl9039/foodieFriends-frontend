@@ -2,7 +2,7 @@ import Visit from "./Visit";
 import { useState } from 'react';
 import './VisitList.css'
 
-const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selectedVisit, sortVisits}) => {
+const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selectedMarker, sortVisits}) => {
 	const [priceOrder, setPriceOrder] = useState(true)
 	const [dateOrder, setDateOrder] = useState(true)
 	const [ratingOrder, setRatingOrder] = useState(true)
@@ -51,7 +51,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 			handleEdit={handleEdit}
 			handleDelete={handleDelete}
 			handleSelect={handleSelect}
-			selectedVisit={selectedVisit}
+			selectedMarker={selectedMarker}
 			/>
 			);
 		});
