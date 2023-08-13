@@ -18,7 +18,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 		handleEdit(selectedWish.wishId, data)
 	}
 
-	const wishes = wishlistData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase())).map((wish) => {
+	const wishes = wishlistData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || wish.cuisine.toLowerCase().includes(searchInput.toLowerCase())).map((wish) => {
 		return (
 			<Wish 
 				key={wish.wishId}

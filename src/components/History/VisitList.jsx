@@ -43,7 +43,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 		})
 	}
 
-	const visits = historyData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
+	const visits = historyData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || wish.cuisine.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
 		return (
 			<Visit 
 			key={visit.visitId}
