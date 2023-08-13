@@ -22,7 +22,8 @@ const formatWishData = (data) => {
 		priceRange: data.price_range,
 		cuisine: data.cuisine,
 		latitude: data.latitude,
-		longitude: data.longitude
+		longitude: data.longitude,
+		photo: data.photo
 	}
 };
 
@@ -43,18 +44,19 @@ const formatVisitData = (data) => {
 		latitude: data.latitude,
 		cuisine: data.cuisine,
 		priceRange: data.price_range,
+		photo: data.price.photo
 	}
 }
 
 const initialViewport = {
-	longitude: -73.98113,
-	latitude: 40.767365,
+	longitude: -71.0989,
+	latitude: 42.3624,
 	zoom: 12
 }
 
 const initialLonLat = {
-	longitude: -73.98113,
-	latitude: 40.767365,
+	longitude: -71.0989,
+	latitude: 42.3624,
 }
 
 const WishlistPage = ({userId}) => {

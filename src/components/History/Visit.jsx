@@ -40,6 +40,7 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 				{isOpen && (
 					<div className='selected-record__container'>
 						<div className='selected-record__content'>
+							<img src={visitData.photo} />
 							<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
 							<p>{visitData.cuisine} | {visitData.priceRange}</p>
 							<p>Visited on: {visitDate}</p>

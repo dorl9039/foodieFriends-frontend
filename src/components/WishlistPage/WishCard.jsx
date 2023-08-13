@@ -29,6 +29,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 		<section className='selected-record__container'>
 			<section className='selected-record__content'>
 				<section className='wish-restaurant-info'>
+					<img src={wishData.photo} />
 					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
 					<p>{wishData.cuisine} | {wishData.priceRange}</p>
 					<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>

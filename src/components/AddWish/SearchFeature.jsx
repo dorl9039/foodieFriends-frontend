@@ -17,8 +17,8 @@ const SearchFeature = ({ onRetrieve }) => {
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-73.943, 40.7789],
-            zoom: 11
+            center: [-71.0989, 42.3624],
+            zoom: 12
         });
 
         setMap(map)
