@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 import LoginBox from '../components/Account/LoginBox'
 import RegisterBox from '../components/Account/RegisterBox'
+import ConfirmationModal from '../components/ConfirmationModal';
 import axios from 'axios';
 
 import './Authenticate.css';
@@ -19,7 +20,7 @@ const Authenticate = ({updateUser}) => {
 			navigate('/home')
 		}, (err) => {
 			setLoginFail(true)
-			setLoginFailMessage(err.response.data.message)
+			setLoginFailMessage(err.response.data)
 			return;
 		})  
 		.catch(err => ("Error in handleLoginSubmit", err))
@@ -58,7 +59,10 @@ const Authenticate = ({updateUser}) => {
 			<p>Organize your restaurant wishlist and connect with friends!</p>
 			</section>
 			<section className='authenticate-page__row3'>
-					{loginFail? <p>{loginFailMessage}</p> : <></>}
+					<ConfirmationModal 
+						open={loginFail} 
+						handleClose={()=>setLoginFail(false)} 
+						message={loginFailMessage} />
 					<LoginBox 
 						handleSubmit={handleLoginSubmit} />
 					<section className='row__divider'>
