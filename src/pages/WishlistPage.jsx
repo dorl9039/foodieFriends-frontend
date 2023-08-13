@@ -44,7 +44,7 @@ const formatVisitData = (data) => {
 		latitude: data.latitude,
 		cuisine: data.cuisine,
 		priceRange: data.price_range,
-		photo: data.price.photo
+		photo: data.photo
 	}
 }
 
