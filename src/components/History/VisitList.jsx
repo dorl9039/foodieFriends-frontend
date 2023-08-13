@@ -64,7 +64,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 						onClick={onPriceSortClick}>Price</button>
 					<button
 					className={sortOption.date?'active-sort-option':'inactive-sort-option'} 
-					onClick={onDateSortClick}>Date visited</button>
+					onClick={onDateSortClick}>Date</button>
 					<button
 					className={sortOption.rating?'active-sort-option':'inactive-sort-option'} 
 					onClick={onRatingSortClick}>Rating</button>

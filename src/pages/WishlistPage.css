@@ -18,7 +18,15 @@
   min-height: 30rem;
 }
 
-.list-view__button {
+.view-state-toggle__container{
+  display: flex;
+  flex-direction: row;
+  font-family: 'Aileron';
+  font-size: 14pt;
+  justify-content: space-between
+
+}
+/* .list-view__button {
   background-color: #f88c48;
   font-size: 14pt;
   border-radius: 999px;
@@ -27,4 +35,4 @@
   transition: border-color 0.25s;
   margin: auto;
   cursor: pointer;
-}
+} */

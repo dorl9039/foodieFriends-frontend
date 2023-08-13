@@ -64,7 +64,8 @@ const WishlistPage = ({userId}) => {
 	const [selectedVisit, setSelectedVisit] = useState(initialLonLat)
 	const [selectedMarker, setSelectedMarker] = useState(null)
 	const [viewport, setViewport] = useState(initialViewport)
-	const [view, setView] = useState(true)
+	// default false sets Wishlist view 
+	const [view, setView] = useState(false)
 
 	useEffect(() => {
 		axios
@@ -90,7 +91,6 @@ const WishlistPage = ({userId}) => {
 		.then(res => {
 			const visits = res.data.map(visit => formatVisitData(visit))
 			setHistoryData(visits)
-			// setSelectedVisit(initialLonLat)
 		})
 		.catch(err => {
 			console.log("Error in useEffect get history", err)
@@ -286,10 +286,12 @@ const WishlistPage = ({userId}) => {
 	console.log('in WishlistPage, historyData', historyData)
 	return (
 		<div className='lists-page__container'>
-			{view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
+			{!view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
 			<div className='lists-page__content'>
 				<div className='main-list__container'>
+					<div className='view-state-toggle__container'>
 					<span>Wishlist</span> <ViewToggle isToggled={view} onToggle={() => setView(prev => !prev)}/><span>History</span>
+					</div>
 						{!view? 
 						<Wishlist 
 							wishlistData={wishlistData} 
