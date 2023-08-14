@@ -1,7 +1,3 @@
-.visit-card__container {
-    border: .5px solid black;
-    align-items: left;
-}
-.visit-card__container ul {
-    list-style-type: none;
+.history {
+    background-color: #39a793;
 }

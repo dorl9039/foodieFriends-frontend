@@ -91,7 +91,7 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [view])
 
-console.log('in WishlistPage, wishlistData', wishlistData);
+// console.log('in WishlistPage, wishlistData', wishlistData);
 	
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {
@@ -132,6 +132,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 		.then(() => {
 			setWishlistData(prev => prev.filter(wish => wish.wishId !== wishId));
 			setSelectedWishData(initialLonLat);
+			setSelectedMarker(null)
 		})
 		.catch((err) => {
 			console.log("Error in handleDelete", err);
@@ -186,20 +187,26 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 				longitude: thisWishData.longitude,
 			})
 		)
+		setSelectedMarker(wishId)
 	}
 
 	const handleVisitSelect = (visitId) => {
 		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
 		const thisVisitData = thisVisit[0]
+		console.log('in handleVisitSelect, thisVisitData', thisVisitData)
 		setSelectedVisit(thisVisitData)
 		setViewport(prev => (
 			{...prev,
 			latitude: thisVisitData.latitude,
 			longitude: thisVisitData.longitude
 			}
-		))
+			))
+		setSelectedMarker(visitId)
 	}
-
+	console.log('selectedVisit', selectedVisit)
+	console.log('selectedWishData', selectedWishData)
+	console.log('selectedMarker', selectedMarker)
+	console.log('view', view)
 	const handleVisitEdit = (visitId, data) => {
 		const visitData = {
 			visit_comment: data.visitComment,
@@ -274,12 +281,12 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 	}
 
 	const onMarkerClick = (id) => {
+		console.log('in onMarkerClick id', id)
 		if (view) {
 			handleVisitSelect(id)
 		} else {
 			handleWishSelect(id)
 		}
-
 		setSelectedMarker(id)
 	}
 	
@@ -329,7 +336,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 					mapStyle="mapbox://styles/mapbox/streets-v9"
 					onMove={(e)=>setViewport(e.viewState)}
 					>
-					{ !view? (
+					{ !view ? (
 						wishlistData.map((wish) => (
 							<Marker key={wish.wishId}
 								latitude={wish.latitude}
@@ -343,14 +350,14 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 									latitude={visit.latitude}
 									longitude={visit.longitude}
 									onClick={() => onMarkerClick(visit.visitId)}
-									color='red'>
+									color='#39a793'>
 								</Marker>
 							)))
 
 					}
-					{selectedMarker && (!view ? 
-						<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/> :
-						<MapPopup record={selectedVisit} closePopup={()=>setSelectedMarker(null)}/>
+					{selectedMarker && (view ? 
+						<MapPopup record={selectedVisit} closePopup={()=>setSelectedMarker(null)}/>:
+						<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/> 
 					)
 
 					}

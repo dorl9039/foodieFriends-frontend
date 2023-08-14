@@ -16,11 +16,11 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker,
 	const onSelectClick = () => {
 		handleSelect(wish.wishId)
 		setIsOpen(props => !props)
-		if (isOpen) {
-			setSelectedMarker(null)
-		} else {
-			setSelectedMarker(wish.wishId)
-		}
+		// if (isOpen) {
+		// 	setSelectedMarker(null)
+		// } else {
+		// 	setSelectedMarker(wish.wishId)
+		// }
 	}
 
 	return(

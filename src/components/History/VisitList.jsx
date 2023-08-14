@@ -72,13 +72,13 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button
-						className={sortOption.price?'active-sort-option':'inactive-sort-option'} 
+						className={sortOption.price?'active-sort-option history':'inactive-sort-option'} 
 						onClick={onPriceSortClick}>Price</button>
 					<button
-					className={sortOption.date?'active-sort-option':'inactive-sort-option'} 
+					className={sortOption.date?'active-sort-option history':'inactive-sort-option'} 
 					onClick={onDateSortClick}>Date</button>
 					<button
-					className={sortOption.rating?'active-sort-option':'inactive-sort-option'} 
+					className={sortOption.rating?'active-sort-option history':'inactive-sort-option'} 
 					onClick={onRatingSortClick}>Rating</button>
 				</section>
 				<section className='record__container'>

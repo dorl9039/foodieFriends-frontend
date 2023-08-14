@@ -32,10 +32,9 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 
 	
 		return (
-			<section className='record'>
+			<section className='record history'>
 				<section className='record-title__container' onClick={onSelectClick}>
 					<h3>Visit to {visitData.restaurantName}</h3>
-					{/* <div>{isOpen? '-' : '+'}</div> */}
 				</section>
 				{isOpen && (
 					<div className='selected-record__container'>
