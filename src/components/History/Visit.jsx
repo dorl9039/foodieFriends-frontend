@@ -34,24 +34,28 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 		return (
 			<section className='record'>
 				<section className='record-title__container' onClick={onSelectClick}>
-					<h4>Visit {visitData.visitId} to {visitData.restaurantName}</h4>
-					<div>{isOpen? '-' : '+'}</div>
+					<h3>Visit to {visitData.restaurantName}</h3>
+					{/* <div>{isOpen? '-' : '+'}</div> */}
 				</section>
 				{isOpen && (
 					<div className='selected-record__container'>
 						<div className='selected-record__content'>
-							<img src={visitData.photo} />
-							<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
-							<p>{visitData.cuisine} | {visitData.priceRange}</p>
-							<p>Visited on: {visitDate}</p>
-							<p>Visit rating: {visitData.rating}</p>
-							<p>Visit comment: {visitData.visitComment}</p>
-							<p>Went with: {visitAttendees}</p>
+							<div className='selected-record-details__container'>
+								<img src={visitData.photo} />
+								<div className='selected-record__details'>
+									<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
+									<p>{visitData.cuisine} | {visitData.priceRange}</p>
+									<p>Visited on: {visitDate}</p>
+									<p>Visit rating: {visitData.rating}</p>
+									<p>Visit comment: {visitData.visitComment}</p>
+									<p>Went with: {visitAttendees}</p>
+								</div>
 						</div>
 						<div className='record-buttons__container'>
 							<button onClick={()=>setDeleteOpen(true)}
 								>Delete</button>
 							<button onClick={() => setEditOpen(true)}>Edit</button>
+						</div>
 						</div>
 					</div>
 				)

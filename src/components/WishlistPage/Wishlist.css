@@ -64,7 +64,8 @@
   max-height: 40rem;
   min-height: 10rem;
   overflow-y: scroll;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 5px;
+  height: calc(100vh - 230px)
 }
 
