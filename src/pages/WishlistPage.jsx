@@ -290,11 +290,12 @@ const WishlistPage = ({userId}) => {
 
 	return (
 		<div className='lists-page__container'>
-			{!view? <h2>Your Wishlist</h2> : <h2>Your History</h2>}
-			<div className='lists-page__content'>
 				<div className='main-list__container'>
-					<div className='view-state-toggle__container'>
-					<span>Wishlist</span> <ViewToggle isToggled={view} onToggle={handleViewToggle}/><span>History</span>
+					<div className='view-state-header__container'>
+						{!view? <h2 className='lists-wishlist__header'>Your Wishlist</h2> : <h2 className='lists-history__header'>Your History</h2>} 
+						<div className='view-state-toggle__container'>
+						<span className={!view? 'onview' : ''}>Wishlist</span> <ViewToggle isToggled={view} onToggle={handleViewToggle}/><span className={view? 'onview' : ''}>History</span>
+						</div>
 					</div>
 						{!view? 
 						<Wishlist 
@@ -354,7 +355,6 @@ const WishlistPage = ({userId}) => {
 					}
 				</Map>
 			</div>
-		</div>
 	)
 }
 

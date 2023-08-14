@@ -1,38 +1,42 @@
+
 .lists-page__container {
-  padding: 20px 7%;
-}
-
-.lists-page__container h2 {
-  font-family: 'Source Serif Pro';
-  color: #405f8b;
-  font-size: 24pt;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.lists-page__content {
+  padding: 2%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 3fr;
   column-gap: 1.5rem;
   min-height: 30rem;
+  height: 590px;
 }
 
-.view-state-toggle__container{
+.view-state-header__container {
+  display: flex;
+  flex-direction: row;
+  font-family: "Source Serif Pro";
+  font-size: 15pt;
+  justify-content: space-between;
+}
+.view-state-header__container h2 {
+  margin: .5rem 0;
+}
+
+.onview {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.lists-wishlist__header {
+  color: #349bb5;
+}
+
+.lists-history__header {
+  color: #405f8b;
+}
+
+.view-state-toggle__container {
   display: flex;
   flex-direction: row;
   font-family: 'Aileron';
-  font-size: 14pt;
-  justify-content: space-between
-
+  font-size: 12pt;
+  justify-content: center;
+  align-items: center;
 }
-/* .list-view__button {
-  background-color: #f88c48;
-  font-size: 14pt;
-  border-radius: 999px;
-  padding: 3px 10px;
-  color: #405f8b;
-  transition: border-color 0.25s;
-  margin: auto;
-  cursor: pointer;
-} */

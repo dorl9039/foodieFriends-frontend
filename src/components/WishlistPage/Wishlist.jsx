@@ -73,7 +73,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 						type='text'
 						value={searchInput}
 						onChange={handleSearchInputChange}
-						placeholder='Search' />
+						placeholder=' Search your list' />
 
 				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>

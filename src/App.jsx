@@ -23,7 +23,7 @@ function App() {
         <Navbar updateUser={handleUserUpdate}/>
         <Routes>
             <Route index element={<WishlistPage userId={user.userId}/>} />
-            <Route element={<WishlistPage userId={user.userId}/>} path='lists'/>
+            <Route element={<WishlistPage userId={user.userId}/>} path='home'/>
             <Route element={<Profile user={user}/>} path='profile'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
