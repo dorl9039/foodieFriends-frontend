@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import WishCard from "./WishCard";
+import './Wish.css'
 
 const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, setSelectedMarker, handleWishMove}) => {
 	const [isOpen, setIsOpen] = useState(false)

@@ -28,18 +28,31 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 	return(
 		<section className='selected-record__container'>
 			<section className='selected-record__content'>
-				<section className='wish-restaurant-info'>
-					<img src={wishData.photo} />
-					<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
-					<p>{wishData.cuisine} | {wishData.priceRange}</p>
-					<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
-					<p>FoodieFriends: {wishData.foodieFriends.length > 0? wishData.foodieFriends.map(friend => friend.username) : 'None yet!'}</p>
+				<section className='selected-record-details__container'>
+						<img src={wishData.photo} />
+						<section className='selected-record__details'>
+							<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
+							<p>{wishData.cuisine}</p>
+							<p><b>Price:</b> {wishData.priceRange} | <b>Priority:</b> {wishData.priority}</p>
+						
+							<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
+							<b>FoodieFriends:</b> {wishData.foodieFriends.length > 0? 
+								<section>{wishData.foodieFriends.map(friend => friend.username)}
+								<button 
+									className='contact-friend__button' 
+									onClick={() => window.location=`mailto:${wishData.foodieFriends.map(friend => friend.email).toString()}?subject=Want to try out ${wishData.restaurantName} together?`}>
+										<section>✉️</section>
+									<section>Connect with FoodieFriends</section></button>
+								</section> 
+								: 
+								'None yet!'}
+						</section>
 				</section>
-				<section className='record-buttons__container'>
-				<button onClick={() => setDeleteOpen(true)}>Delete</button>
-				<button onClick={onEditClick}>Edit</button>
-				<button onClick={onMoveClick}>Move</button>
-			</section>
+					<section className='record-buttons__container'>
+						<button onClick={() => setDeleteOpen(true)}>Delete</button>
+						<button onClick={onEditClick}>Edit</button>
+						<button onClick={onMoveClick}>Move</button>
+					</section>
 			</section>
 
 			<Modal

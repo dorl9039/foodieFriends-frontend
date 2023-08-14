@@ -91,7 +91,7 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [view])
 
-	console.log('in WishlistPage, wishlistData', wishlistData);
+console.log('in WishlistPage, wishlistData', wishlistData);
 	
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {
