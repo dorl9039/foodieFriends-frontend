@@ -97,11 +97,11 @@ const WishlistPage = ({userId}) => {
 		if (type === 'price') {
 			if (ascending) {
 				setWishlistData(prev =>
-					prev.sort((a, b) => a.priceRange.length - b.priceRange.length)
+					prev.sort((a, b) => (a.priceRange?.length?? 0) - (b.priceRange?.length?? 0))
 				)
 			} else {
 				setWishlistData(prev =>
-					prev.sort((a, b) => b.priceRange.length - a.priceRange.length)
+					prev.sort((a, b) => (b.priceRange?.length?? 0) - (a.priceRange?.length?? 0))
 				)
 			}
 		} else if (type === 'recent') {
@@ -243,11 +243,11 @@ const WishlistPage = ({userId}) => {
 		if (type === 'price') {
 			if (ascending) {
 				setHistoryData(prev =>
-					prev.sort((a, b) => a.priceRange?.length - b.priceRange?.length)
+					prev.sort((a, b) => (a.priceRange?.length?? 0) - (b.priceRange?.length?? 0))
 				)
 			} else {
 				setHistoryData(prev =>
-					prev.sort((a, b) => b.priceRange?.length - a.priceRange?.length)
+					prev.sort((a, b) => (b.priceRange?.length?? 0) - (a.priceRange?.length?? 0))
 				)
 			}
 		} else if (type === 'date') {
@@ -312,7 +312,6 @@ const WishlistPage = ({userId}) => {
 							handleSelect={handleWishSelect}
 							selectedWish={selectedWishData}
 							selectedMarker={selectedMarker}
-							setSelectedMarker={setSelectedMarker}
 							sortWishes={sortWishes}
 							handleWishMove={handleWishMove}
 							/>

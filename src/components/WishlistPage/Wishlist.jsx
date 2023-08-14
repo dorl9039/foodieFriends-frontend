@@ -3,7 +3,7 @@ import Wish from "./Wish";
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes, selectedMarker, setSelectedMarker, handleWishMove}) => {
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes, selectedMarker, handleWishMove}) => {
 	const [priceOrder, setPriceOrder] = useState(true)
 	const [recentOrder, setRecentOrder] = useState(true)
 	const [priorityOrder, setPriorityOrder] = useState(true)
@@ -27,7 +27,6 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 				handleDelete={handleDelete}
 				handleWishEdit={handleWishEdit}
 				selectedMarker={selectedMarker}
-				setSelectedMarker={setSelectedMarker}
 				handleWishMove={handleWishMove}
 			/>
 			);
