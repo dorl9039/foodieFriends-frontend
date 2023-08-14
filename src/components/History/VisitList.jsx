@@ -68,7 +68,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 						type='text'
 						value={searchInput}
 						onChange={handleSearchInputChange}
-						placeholder='Search' />
+						placeholder=' Search your list' />
 				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button

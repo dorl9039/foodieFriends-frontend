@@ -34,23 +34,28 @@
 .selected-record__details {
     margin: 0;
     padding: .5rem;
-    text-align: center;
+    text-align: left;
 }
 
 .selected-record__details p{
     margin: .25rem;
 }
 
-
+.detail-type {
+    color: #f88c48;
+    margin-right: .5rem;
+}
 .wish-restaurant-comment {
     color: black;
     padding: .5rem;
+    padding-left: 0;
+    margin: 0;
 }
 
 .contact-friend__button {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     min-width: 25%;
     background-color: #405f8b;
     font-family: "Aileron";
@@ -59,23 +64,25 @@
     padding: 3px 15px;
     color: white;
     transition: border-color 0.25s;
-    margin: 0 auto 10px;
+    margin: .5rem auto 0;
+    width: 55%;
   }
   
-  .contact-friend__button:hover {
-    background-color: white;
-    color: #405f8b;
+.contact-friend__button:hover {
+    background-color: #57a5b8;
+    color: white;
     cursor: pointer;
-  }
-  
-  .contact-friend__button:active {
+}
+
+.contact-friend__button:active {
     transform: translateY(2px)
-  }
+}
 
 .record-buttons__container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 10px
 }
 .record-buttons__container button {
     background-color: #405f8b;
@@ -107,7 +114,7 @@
 }
 
 .delete-modal {
-    background-color: #ffefbd;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -116,11 +123,11 @@
     font-family: 'Aileron';
     color: #405f8b;
     border-radius: 10px;
-    border: 1px solid #405f8b;
+    border: 1px solid darkslategray;
 }
 
 .delete-modal button {
-    background-color: #f88c48;
+    background-color: #405f8b;
     color: white;
     text-align: center;
     line-height: 20px;
@@ -130,8 +137,8 @@
     cursor: pointer;
 }
 .delete-modal button:hover {
-    background-color: white;
-    color: #405f8b;
+    color: white;
+    background-color: #f88c48;
 }
 .delete-modal button:active {
     transform: translateY(2px)

@@ -58,7 +58,7 @@ const Authenticate = ({updateUser}) => {
 			<section className='authenticate-page-rows__container'>
 				<section className='authenticate-page__row2'>
 					<section className='logo-title__container'>
-						<img className='logo' src={logo} alt="foodieFriends-logo" />
+						<img className='authenticate-page__logo' src={logo} alt="foodieFriends-logo" />
 						<h1>FoodieFriends</h1>
 					</section>
 					<p>Organize your restaurant wishlist and connect with friends!</p>

@@ -100,22 +100,23 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
           /> 
           <label htmlFor='attendees'>Add Attendees</label>
           <input
-            className='edit-record-text__field'
+            className='edit-record-text__field attendees-search__field'
             type='text'
             value={searchInput}
             onChange={handleSearchInputChange}
             placeholder='Search for usernames' />
-          <ul>
+          <ul className='attendees-search-result__container'>
             {friends.filter(friend => friend.username.includes(searchInput)).map(friend =>
-              (searchInput.length > 0? <li key={friend.username}>
-                {friend.username}
-                <button
-                  type='button'
-                  onClick={() => handleAddAttendee(friend)}> Add </button>
-              </li> : <></>)
+              (searchInput.length > 0? 
+                <li key={friend.username}>
+                  {friend.username}
+                  <button className='add-attendee__button'
+                    type='button'
+                    onClick={() => handleAddAttendee(friend)}> Add </button>
+                </li> : <></>)
             )}
           </ul>
-          <div>
+          <div className='selected-attendees__container'>
             <p>Selected Attendees:</p>
             <ul>
               {selectedAttendees.map((attendee) => (

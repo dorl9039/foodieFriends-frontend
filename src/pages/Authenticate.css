@@ -7,9 +7,9 @@
 
 .authenticate-page__row1 {
     background-image: url(../media/foodieFriends-header-img.png);
-    /* background-image: linear-gradient(transparent, white 100%), url(../media/foodieFriends-header.png);  */
+    background-image: linear-gradient(transparent, white 100%), url(../media/foodieFriends-header-img.png); 
     height: 50vh;
-    width: 100%;
+    width: 100vw;
     background-position: top;
     background-size: cover;
     /* position: relative;
@@ -24,7 +24,7 @@
     width: 100%
 }
 
-.logo {
+.authenticate-page__logo {
     height: 120px;
 }
 .authenticate-page__row2 {

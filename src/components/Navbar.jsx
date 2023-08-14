@@ -2,6 +2,7 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { useNavigate} from 'react-router-dom';
+import logo from '../media/foodieFriends-logo.png'
 
 const Navbar = ({updateUser}) => {
 	const navigate = useNavigate();
@@ -15,13 +16,16 @@ const Navbar = ({updateUser}) => {
 	}
 	
 	return (
-		<nav className='header-navbar'>
-			<div className='header__title'>FoodieFriends</div>
-			<NavLink to='/home'>Your Lists</NavLink>
-			<NavLink to='/add'>Add Wish</NavLink>
-			<NavLink to='/profile'>Profile</NavLink>
-			<button className='logout-button' onClick={handleLogout}>Logout</button>
-		</nav>
+		<div className='navbar-main__container'>
+			<nav className='header-navbar'>
+				<img className='navbar__logo' src={logo} alt="foodieFriends-logo" />
+				<NavLink to='/home'>Your Lists</NavLink>
+				<NavLink to='/add'>Add Wish</NavLink>
+				<NavLink to='/profile'>Profile</NavLink>
+			</nav>
+			<button className='logout-button' onClick={handleLogout}>Sign out</button>
+
+		</div>
 	);
 };
 

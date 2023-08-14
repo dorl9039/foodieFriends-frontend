@@ -29,30 +29,34 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 		<section className='selected-record__container'>
 			<section className='selected-record__content'>
 				<section className='selected-record-details__container'>
-						<img src={wishData.photo} />
-						<section className='selected-record__details'>
-							<p>{wishData.address1}, {wishData.city}, {wishData.state}</p>
-							<p>{wishData.cuisine}</p>
-							<p><b>Price:</b> {wishData.priceRange} | <b>Priority:</b> {wishData.priority}</p>
-						
-							<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
-							<b>FoodieFriends:</b> {wishData.foodieFriends.length > 0? 
-								<section>{wishData.foodieFriends.map(friend => friend.username)}
+					<img src={wishData.photo} />
+					<section className='selected-record__details'>
+						<p><b className='detail-type'>Address: </b>{wishData.address1}, {wishData.city}, {wishData.state}</p>
+						<p><b className='detail-type'>Cuisine:</b> {wishData.cuisine}</p>
+						<p><b className='detail-type'>Price:</b> {wishData.priceRange} | <b>Priority:</b> {wishData.priority}</p>
+					
+						<p className='wish-restaurant-comment'><b className='detail-type'>Wish note:</b> {wishData.comment}</p>
+						<div className='wish-restaurant-foodiefriends'>
+							{wishData.foodieFriends.length > 0? 
+								<div>
+									<section><b className='detail-type'>FoodieFriends:</b> {wishData.foodieFriends.map(friend => friend.username).toString()}</section> 
 									<button 
 										className='contact-friend__button' 
 										onClick={() => window.location=`mailto:${wishData.foodieFriends.map(friend => friend.email).toString()}?subject=Want to try out ${wishData.restaurantName} together?`}>
-											<section>✉️</section>
-									<section>Connect with FoodieFriends</section></button>
-								</section> 
-								: 
-								'None yet!'}
-						</section>
+										<section>✉️</section>
+										<section>Message FoodieFriends</section>
+									</button>					
+								</div>
+							: <></>}
+						</div>
+					</section>
+				</section>
 					<section className='record-buttons__container'>
 						<button onClick={() => setDeleteOpen(true)}>Delete</button>
 						<button onClick={onEditClick}>Edit</button>
 						<button onClick={onMoveClick}>Move</button>
 					</section>
-				</section>
+				
 			</section>
 
 			<Modal

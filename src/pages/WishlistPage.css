@@ -7,12 +7,15 @@
   min-height: 30rem;
   height: calc(100vh - 90.5px);
 }
-
+.main-list__container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .view-state-header__container {
   display: flex;
   flex-direction: row;
   font-family: "Source Serif Pro";
-  font-size: 15pt;
+  font-size: 18pt;
   justify-content: space-between;
 }
 .view-state-header__container h2 {

@@ -294,7 +294,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 					<div className='view-state-header__container'>
 						{!view? <h2 className='lists-wishlist__header'>Your Wishlist</h2> : <h2 className='lists-history__header'>Your History</h2>} 
 						<div className='view-state-toggle__container'>
-						<span className={!view? 'onview' : ''}>Wishlist</span> <ViewToggle isToggled={view} onToggle={handleViewToggle}/><span className={view? 'onview' : ''}>History</span>
+							<span className={!view? 'onview' : ''}>Wishlist</span> <ViewToggle isToggled={view} onToggle={handleViewToggle}/><span className={view? 'onview' : ''}>History</span>
 						</div>
 					</div>
 						{!view? 
@@ -320,7 +320,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 							selectedMarker={selectedMarker}
 							/>
 						}
-					</div>
+				</div>
 				<Map
 					className='wish-map'
 					{...viewport}
@@ -342,7 +342,8 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 								<Marker key={visit.visitId}
 									latitude={visit.latitude}
 									longitude={visit.longitude}
-									onClick={() => onMarkerClick(visit.visitId)}>
+									onClick={() => onMarkerClick(visit.visitId)}
+									color='red'>
 								</Marker>
 							)))
 

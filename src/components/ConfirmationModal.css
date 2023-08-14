@@ -8,7 +8,7 @@
 }
 
 .general-modal__content {
-  background-color: #ffefbd;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -17,22 +17,24 @@
   font-family: 'Aileron';
   color: #405f8b;
   border-radius: 10px;
-  border: 1px solid #405f8b;
+  border: 1px solid darkslategray;
+  min-width: 20vw;
 }
 
 .general-modal__content button {
-  background-color: #f88c48;
+  background-color: #405f8b;
   color: white;
   text-align: center;
   line-height: 20px;
   padding: 3px 10px;
-  margin: 0 auto;
+  margin-top: 0;
   border-radius: 9999px;
   cursor: pointer;
+  width: 100%;
 }
 .general-modal__content button:hover {
-  background-color: white;
-  color: #405f8b;
+  background-color: #f88c48;
+  color: white;
 }
 .general-modal__content button:active {
   transform: translateY(2px)

@@ -43,12 +43,13 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 							<div className='selected-record-details__container'>
 								<img src={visitData.photo} />
 								<div className='selected-record__details'>
-									<p>{visitData.address1}, {visitData.city}, {visitData.state}</p>
-									<p>{visitData.cuisine} | {visitData.priceRange}</p>
-									<p>Visited on: {visitDate}</p>
-									<p>Visit rating: {visitData.rating}</p>
-									<p>Visit comment: {visitData.visitComment}</p>
-									<p>Went with: {visitAttendees}</p>
+									<p><b className='detail-type'>Address: </b>{visitData.address1}, {visitData.city}, {visitData.state}</p>
+									<p><b className='detail-type'>Cuisine: </b>{visitData.cuisine}</p>
+									<p><b className='detail-type'>Price: </b>{visitData.priceRange}</p>
+									<p><b className='detail-type'>Visited: </b>{visitDate}</p>
+									<p><b className='detail-type'>Your rating:</b> {visitData.rating}</p>
+									<p><b className='detail-type'>Review: </b>{visitData.visitComment}</p>
+									<p><b className='detail-type'>Went with: </b>{visitAttendees}</p>
 								</div>
 						</div>
 						<div className='record-buttons__container'>

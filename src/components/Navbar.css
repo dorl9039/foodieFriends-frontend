@@ -1,49 +1,54 @@
+.navbar-main__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: .5px solid darkslategray;
+}
 .header-navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    margin: 0;
-    text-align: center;
-    align-items: center;
-    padding: 20px 5%;
-    gap: 7px;
-    border-bottom: .5px solid darkslategray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+  padding: 10px 50px;
+  gap: 7px;
+
 }
 
-.header__title{
-    margin: 0 0;
-    /* background-color: #fff5d7; */
-    text-align: center;
-    font-size: 26pt;
-    /* vertical-align: bottom; */
-    line-height: 1.5rem;
-    color: #f88c48;
-    font-family: 'Source Serif Pro';
-  }
+.navbar__logo {
+  width: 60px;
+  margin-right: 50px;
+}
 
 nav > a {
-    font-family: "Aileron";
-    font-weight: 600;
-    font-size: 14pt;
-    padding: 0;
-    color: #405f8b;
-    margin: 0;
+  font-family: "Aileron";
+  font-weight: 600;
+  font-size: 14pt;
+  padding: 0;
+  color: #405f8b;
+  margin-top: 10px;
+  margin-right: 50px;
 }
 
 a.active {
-    text-decoration: underline #f88c48;
-    color: #f88c48
+  text-decoration: underline #f88c48;
+  color: #f88c48
 }
 
 .logout-button {
-    background-color: #f88c48;
-    font-family: "Aileron";
-    font-size: 12pt;
-    border-radius: 999px;
-    padding: 3px 10px;
-    color: white;
-    transition: border-color 0.25s;
-    margin: 0;
+  background-color: #f88c48;
+  font-family: "Aileron";
+  font-size: 12pt;
+  border-radius: 999px;
+  padding: 3px 10px;
+  color: white;
+  transition: border-color 0.25s;
+  /* margin: auto 20px auto 0; */
+  align-self: center;
+  margin-right: 20px;
+  /* width: 100% */
 }
 
 .logout-button:hover {
@@ -53,5 +58,5 @@ a.active {
   }
   
 .logout-button:active {
-transform: translateY(2px)
+  transform: translateY(2px)
 }

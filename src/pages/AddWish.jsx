@@ -65,7 +65,7 @@ const AddWish = ({ userId }) => {
 					<ConfirmationModal
 						open={showSuccessMessage}
 						handleClose={() => setShowSuccessMessage(false)}
-						message="Wish added!" 
+						message={`${restaurantData.restaurantName} successfully added to wishlist!`} 
 						/>
 					<ConfirmationModal
 						open={showErrorMessage}
