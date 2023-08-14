@@ -59,12 +59,12 @@
   color: white
 }
 
-/* .record__container {
+.record__container {
   margin: 0;
   max-height: 40rem;
   min-height: 10rem;
   overflow-y: scroll;
   border: 1px solid #000;
   border-radius: 5px;
-} */
+}
 

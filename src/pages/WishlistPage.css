@@ -1,11 +1,11 @@
 
 .lists-page__container {
-  padding: 2%;
+  padding: 0 0 0 30px;
   display: grid;
   grid-template-columns: 2fr 3fr;
   column-gap: 1.5rem;
   min-height: 30rem;
-  height: 590px;
+  height: calc(100vh - 90.5px);
 }
 
 .view-state-header__container {

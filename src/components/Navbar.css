@@ -4,17 +4,18 @@
     background-color: white;
     margin: 0;
     text-align: center;
-    padding: 40px 5% 20px;
+    align-items: center;
+    padding: 20px 5%;
     gap: 7px;
     border-bottom: .5px solid darkslategray;
-
 }
+
 .header__title{
     margin: 0 0;
     /* background-color: #fff5d7; */
     text-align: center;
-    font-size: 32pt;
-    vertical-align: bottom;
+    font-size: 26pt;
+    /* vertical-align: bottom; */
     line-height: 1.5rem;
     color: #f88c48;
     font-family: 'Source Serif Pro';
@@ -26,7 +27,7 @@ nav > a {
     font-size: 14pt;
     padding: 0;
     color: #405f8b;
-    margin: auto 0 0;
+    margin: 0;
 }
 
 a.active {
@@ -42,7 +43,7 @@ a.active {
     padding: 3px 10px;
     color: white;
     transition: border-color 0.25s;
-    margin: auto 0 0;
+    margin: 0;
 }
 
 .logout-button:hover {

@@ -38,21 +38,21 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 							<p className='wish-restaurant-comment'><b>Wish note:</b> {wishData.comment}</p>
 							<b>FoodieFriends:</b> {wishData.foodieFriends.length > 0? 
 								<section>{wishData.foodieFriends.map(friend => friend.username)}
-								<button 
-									className='contact-friend__button' 
-									onClick={() => window.location=`mailto:${wishData.foodieFriends.map(friend => friend.email).toString()}?subject=Want to try out ${wishData.restaurantName} together?`}>
-										<section>✉️</section>
+									<button 
+										className='contact-friend__button' 
+										onClick={() => window.location=`mailto:${wishData.foodieFriends.map(friend => friend.email).toString()}?subject=Want to try out ${wishData.restaurantName} together?`}>
+											<section>✉️</section>
 									<section>Connect with FoodieFriends</section></button>
 								</section> 
 								: 
 								'None yet!'}
 						</section>
-				</section>
 					<section className='record-buttons__container'>
 						<button onClick={() => setDeleteOpen(true)}>Delete</button>
 						<button onClick={onEditClick}>Edit</button>
 						<button onClick={onMoveClick}>Move</button>
 					</section>
+				</section>
 			</section>
 
 			<Modal

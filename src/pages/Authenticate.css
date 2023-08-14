@@ -1,7 +1,14 @@
+.authentication-page__container {
+    background-color:white;
+    /* display: grid;
+    grid-template-rows: 1fr 1fr; */
+    max-height: 100vh;
+}
+
 .authenticate-page__row1 {
-    background-image: url(../media/foodiefriends-header-image.png);
-    background-image: linear-gradient(transparent, #ffefbd 100%), url(../media/foodiefriends-header-image.png); 
-    height: 250px;
+    background-image: url(../media/foodieFriends-header-img.png);
+    /* background-image: linear-gradient(transparent, white 100%), url(../media/foodieFriends-header.png);  */
+    height: 50vh;
     width: 100%;
     background-position: top;
     background-size: cover;
@@ -9,6 +16,17 @@
     overflow: hidden */
 }
 
+.authenticate-page-rows__container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    position: absolute;
+    top: 35%;
+    width: 100%
+}
+
+.logo {
+    height: 120px;
+}
 .authenticate-page__row2 {
     padding: 0 10% 0;
     font-family: 'Source Serif Pro';
@@ -19,17 +37,19 @@
     top: 30%; */
 }
 
-.authenticate-page__header {
+.logo-title__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo-title__container h1 {
     font-size: 60pt;
     margin: 40px 0 0;
 }
 
-.authenticate-page__header .title-foodie {
-    color: #405f8b;
-}
 
-.authenticate-page__header .title-friends {
-    color: #f88c48;
+.authenticate-page__row2 p {
+    color: #57a5b8
 }
 
 .authenticate-page__row3 {
@@ -109,12 +129,7 @@ transition: border-color 0.25s;
     border-bottom: solid 1px #405f8b;
 }
 
-.authentication-page__container {
-    background-color:#ffefbd;
-    display: grid;
-    grid-template-rows: .5fr 1fr 1fr;
-    min-height: 100vh;
-}
+
 
 /* .modal__overlay {
     position: fixed;

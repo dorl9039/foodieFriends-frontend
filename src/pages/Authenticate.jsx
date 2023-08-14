@@ -3,6 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import LoginBox from '../components/Account/LoginBox'
 import RegisterBox from '../components/Account/RegisterBox'
 import ConfirmationModal from '../components/ConfirmationModal';
+import logo from '../media/foodieFriends-logo.png'
 import axios from 'axios';
 
 import './Authenticate.css';
@@ -54,35 +55,39 @@ const Authenticate = ({updateUser}) => {
 	return (
 		<div className='authentication-page__container'>
 			<section className='authenticate-page__row1' />
-			<section className='authenticate-page__row2'>
-				<h1 className='authenticate-page__header'><span className='title-foodie'>Foodie</span><span className='title-friends'>Friends</span></h1>
-			<p>Organize your restaurant wishlist and connect with friends!</p>
-			</section>
-			<section className='authenticate-page__row3'>
-					<ConfirmationModal 
-						open={loginFail} 
-						handleClose={()=>setLoginFail(false)} 
-						message={loginFailMessage} />
-					<LoginBox 
-						handleSubmit={handleLoginSubmit} />
-					<section className='row__divider'>
-						<p>OR</p>
+			<section className='authenticate-page-rows__container'>
+				<section className='authenticate-page__row2'>
+					<section className='logo-title__container'>
+						<img className='logo' src={logo} alt="foodieFriends-logo" />
+						<h1>FoodieFriends</h1>
 					</section>
-					<button 
-						className='auth-button' 
-						onClick={handleRegisterOpen}> Create an account 
-					</button>
-					<section className='row__divider'>
-						<p>OR</p>
-					</section>
-					<RegisterBox 
-						open={registerOpen}
-						handleClose={handleRegisterClose}
-						handleSubmit={handleRegisterSubmit}
-						errorMessage={registerFailMessage} />
-					<button className='auth-button' onClick={googleSignIn}> Sign in with Google</button>
+					<p>Organize your restaurant wishlist and connect with friends!</p>
+				</section>
+				<section className='authenticate-page__row3'>
+						<ConfirmationModal 
+							open={loginFail} 
+							handleClose={()=>setLoginFail(false)} 
+							message={loginFailMessage} />
+						<LoginBox 
+							handleSubmit={handleLoginSubmit} />
+						<section className='row__divider'>
+							<p>OR</p>
+						</section>
+						<button 
+							className='auth-button' 
+							onClick={handleRegisterOpen}> Create an account 
+						</button>
+						<section className='row__divider'>
+							<p>OR</p>
+						</section>
+						<RegisterBox 
+							open={registerOpen}
+							handleClose={handleRegisterClose}
+							handleSubmit={handleRegisterSubmit}
+							errorMessage={registerFailMessage} />
+						<button className='auth-button' onClick={googleSignIn}> Sign in with Google</button>
+				</section>
 			</section>
-			
 			
 		</div>
 	)
