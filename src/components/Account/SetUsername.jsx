@@ -33,13 +33,13 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 
 	return(
 		<div>
-			<button onClick={handleOpen}>{purpose? purpose : 'Set username'}</button>
+			<button className='auth-button' onClick={handleOpen}>{purpose? purpose : 'Set username'}</button>
 			<Modal 
-				className='login-modal__container' 
+				className='register-modal__container' 
 				open={open} 
 				onClose={handleClose} 
 				slots={{backdrop: StyledBackdrop}}>                  
-					<form className='modal' onSubmit={onSetUsername}>
+					<form className='register-modal__form' onSubmit={onSetUsername}>
 						<label htmlFor='setUsername'>Username</label>
 						<input
 							className='login__field'
@@ -48,7 +48,7 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 							value={formData}
 							onChange={handleFormChange}
 						/>
-						<input type='Submit'/>
+						<input className='auth-button' value='Confirm' type='Submit'/>
 					</form>
 			</Modal>
 		</div>

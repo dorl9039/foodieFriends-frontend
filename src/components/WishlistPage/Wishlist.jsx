@@ -3,7 +3,7 @@ import Wish from "./Wish";
 import './Wishlist.css'
 
 
-const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes, selectedMarker, setSelectedMarker, handleWishMove}) => {
+const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selectedWish, sortWishes, selectedMarker, handleWishMove}) => {
 	const [priceOrder, setPriceOrder] = useState(true)
 	const [recentOrder, setRecentOrder] = useState(true)
 	const [priorityOrder, setPriorityOrder] = useState(true)
@@ -12,13 +12,13 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 		recent: false,
 		priority: false,
 	})
-
+	const [searchInput, setSearchInput] = useState('');
 
 	const handleWishEdit = (data) => {
 		handleEdit(selectedWish.wishId, data)
 	}
 
-	const wishes = wishlistData.map((wish) => {
+	const wishes = wishlistData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || wish.cuisine.toLowerCase().includes(searchInput.toLowerCase())).map((wish) => {
 		return (
 			<Wish 
 				key={wish.wishId}
@@ -27,7 +27,6 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 				handleDelete={handleDelete}
 				handleWishEdit={handleWishEdit}
 				selectedMarker={selectedMarker}
-				setSelectedMarker={setSelectedMarker}
 				handleWishMove={handleWishMove}
 			/>
 			);
@@ -60,10 +59,22 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 			priority: true})
 	}
 	
+	const handleSearchInputChange = (event) => {
+		event.preventDefault();
+		setSearchInput(event.target.value)
+	}
+
 	return (
-		<section className='main-list__container'>
-			<section className='wishlist__container'>
-				<section className='wishlist-sort__container'>
+		<section>
+			<section className='list__container'>
+				<input
+						className='search-record__field'
+						type='text'
+						value={searchInput}
+						onChange={handleSearchInputChange}
+						placeholder=' Search your list' />
+
+				<section className='list-sort-btns__container'>
 					<p>Sort by:</p>
 					<button 
 						className={sortOption.price?'active-sort-option':'inactive-sort-option'} 
@@ -75,7 +86,7 @@ const Wishlist = ({wishlistData, handleDelete, handleEdit, handleSelect, selecte
 						className={sortOption.priority?'active-sort-option':'inactive-sort-option'}
 						onClick={onPrioritySortClick}>Priority</button>
 				</section>
-				<section className='wish__container'>
+				<section className='record__container'>
 					{wishes}
 				</section>
 			</section>

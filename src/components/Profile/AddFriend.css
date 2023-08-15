@@ -1,0 +1,42 @@
+.add-friend-form__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 90%;
+  justify-content: space-between;
+  background-color: white;
+  padding: 5%;
+  font-family: "Aileron";
+  font-size: 12pt;
+  border-radius: 10px;
+  color: #405f8b;
+  border: 0.5px solid darkslategray;
+  text-align: center;
+}
+
+.add-friend-form__field {
+  border: .5px solid darkslategray;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+
+.add-friend-form__button {
+  background-color: #405f8b;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  margin: 5px;
+  margin-bottom: 7px;
+  border-radius: 9999px;
+  cursor: pointer;
+  line-height: 20px;
+  padding: 3px 10px;
+}
+
+.add-friend-form__button:hover {
+  background-color: #f88c48;
+}
+.add-friend-form__button:active {
+  transform: translateY(2px)
+}

@@ -1,19 +1,45 @@
-.wishlist-page__container {
-  padding: 20px 7%;
-}
 
-.wishlist-page__container h2 {
-  font-family: 'Source Serif Pro';
-  color: #405f8b;
-  font-size: 24pt;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.wishlist-map__container {
+.lists-page__container {
+  padding: 0 0 0 30px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 3fr;
   column-gap: 1.5rem;
   min-height: 30rem;
+  height: calc(100vh - 90.5px);
+}
+.main-list__container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.view-state-header__container {
+  display: flex;
+  flex-direction: row;
+  font-family: "Source Serif Pro";
+  font-size: 18pt;
+  justify-content: space-between;
+}
+.view-state-header__container h2 {
+  margin: .5rem 0;
+}
+
+.onview {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.lists-wishlist__header {
+  color: #405f8b;
+}
+
+.lists-history__header {
+  color: #405f8b;
+}
+
+.view-state-toggle__container {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Aileron';
+  font-size: 12pt;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,64 +1,90 @@
-.selected-wish__container {
+.selected-record__container {
     display: grid;
     flex-direction: column;
     align-content: center;
 }
-.selected-wish__header {
-    font-family: 'Source Serif Pro';
-    font-size: 18pt;
-    color: #f88c48;
-    text-align: center;
-    margin: 0 auto 1rem;
-  }
-.wish-card__container {
-    background-color: #ffefbd;
+
+.selected-record__content {
+    background-color: white;
     list-style-type: none;
-    max-height: 16rem;
+    /* max-height: 16rem; */
     min-height: 9rem;
     align-content: center;
     padding: .5rem;
+    font-family: "Aileron";
+    font-size: 12pt;
+    color: black;
+}
+.selected-record-details__container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+/* .selected-record-restaurant__content {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    max-height: 7rem;
+} */
+
+.selected-record__content img {
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
 }
 
-.wish-card__container h3 {
-    font-family: 'Source Serif Pro';
-    font-size: 16pt;
-    color: #405f8b;
-    text-align: center;
-    margin-top: .5rem;
-    margin-bottom: 1rem;
-}
-.wish-restaurant-info {
-    font-family: 'Aileron';
-    font-size: 12pt;
-    color: #405f8b;
-    text-align: center;
-}
-.wish-restaurant-info p {
-    margin: .5rem;
-}
-
-.wish-restaurant-priority {
-    font-family: 'Aileron';
-    font-size: 12pt;
-    color: #405f8b;
-    text-align: center;
-    margin-bottom: .5rem;
-}
-
-.wish-restaurant-comment {
-    font-family: 'Aileron';
-    font-size: 12pt;
-    color: #405f8b;
+.selected-record__details {
+    margin: 0;
     padding: .5rem;
-    text-align: center;
+    text-align: left;
 }
 
-.wish-buttons__container {
+.selected-record__details p{
+    margin: .25rem;
+}
+
+.detail-type {
+    color: #f88c48;
+    margin-right: .5rem;
+}
+.wish-restaurant-comment {
+    color: black;
+    padding: .5rem;
+    padding-left: 0;
+    margin: 0;
+}
+
+.contact-friend__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-width: 25%;
+    background-color: #405f8b;
+    font-family: "Aileron";
+    font-size: 10pt;
+    border-radius: 999px;
+    padding: 3px 15px;
+    color: white;
+    transition: border-color 0.25s;
+    margin: .5rem auto 0;
+    width: 55%;
+  }
+  
+.contact-friend__button:hover {
+    background-color: #57a5b8;
+    color: white;
+    cursor: pointer;
+}
+
+.contact-friend__button:active {
+    transform: translateY(2px)
+}
+
+.record-buttons__container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 10px
 }
-.wish-buttons__container button {
+.record-buttons__container button {
     background-color: #405f8b;
     color: white;
     text-align: center;
@@ -71,10 +97,10 @@
     padding: 3px 10px;
 }
 
-.wish-buttons__container button:hover {
+.record-buttons__container button:hover {
     background-color: #f88c48;
 }
-.wish-buttons__container button:active {
+.record-buttons__container button:active {
     transform: translateY(2px)
 }
 
@@ -88,7 +114,7 @@
 }
 
 .delete-modal {
-    background-color: #ffefbd;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -97,11 +123,11 @@
     font-family: 'Aileron';
     color: #405f8b;
     border-radius: 10px;
-    border: 1px solid #405f8b;
+    border: 1px solid darkslategray;
 }
 
 .delete-modal button {
-    background-color: #f88c48;
+    background-color: #405f8b;
     color: white;
     text-align: center;
     line-height: 20px;
@@ -111,8 +137,8 @@
     cursor: pointer;
 }
 .delete-modal button:hover {
-    background-color: white;
-    color: #405f8b;
+    color: white;
+    background-color: #f88c48;
 }
 .delete-modal button:active {
     transform: translateY(2px)

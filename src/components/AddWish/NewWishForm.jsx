@@ -25,7 +25,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 	}
 	return (
 			<div className='new-wish-form__container'>
-				<h3>Add {restaurant}</h3>
+				<h3>Add {restaurant} to wishlist</h3>
 				<form className='new-wish-form__form' onSubmit={handleFormSubmit}>
 					<label htmlFor='priority'>Priority</label>
 					<select 

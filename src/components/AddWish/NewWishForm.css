@@ -5,7 +5,7 @@
 }
 
 .new-wish-form__container h3 {
-    margin: 1rem auto 1rem;;
+    margin: 2rem auto 1rem;
 }
 
 .new-wish-form__form {
@@ -14,16 +14,18 @@
     margin-bottom: 2em;
     width: 100%;
     justify-content: space-between;
-    background-color: #ffefbd;
+    background-color: white;
     padding: 5%;
     font-family: "Aileron";
     font-size: 12pt;
     border-radius: 10px;
-    color: #405f8b
+    color: #405f8b;
+    border: 0.5px solid darkslategray;
 }
 
 .new-wish-form__form label {
     padding: 1rem 0 0;
+    color: #f88c48;
 }
 
 .new-wish-form__form input:not(:last-child) {
@@ -33,7 +35,7 @@
 }
 
 .add-submit__button {
-    background-color: #f88c48;
+    background-color: #405f8b;
     font-family: "Aileron";
     font-size: 12pt;
     border-radius: 999px;
@@ -47,8 +49,8 @@
   
   
 .add-submit__button:hover {
-background-color: white;
-color: #405f8b;
+background-color: #f88c48 ;
+color: white;
 }
 .add-submit__button:active {
 transform: translateY(2px)

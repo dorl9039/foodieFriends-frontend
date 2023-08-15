@@ -9,6 +9,7 @@ import './WishEditForm.css'
 const initialVisitData = {
   visitDate: '',
   visitComment: '',
+  rating: '',
 }
 
 const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
@@ -37,10 +38,9 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
     setSearchInput('')
   }
 
-
   const handleFormChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value
+    const value = name === 'rating' ? parseInt(event.target.value, 10) : event.target.value
     setFormData((prev) => ({
       ...prev,
       [name]: value
@@ -62,12 +62,12 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
 		
   return(
     <Modal 
-      className='edit-wish-modal__container' 
+      className='edit-record-modal__container' 
       open={open} 
       onClose={handleClose} 
       slots={{backdrop: StyledBackdrop}}
       >                  
-      <form className='edit-wish-modal__form' onSubmit={handleFormSubmit}>
+      <form className='edit-record-modal__form' onSubmit={handleFormSubmit}>
         <h3>Move {wishData.restaurantName} to History</h3>
           <label htmlFor='visitDate'>Visit Date</label>
           <input 
@@ -76,9 +76,23 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             value={formData.visitDate}
             onChange={handleFormChange}
             /> 
+          <label htmlFor='rating'>Rating</label>
+						<select 
+							name='rating' 
+							value={formData.rating}
+							onChange={handleFormChange}
+							size='1'
+							> 
+								<option value='0'>Select</option>
+								<option value='1'>1</option>
+								<option value='2'>2</option>
+								<option value='3'>3</option>
+								<option value='4'>4</option>
+								<option value='5'>5</option>
+						</select>
           <label htmlFor='visitComment'>Visit comment</label>
           <input 
-            className='edit-wish-comment__field'
+            className='edit-record-text__field'
               type='text'
               name='visitComment'
               value={formData.comment}
@@ -86,22 +100,23 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
           /> 
           <label htmlFor='attendees'>Add Attendees</label>
           <input
-            className='edit-wish-comment__field'
+            className='edit-record-text__field attendees-search__field'
             type='text'
             value={searchInput}
             onChange={handleSearchInputChange}
             placeholder='Search for usernames' />
-          <ul>
-            {friends.filter(friend => friend.username.includes(searchInput)).map(friend =>
-              <li key={friend.username}>
-                {friend.username}
-                <button
-                  type='button'
-                  onClick={() => handleAddAttendee(friend)}> Add </button>
-              </li>
+          <ul className='attendees-search-result__container'>
+            {friends.filter(friend => friend.username.includes(searchInput)).map((friend, index) =>
+              (searchInput.length > 0? 
+                <li key={index}>
+                  {friend.username}
+                  <button className='add-attendee__button'
+                    type='button'
+                    onClick={() => handleAddAttendee(friend)}> Add </button>
+                </li> : <></>)
             )}
           </ul>
-          <div>
+          <div className='selected-attendees__container'>
             <p>Selected Attendees:</p>
             <ul>
               {selectedAttendees.map((attendee) => (

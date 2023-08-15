@@ -17,8 +17,8 @@ const SearchFeature = ({ onRetrieve }) => {
         const map = new mapboxgl.Map({
             container: mapContainerRef.current,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-73.943, 40.7789],
-            zoom: 11
+            center: [-71.0989, 42.3624],
+            zoom: 12
         });
 
         setMap(map)
@@ -30,6 +30,7 @@ const SearchFeature = ({ onRetrieve }) => {
         if (markerRef.current) {
             markerRef.current.remove();
         }
+        console.log('in SearchFeature, res', res)
         onRetrieve(res)
         
         // Create marker for current search
@@ -51,6 +52,10 @@ const SearchFeature = ({ onRetrieve }) => {
                     }}
                     onRetrieve={handleRetrieveClick}
                     map={map}
+                    options={{
+                        poi_category:['food', 'food and drink', 'restaurant', 'bar', 'fast_food', 'food_and_drink', 'coffee', 'cafe', 'bakery', 'coffee shop'],
+                        country: 'US'
+                    }}
                 />
             </div>
             <br></br>

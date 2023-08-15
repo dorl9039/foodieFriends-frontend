@@ -1,6 +1,7 @@
 import { Popup } from 'react-map-gl';
 
 const MapPopup = ({record, closePopup}) => {
+  console.log('in MapPopup')
   return (
     <Popup
       latitude={record.latitude}

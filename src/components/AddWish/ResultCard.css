@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: column; 
     gap: 10px;
-
 }
 
 .result-card__container {
-    background-color: #ffefbd;
+    background-color: white;
     padding: 10% 5%;
     font-family: "Aileron";
     text-align: center;
     border-radius: 10px;
-    color: #405f8b;
+    color: black;
+    border: 0.5px solid darkslategray
 }
 
