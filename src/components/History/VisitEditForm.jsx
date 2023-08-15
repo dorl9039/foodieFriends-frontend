@@ -42,7 +42,9 @@ const VisitEditForm = ({visit, editOpen, handleClose, handleEdit}) => {
             type='text'
             name='visitComment'
             value={formData.visitComment}
-            onChange={handleFormChange} />
+            onChange={handleFormChange}
+            autoComplete="off"
+            />
           <label htmlFor='rating'>Rating</label>
           <select 
             name='rating' 

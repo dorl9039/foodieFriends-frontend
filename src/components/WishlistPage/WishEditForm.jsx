@@ -59,6 +59,7 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 								defaultValue={originalWishData.comment}
 								value={formData.comment}
 								onChange={handleFormChange}
+								autoComplete="off"
 							/> 
 						<input className='submit__button' type='Submit' value='Submit' />
 				</form>

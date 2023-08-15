@@ -10,7 +10,7 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 	const [deleteOpen, setDeleteOpen] = useState(false);
 	const [editOpen, setEditOpen] = useState(false);
 	
-	const visitAttendees = visitData.attendees.map(attendee => attendee.username);
+	const visitAttendees = visitData.attendees.map(attendee => `@${attendee.username}`).join(', ');
 	const visitDate = visitData.visitDate.slice(0, 10);
 
 	useEffect(() => {

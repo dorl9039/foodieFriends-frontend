@@ -280,7 +280,6 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 	}
 
 	const onMarkerClick = (id) => {
-		console.log('in onMarkerClick id', id)
 		if (view) {
 			handleVisitSelect(id)
 		} else {

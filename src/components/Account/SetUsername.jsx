@@ -9,7 +9,7 @@ import './RegisterUsername.css';
 
 const SetUsername = ({ userId, updateUsername, purpose }) => {
 	const [formData, setFormData] = useState('');
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -24,7 +24,8 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 			axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/username`, {username:formData})
 			.then(res => {
 					updateUsername(res.data.username);
-					navigate('/home');
+					handleClose()
+					// navigate('/home');
 			})
 			.catch(err => {
 					console.log("error in handleRegisterUsername", err);
@@ -47,6 +48,7 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 							name='username'
 							value={formData}
 							onChange={handleFormChange}
+							autoComplete='off'
 						/>
 						<input className='auth-button' value='Confirm' type='Submit'/>
 					</form>

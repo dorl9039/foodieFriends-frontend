@@ -46,6 +46,7 @@ const NewWishForm = ({ onSubmit, restaurant }) => {
 					name='comment'
 					value={formData.comment}
 					onChange={handleFormChange}
+					autoComplete="off"
 				/>
 				<input type='Submit' value='Submit' className='add-submit__button' />
 			</form>

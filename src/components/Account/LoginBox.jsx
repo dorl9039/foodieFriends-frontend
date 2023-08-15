@@ -31,6 +31,7 @@ export const LoginBox = ({ handleSubmit}) => {
 				name='username'
 				value={loginFormData.username}
 				onChange={onLoginFormChange}
+				autoComplete="off"
 			/>
 			<label htmlFor='loginPassword'>Password</label>
 			<input

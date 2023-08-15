@@ -97,7 +97,8 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
               name='visitComment'
               value={formData.comment}
               onChange={handleFormChange}
-          /> 
+              autoComplete="off"
+            /> 
           <label htmlFor='attendees'>Add Attendees</label>
           <input
             className='edit-record-text__field attendees-search__field'
