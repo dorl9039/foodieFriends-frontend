@@ -1,15 +1,18 @@
 .authentication-page__container {
-    background-color:white;
+    background-image:linear-gradient(white 55%, #6fb1c2 100%);
+    background-size: cover;
+    background-position: top;
     height: 100vh;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .authenticate-page__row1 {
-    background-image: url(../media/foodieFriends-header-img.png);
-    background-image: linear-gradient(transparent, white 100%), url(../media/foodieFriends-header-img.png); 
-    height: 45vh;
+    background-image: url(../media/foodieFriends-auth-background.png);
+    background-image: linear-gradient(transparent, transparent), url(../media/foodieFriends-auth-background.png); 
+    height: 65vh;
     width: 100vw;
-    margin-top: -60px;
+    margin-top: -50px;
     background-position: top;
     background-size: cover;
 }

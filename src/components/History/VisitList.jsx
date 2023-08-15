@@ -42,8 +42,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 			rating: true,
 		});
 	}
-
-	const visits = historyData.filter(visit => visit.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || visit.cuisine.toLowerCase().includes(searchInput.toLowerCase()) || visit.city.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
+	const visits = historyData.filter(visit => visit.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || visit.cuisine.toLowerCase().includes(searchInput.toLowerCase()) || visit.city.toLowerCase().includes(searchInput.toLowerCase()) || visit.attendees.map(attendee => attendee.username).join(', ').includes(searchInput.toLowerCase())).map((visit) => {
 		return (
 			<Visit 
 			key={visit.visitId}

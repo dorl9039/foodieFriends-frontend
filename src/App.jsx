@@ -15,6 +15,7 @@ import './App.css';
 
 function App() {
   const {user, handleUsernameUpdate, handleUserUpdate} = useAuth();
+  console.log('inApp, user is', user)
   return (
     <div>
       {user?.loggedIn === null ? (

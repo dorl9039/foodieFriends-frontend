@@ -6,13 +6,17 @@ import icon2 from '../../media/user-icon-2.png'
 import icon3 from '../../media/user-icon-3.png'
 import icon4 from '../../media/user-icon-4.png'
 import icon5 from '../../media/user-icon-5.png'
+import icon6 from '../../media/user-icon-6.png'
+import icon7 from '../../media/user-icon-7.png'
 
 import './Friend.css'
 
 const iconArr = [
   icon1,
   icon2,
+	icon7,
   icon3,
+	icon6,
   icon4,
   icon5
 ];

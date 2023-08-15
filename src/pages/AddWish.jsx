@@ -17,6 +17,7 @@ const AddWish = ({ userId }) => {
 		const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
 		const createNewWish = (data) => {
+			console.log('in createNewWish, userId and data', userId, data)
 			axios
 				.post(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`, data)
 				.then(() => {

@@ -76,11 +76,12 @@ const WishlistPage = ({userId}) => {
 	useEffect(() => {
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/wishlist`)
 		.then(res => {
+			console.log('in Wishlist useEffect, res', res)
 			const wishesData = res.data.map(wish => formatWishData(wish))
 			setWishlistData(wishesData)
 		})
 		.catch((err) => {
-			console.log("error in UserLists useEffect", err)
+			console.log("error in Wishlist useEffect", err)
 		})
 
 		axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${userId}/history`)
@@ -93,7 +94,7 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [view])
 
-// console.log('in WishlistPage, wishlistData', wishlistData);
+console.log('in WishlistPage, wishlistData', wishlistData);
 	
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {

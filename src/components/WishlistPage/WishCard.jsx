@@ -39,7 +39,7 @@ const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 						<div className='wish-restaurant-foodiefriends'>
 							{wishData.foodieFriends.length > 0? 
 								<div>
-									<section><b className='detail-type'>FoodieFriends:</b> {wishData.foodieFriends.map(friend => friend.username).toString()}</section> 
+									<section><b className='detail-type'>FoodieFriends:</b> {wishData.foodieFriends.map(friend => `@${friend.username}`).join(', ')}</section> 
 									<button 
 										className='contact-friend__button' 
 										onClick={() => window.location=`mailto:${wishData.foodieFriends.map(friend => friend.email).toString()}?subject=Want to try out ${wishData.restaurantName} together?`}>

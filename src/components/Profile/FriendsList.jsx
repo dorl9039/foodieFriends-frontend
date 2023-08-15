@@ -4,7 +4,7 @@ const FriendsList = ({friendsData, handleRemove}) => {
   const friends = friendsData.map((friend, index) => {
     return (
       <Friend 
-        iconNum={index%5}
+        iconNum={index%7}
         key={friend.userId}
         friendData={friend}
         handleRemove={handleRemove}
