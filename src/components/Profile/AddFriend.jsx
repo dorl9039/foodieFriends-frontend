@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './AddFriend.css'
+import './AddFriend.css';
 
 
 const AddFriend = ({ handleSubmit }) => {
@@ -10,8 +10,8 @@ const AddFriend = ({ handleSubmit }) => {
 
   const onAddSubmit = (event) => {
     event.preventDefault();
-    handleSubmit(formData)
-    setFormData('')
+    handleSubmit(formData);
+    setFormData('');
   }
 
 	return(

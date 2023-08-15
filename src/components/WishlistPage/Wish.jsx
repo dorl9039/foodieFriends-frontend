@@ -1,33 +1,27 @@
 import { useState, useEffect } from 'react';
 import WishCard from "./WishCard";
-import './Wish.css'
+import './Wish.css';
 
 const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, handleWishMove}) => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
 	
 	useEffect(() => {
 		if (selectedMarker === wish.wishId) {
 			setIsOpen(true);
 		} else {
-			setIsOpen(false)
+			setIsOpen(false);
 		}
-	}, [selectedMarker, wish.wishId])
+	}, [selectedMarker, wish.wishId]);
 
 	const onSelectClick = () => {
-		handleSelect(wish.wishId)
-		setIsOpen(props => !props)
-		// if (isOpen) {
-		// 	setSelectedMarker(null)
-		// } else {
-		// 	setSelectedMarker(wish.wishId)
-		// }
-	}
+		handleSelect(wish.wishId);
+		setIsOpen(props => !props);
+	};
 
 	return(
 		<section className='record'>
 			<div className='record-title__container' onClick={onSelectClick}>
 				<h3 >{wish.restaurantName}</h3>
-				{/* <div>{isOpen? '➖' : '➕'}</div> */}
 			</div>
 			{isOpen &&
 			<WishCard 
@@ -39,4 +33,4 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker,
 	)
 };
 
-export default Wish
+export default Wish;

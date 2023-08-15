@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 import './Navbar.css';
-import { useNavigate} from 'react-router-dom';
-import logo from '../media/foodieFriends-logo.png'
+import logo from '../media/foodieFriends-logo.png';
 
 const Navbar = ({updateUser}) => {
 	const navigate = useNavigate();
@@ -24,7 +24,6 @@ const Navbar = ({updateUser}) => {
 				<NavLink to='/profile'>Profile</NavLink>
 			</nav>
 			<button className='logout-button' onClick={handleLogout}>Sign out</button>
-
 		</div>
 	);
 };

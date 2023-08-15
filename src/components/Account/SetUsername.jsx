@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 
-import './RegisterUsername.css'
+import './RegisterUsername.css';
 
 
 const SetUsername = ({ userId, updateUsername, purpose }) => {

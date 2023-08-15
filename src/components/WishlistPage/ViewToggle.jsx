@@ -1,4 +1,4 @@
-import './ViewToggle.css'
+import './ViewToggle.css';
 
 const ViewToggle = ({isToggled, onToggle}) => {
 

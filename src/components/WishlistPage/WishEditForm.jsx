@@ -2,15 +2,15 @@ import { useState } from 'react';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 
-import './WishEditForm.css'
+import './WishEditForm.css';
 
 
 const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
-		const [formData, setFormData] = useState({})
+		const [formData, setFormData] = useState({});
 		
 		const originalWishData = {
 			comment: wishData.comment, 
-			priority: wishData.priority}
+			priority: wishData.priority};
 		
 		const handleFormChange = (event) => {
 			const name = event.target.name;
@@ -25,7 +25,7 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 			event.preventDefault();
 			handleWishEdit(formData);
 			handleClose();
-			setFormData({})
+			setFormData({});
 		}
 		
 		return(
@@ -59,7 +59,7 @@ const WishEditForm = ({wishData, handleWishEdit, handleClose, open}) => {
 								defaultValue={originalWishData.comment}
 								value={formData.comment}
 								onChange={handleFormChange}
-						/> 
+							/> 
 						<input className='submit__button' type='Submit' value='Submit' />
 				</form>
 		</Modal>  

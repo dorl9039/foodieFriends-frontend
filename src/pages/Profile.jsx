@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
-import './Profile.css'
+
 import SetUsername from '../components/Account/SetUsername'
 import FriendsPage from '../components/Profile/FriendsPage'
 import ChangePassword from '../components/Account/ChangePassword';
 import userIcon from '../media/user-icon.png'
 
-const Profile = ({ user }) => {
+import './Profile.css'
+
+
+const Profile = ({ user, updateUsername }) => {
 	const [passwordOpen, setPasswordOpen] = useState(false)
-	console.log("user in Profile", user)
 	
 	const handlePasswordChange = (data) => {
 		axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${user.userId}/password`, data)
@@ -29,7 +31,7 @@ const Profile = ({ user }) => {
 							<li>Name: {user.firstName} {user.lastName}</li>
 							<li>Joined: {user.creationDate.slice(0, 10)}</li>
 						</ul>
-						<SetUsername purpose={'Change Username'}/>
+						<SetUsername userId={user.userId} purpose={'Change Username'} updateUsername={updateUsername}/>
 						<button className='auth-button' onClick={()=> setPasswordOpen(true)}>Change Password</button>
 						<ChangePassword open={passwordOpen} handleClose={()=>setPasswordOpen(false)} handlePasswordChange={handlePasswordChange}/>
 					</div>

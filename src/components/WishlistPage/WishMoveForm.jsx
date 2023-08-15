@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from '@mui/base/Modal';
-import { useAuth } from '../../hooks/useAuth';
 import StyledBackdrop from '../StyledBackdrop';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import './WishEditForm.css'
 
@@ -13,34 +14,34 @@ const initialVisitData = {
 }
 
 const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
-  const {user} = useAuth()
-  const [formData, setFormData] = useState(initialVisitData)
+  const {user} = useAuth();
+  const [formData, setFormData] = useState(initialVisitData);
   const [searchInput, setSearchInput] = useState('');
   const [selectedAttendees, setSelectedAttendees] = useState([]);
-  const [friends, setFriends] = useState([])
+  const [friends, setFriends] = useState([]);
 
   useEffect(()=> {
     //Fetch friend usernames
     axios.get(`${import.meta.env.VITE_SERVER_URL}/users/${user.userId}/friends`)
     .then((res) => {
-      setFriends(res.data)
+      setFriends(res.data);
     })
-    .catch(err => console.log("Error in WishMoveForm useEffect", err))
+    .catch(err => console.log("Error in WishMoveForm useEffect", err));
   }, [])
 
   const handleSearchInputChange = (event) => {
     event.preventDefault();
-    setSearchInput(event.target.value)
+    setSearchInput(event.target.value);
   }
 
   const handleAddAttendee = (friend) => {
-    setSelectedAttendees(prev=> ([...prev, friend]))
-    setSearchInput('')
+    setSelectedAttendees(prev=> ([...prev, friend]));
+    setSearchInput('');
   }
 
   const handleFormChange = (event) => {
     const name = event.target.name;
-    const value = name === 'rating' ? parseInt(event.target.value, 10) : event.target.value
+    const value = name === 'rating' ? parseInt(event.target.value, 10) : event.target.value;
     setFormData((prev) => ({
       ...prev,
       [name]: value
@@ -52,12 +53,11 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
     const visitData = {
       ...formData,
       attendees: selectedAttendees
-    }
-    console.log('in WishMoveForm, handleFormSubmit, visitData:', visitData)
+    };
     handleMove(wishData, visitData);
     handleClose();
-    setFormData(initialVisitData)
-    setSelectedAttendees([])
+    setFormData(initialVisitData);
+    setSelectedAttendees([]);
   }
 		
   return(

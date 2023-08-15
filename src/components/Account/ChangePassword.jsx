@@ -19,7 +19,7 @@ const ChangePassword = ({open, handleClose, handlePasswordChange}) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    handlePasswordChange(formData)
+    handlePasswordChange(formData);
     handleClose();
   }
 
@@ -47,7 +47,6 @@ const ChangePassword = ({open, handleClose, handlePasswordChange}) => {
 					<input className='auth-button' value='Confirm' type='Submit'/>
 				</form>
       </Modal>
-
   )
 }
 

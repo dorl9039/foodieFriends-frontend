@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import Map, {Marker} from 'react-map-gl';
+import Map, { Marker } from 'react-map-gl';
 import axios from 'axios';
+
 import Wishlist from "../components/WishlistPage/Wishlist";
 import MapPopup from '../components/WishlistPage/MapPopup';
 import VisitList from '../components/History/VisitList';
 import ViewToggle from '../components/WishlistPage/ViewToggle';
+
 import './WishlistPage.css'
 
 const formatWishData = (data) => {
@@ -193,7 +195,6 @@ const WishlistPage = ({userId}) => {
 	const handleVisitSelect = (visitId) => {
 		const thisVisit = historyData.filter(visit => visitId === visit.visitId);
 		const thisVisitData = thisVisit[0]
-		console.log('in handleVisitSelect, thisVisitData', thisVisitData)
 		setSelectedVisit(thisVisitData)
 		setViewport(prev => (
 			{...prev,
@@ -203,10 +204,7 @@ const WishlistPage = ({userId}) => {
 			))
 		setSelectedMarker(visitId)
 	}
-	console.log('selectedVisit', selectedVisit)
-	console.log('selectedWishData', selectedWishData)
-	console.log('selectedMarker', selectedMarker)
-	console.log('view', view)
+
 	const handleVisitEdit = (visitId, data) => {
 		const visitData = {
 			visit_comment: data.visitComment,

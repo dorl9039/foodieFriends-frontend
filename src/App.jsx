@@ -15,7 +15,6 @@ import './App.css';
 
 function App() {
   const {user, handleUsernameUpdate, handleUserUpdate} = useAuth();
-  console.log('in App, user:', user);
   return (
     <div>
       {user?.loggedIn === null ? (
@@ -26,7 +25,7 @@ function App() {
         <Routes>
             <Route index element={<WishlistPage userId={user.userId}/>} />
             <Route element={<WishlistPage userId={user.userId}/>} path='home'/>
-            <Route element={<Profile user={user}/>} path='profile'/>
+            <Route element={<Profile user={user} updateUsername={handleUsernameUpdate}/>} path='profile'/>
             <Route element={<AddWish userId={user.userId}/>} path='add'/>
             <Route element={<FourOhFour />} path='*'/>
             <Route element={<SetUsername userId={user.userId} updateUsername={handleUsernameUpdate}/>} path='set-username'/>

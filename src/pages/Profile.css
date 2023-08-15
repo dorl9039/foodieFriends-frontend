@@ -1,6 +1,7 @@
 .profile-page__container {
     gap: 10%;
     padding: 20px 30px;
+    padding-right: 50px;
     height: calc(100vh - 120.5px);
 }
 
@@ -28,7 +29,6 @@
 }
 
 .profile-account__content {
-    border: .5px solid darkslategray;
     background-color: white;
     border-radius: 10px;
     display: flex;
@@ -41,6 +41,7 @@
 
 .user-icon__img {
     width: 50%;
+    margin-bottom: 20px;
 }
 
 .user-details__container {
@@ -52,14 +53,6 @@
 
 }
 .user-details__container li {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-
-
-/* .user-details__container {
-    list-style-type: none;
-    font-family: "Aileron";
-    background-color: #ffefbd;
-    padding: 10% 5%;
-} */

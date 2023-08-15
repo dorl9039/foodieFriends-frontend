@@ -13,14 +13,14 @@ const kFormInitialState = {
 
 export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => {
 	const [formData, setFormData] = useState(kFormInitialState);
-	const [validRegistration, setValidRegistration] = useState(true)
+	const [validRegistration, setValidRegistration] = useState(true);
 	const [validForm, setValidForm] = useState({
 		username: false,
 		password: false,
 		firstName: false,
 		lastName: false,
 		email: false
-	})
+	});
 	
 
 	const onFormChange = (event) => {
@@ -29,7 +29,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 		setFormData(prev => ({
 			...prev, [name]: value
 		}));
-		value ? setValidForm(prev => ({...prev, [name]: true})) : setValidForm(prev => ({...prev, [name]: false}))
+		value ? setValidForm(prev => ({...prev, [name]: true})) : setValidForm(prev => ({...prev, [name]: false}));
 	}
 
 	const onSubmit = (event) => {
@@ -39,15 +39,15 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 			setFormData(kFormInitialState);
 			handleClose();
 		} else {
-			setValidRegistration(false)
+			setValidRegistration(false);
 		}
 	}
 
 	const checkFieldsValid = (fields) => {
 		for (const field in fields) {
-			if (!fields[field]) return false
+			if (!fields[field]) return false;
 		}
-		return true
+		return true;
 	}
 
 	return (

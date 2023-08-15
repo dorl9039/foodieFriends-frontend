@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './Rec.css'
+import './Rec.css';
 
 const Rec = ({recData}) => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<div className='rec__container'>

@@ -3,7 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import LoginBox from '../components/Account/LoginBox'
 import RegisterBox from '../components/Account/RegisterBox'
 import ConfirmationModal from '../components/ConfirmationModal';
-import logo from '../media/foodieFriends-logo.png'
+import logo from '../media/foodieFriends-logo-full.png'
 import axios from 'axios';
 
 import './Authenticate.css';
@@ -59,9 +59,8 @@ const Authenticate = ({updateUser}) => {
 				<section className='authenticate-page__row2'>
 					<section className='logo-title__container'>
 						<img className='authenticate-page__logo' src={logo} alt="foodieFriends-logo" />
-						<h1>FoodieFriends</h1>
 					</section>
-					<p>Organize your restaurant wishlist and connect with friends!</p>
+					<p>Organize your restaurant lists and connect with friends!</p>
 				</section>
 				<section className='authenticate-page__row3'>
 						<ConfirmationModal 

@@ -14,6 +14,7 @@
 .search-record__field {
   border: .5px solid darkslategray;
   border-radius: 5px;
+  padding-left: 5px;
 }
 
 .list-sort-btns__container {

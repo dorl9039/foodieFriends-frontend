@@ -1,49 +1,49 @@
 import Visit from "./Visit";
 import { useState } from 'react';
-import './VisitList.css'
+import './VisitList.css';
 
 const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selectedMarker, sortVisits}) => {
-	const [priceOrder, setPriceOrder] = useState(true)
-	const [dateOrder, setDateOrder] = useState(true)
-	const [ratingOrder, setRatingOrder] = useState(true)
+	const [priceOrder, setPriceOrder] = useState(true);
+	const [dateOrder, setDateOrder] = useState(true);
+	const [ratingOrder, setRatingOrder] = useState(true);
 	const [sortOption, setSortOption] = useState({
 		price: false,
 		date: false,
 		rating: false,
-	})
+	});
 	const [searchInput, setSearchInput] = useState('');
 
 	const onPriceSortClick = () => {
 		setPriceOrder(prev => !prev);
-		sortVisits('price', priceOrder)
+		sortVisits('price', priceOrder);
 		setSortOption({
 			price: true,
 			date: false,
 			rating: false,
-		})
+		});
 	}
 
 	const onDateSortClick = () => {
 		setDateOrder(prev => !prev);
-		sortVisits('date', dateOrder)
+		sortVisits('date', dateOrder);
 		setSortOption({
 			price: false,
 			date: true,
 			rating: false,
-		})
+		});
 	}
 
 	const onRatingSortClick = () => {
 		setRatingOrder(prev => !prev);
-		sortVisits('rating', ratingOrder)
+		sortVisits('rating', ratingOrder);
 		setSortOption({
 			price: false,
 			date: false,
 			rating: true,
-		})
+		});
 	}
 
-	const visits = historyData.filter(wish => wish.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || wish.cuisine.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
+	const visits = historyData.filter(visit => visit.restaurantName.toLowerCase().includes(searchInput.toLowerCase()) || visit.cuisine.toLowerCase().includes(searchInput.toLowerCase()) || visit.city.toLowerCase().includes(searchInput.toLowerCase())).map((visit) => {
 		return (
 			<Visit 
 			key={visit.visitId}
@@ -58,7 +58,7 @@ const VisitList = ({historyData, handleEdit, handleDelete, handleSelect, selecte
 
 	const handleSearchInputChange = (event) => {
 		event.preventDefault();
-		setSearchInput(event.target.value)
+		setSearchInput(event.target.value);
 	}
 
 	return (

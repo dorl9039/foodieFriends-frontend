@@ -1,6 +1,7 @@
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from './StyledBackdrop';
-import './ConfirmationModal.css'
+import './ConfirmationModal.css';
+
 
 const ConfirmationModal = ({open, handleClose, message}) => {
   return (

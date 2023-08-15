@@ -2,27 +2,27 @@ import { useState } from 'react';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 import WishEditForm from './WishEditForm';
-
-import './WishCard.css'
 import WishMoveForm from './WishMoveForm';
+
+import './WishCard.css';
 
 const WishCard = ({wishData, handleDelete, handleWishEdit, handleWishMove}) => {
 
-	const [deleteOpen, setDeleteOpen] = useState(false)
-	const [editOpen, setEditOpen] = useState(false)
-	const [moveOpen, setMoveOpen] = useState(false)
+	const [deleteOpen, setDeleteOpen] = useState(false);
+	const [editOpen, setEditOpen] = useState(false);
+	const [moveOpen, setMoveOpen] = useState(false);
 
 	const onConfirmDelete = () => {
-		setDeleteOpen(false)
-		handleDelete(wishData.wishId)
+		setDeleteOpen(false);
+		handleDelete(wishData.wishId);
 	}
 
 	const onEditClick = () => {
-		setEditOpen(true)
+		setEditOpen(true);
 	}
 
 	const onMoveClick = () => {
-		setMoveOpen(true)
+		setMoveOpen(true);
 	}
 
 	return(

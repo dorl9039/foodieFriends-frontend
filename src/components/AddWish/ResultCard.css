@@ -6,11 +6,16 @@
 
 .result-card__container {
     background-color: white;
-    padding: 10% 5%;
+    padding: 20px 10px;
     font-family: "Aileron";
+    font-size: 12pt;
     text-align: center;
     border-radius: 10px;
     color: black;
     border: 0.5px solid darkslategray
+}
+
+.result-restaurant__details{
+    font-size: 14pt;
 }
 

@@ -15,16 +15,14 @@ const iconArr = [
   icon3,
   icon4,
   icon5
-]
+];
 
 const Friend = ({friendData, handleRemove, iconNum}) => {
   const [deleteOpen, setDeleteOpen] = useState(false)
   const onConfirmDelete = () => {
-		setDeleteOpen(false)
-		handleRemove(friendData.userId)
+		setDeleteOpen(false);
+		handleRemove(friendData.userId);
 	}
-  
-	console.log(iconArr)
 
   return (
     <div className='friend-item__container'>

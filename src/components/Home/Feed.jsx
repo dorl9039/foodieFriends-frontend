@@ -9,6 +9,7 @@ const Feed = ({recsData}) => {
 			/>
 			);
 		});
+
 	return (
 		<div className='home-feed__container'>
 			{recs}
@@ -16,4 +17,4 @@ const Feed = ({recsData}) => {
 	)
 };
 
-export default Feed
+export default Feed;
