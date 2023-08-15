@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './AddFriend.css'
 
 
 const AddFriend = ({ handleSubmit }) => {
@@ -14,16 +15,16 @@ const AddFriend = ({ handleSubmit }) => {
   }
 
 	return(
-    <form onSubmit={onAddSubmit}>
-        <label htmlFor='friendUsername'>Add friend by username</label>
+    <form className='add-friend-form__container' onSubmit={onAddSubmit}>
+        <label htmlFor='friendUsername'>Add a new friend by username</label>
         <input
-          className='login__field'
+          className='add-friend-form__field'
           type='text'
           name='username'
           value={formData}
           onChange={handleFormChange}
         />
-        <input type='Submit' value='Add!'/>
+        <input className='add-friend-form__button' type='Submit' value='Add!'/>
       </form>
 	);
 };

@@ -33,7 +33,7 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 
 	return(
 		<div>
-			<button onClick={handleOpen}>{purpose? purpose : 'Set username'}</button>
+			<button className='auth-button' onClick={handleOpen}>{purpose? purpose : 'Set username'}</button>
 			<Modal 
 				className='register-modal__container' 
 				open={open} 

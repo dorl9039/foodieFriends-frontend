@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import FriendsList from "./FriendsList";
 import AddFriend from "./AddFriend";
 import ConfirmationModal from "../ConfirmationModal";
-// import ErrorModal from "../components/ErrorModal";
-
+import './FriendsPage.css'
 
 const formatUserData = (userData) => {
 	return {
@@ -54,8 +53,8 @@ const FriendsPage = ({userId}) => {
 	}
 
 	return (
-		<div>
-			<h2>Manage Your Friends</h2>
+		<div className='friends-section__container'>
+			<h3>Manage Your Friends</h3>
 			<FriendsList 
 				friendsData={friendsData}
 				handleRemove={handleRemoveFriend}

@@ -357,8 +357,7 @@ const WishlistPage = ({userId}) => {
 					{selectedMarker && (view ? 
 						<MapPopup record={selectedVisit} closePopup={()=>setSelectedMarker(null)}/>:
 						<MapPopup record={selectedWishData} closePopup={()=>setSelectedMarker(null)}/> 
-					)
-
+						)
 					}
 				</Map>
 			</div>

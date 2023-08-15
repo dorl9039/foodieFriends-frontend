@@ -1,13 +1,38 @@
-.friend-item__container {
+.friend-item__container:not(:last-child){
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border: .5px solid black;
+  justify-content: space-between;
+  border-bottom: .5px solid black;
+  align-items: center;
+}
+
+.friend-item__container:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
 .friend-item__container p {
   margin: 0;
+  font-family: 'Aileron';
+  font-size: 12pt;
+
+}
+.friend__details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-left: 15px;
+  align-items: center;
+}
+.friend__details p {
+  padding-right: 20px;
+}
+
+.friend__details img {
+  height: 30px;
+  padding-right: 20px;
 }
 
 .friend-item__container button {

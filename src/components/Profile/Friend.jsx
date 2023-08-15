@@ -1,22 +1,38 @@
 import { useState } from 'react';
 import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
+import icon1 from '../../media/user-icon-1.png'
+import icon2 from '../../media/user-icon-2.png'
+import icon3 from '../../media/user-icon-3.png'
+import icon4 from '../../media/user-icon-4.png'
+import icon5 from '../../media/user-icon-5.png'
 
 import './Friend.css'
 
-const Friend = ({friendData, handleRemove}) => {
+const iconArr = [
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  icon5
+]
+
+const Friend = ({friendData, handleRemove, iconNum}) => {
   const [deleteOpen, setDeleteOpen] = useState(false)
   const onConfirmDelete = () => {
 		setDeleteOpen(false)
 		handleRemove(friendData.userId)
 	}
   
+	console.log(iconArr)
 
   return (
     <div className='friend-item__container'>
-      <p>{friendData.username}</p>
-      <p>{friendData.firstName}</p>
-      <p>{friendData.lastName}</p>
+			<div className='friend__details'>
+				<img src={iconArr[iconNum]} />
+				<p>@{friendData.username}</p>
+				<p>({friendData.firstName} {friendData.lastName})</p>
+			</div>
       <button onClick={()=> setDeleteOpen(true)}>Remove</button>
       <Modal
 					className="delete-modal__container"
