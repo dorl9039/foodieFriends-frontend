@@ -3,10 +3,11 @@ import Modal from '@mui/base/Modal';
 import StyledBackdrop from '../StyledBackdrop';
 
 const ChangePassword = ({open, handleClose, handlePasswordChange}) => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     oldPassword: '',
     newPassword: '',
-  })
+  }
+  const [formData, setFormData] = useState(initialFormData)
 
   const handleFormChange = (event) => {
     const name = event.target.name;
@@ -21,9 +22,11 @@ const ChangePassword = ({open, handleClose, handlePasswordChange}) => {
     event.preventDefault();
     handlePasswordChange(formData);
     handleClose();
+    setFormData(initialFormData);
   }
 
   return(
+    <div>
     <Modal
       className='register-modal__container'
       open={open}
@@ -47,6 +50,8 @@ const ChangePassword = ({open, handleClose, handlePasswordChange}) => {
 					<input className='auth-button' value='Confirm' type='Submit'/>
 				</form>
       </Modal>
+
+    </div>
   )
 }
 

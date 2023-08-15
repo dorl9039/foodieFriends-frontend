@@ -348,7 +348,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 									latitude={visit.latitude}
 									longitude={visit.longitude}
 									onClick={() => onMarkerClick(visit.visitId)}
-									color='#39a793'>
+									color='#6fc2aa'>
 								</Marker>
 							)))
 

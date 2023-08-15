@@ -5,17 +5,28 @@ import SetUsername from '../components/Account/SetUsername'
 import FriendsPage from '../components/Profile/FriendsPage'
 import ChangePassword from '../components/Account/ChangePassword';
 import userIcon from '../media/user-icon.png'
+import ConfirmationModal from '../components/ConfirmationModal';
 
 import './Profile.css'
 
 
 const Profile = ({ user, updateUsername }) => {
-	const [passwordOpen, setPasswordOpen] = useState(false)
+	const [passwordOpen, setPasswordOpen] = useState(false);
+	const [passwordMsg, setPasswordMsg] = useState('');
+	const [passwordConfirmationOpen, setPasswordConfirmationOpen] = useState(false)
 	
 	const handlePasswordChange = (data) => {
 		axios.patch(`${import.meta.env.VITE_SERVER_URL}/users/${user.userId}/password`, data)
-		.then(res => console.log("in handlePasswordChange then res", res))
-		.catch(err => console.log('in handlePasswordChange err', err))
+		.then(res => {
+			console.log("in handlePasswordChange then res", res)
+			setPasswordMsg('Password succcessfully changed!')
+			setPasswordConfirmationOpen(true);
+		})
+		.catch(err => {
+			console.log('in handlePasswordChange err', err)
+			setPasswordMsg('Current password entered incorrectly')
+			setPasswordConfirmationOpen(true)
+		})
 	}
 	
 	return (
@@ -36,7 +47,11 @@ const Profile = ({ user, updateUsername }) => {
 						<ChangePassword open={passwordOpen} handleClose={()=>setPasswordOpen(false)} handlePasswordChange={handlePasswordChange}/>
 					</div>
 				</div>
-
+				<ConfirmationModal
+        open={passwordConfirmationOpen}
+        handleClose={() => setPasswordConfirmationOpen(false)}
+        message={passwordMsg} 
+        />
 				<FriendsPage userId={user.userId}/>
 			</div>
 		</div>
