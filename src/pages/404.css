@@ -1,0 +1,16 @@
+.four-oh-four__page {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.four-oh-four__page h1 {
+  color: #405f8b;
+  text-align: center;
+  font-family: 'Source Serif Pro'
+}
+
+.four-oh-four__page img {
+  margin: 0 auto;
+  width: 420px;
+}
