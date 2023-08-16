@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import WishCard from "./WishCard";
 import './Wish.css';
 
-const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, handleWishMove}) => {
+const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker, handleWishMove, setSelectedMarker}) => {
 	const [isOpen, setIsOpen] = useState(false);
 	
 	useEffect(() => {
@@ -15,8 +15,12 @@ const Wish = ({wish, handleSelect, handleDelete, handleWishEdit, selectedMarker,
 
 	const onSelectClick = () => {
 		handleSelect(wish.wishId);
-		setIsOpen(props => !props);
-	};
+		if (selectedMarker === wish.wishId){
+			setSelectedMarker(null)
+		} else {
+			setSelectedMarker(wish.wishId)
+		}
+	}
 
 	return(
 		<section className='record'>

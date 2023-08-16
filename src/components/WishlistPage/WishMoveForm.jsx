@@ -107,9 +107,9 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             onChange={handleSearchInputChange}
             placeholder='Search for usernames' />
           <ul className='attendees-search-result__container'>
-            {friends.filter(friend => friend.username.includes(searchInput)).map((friend, index) =>
+            {friends.filter(friend => friend.username.includes(searchInput)).map((friend) =>
               (searchInput.length > 0? 
-                <li key={index}>
+                <li key={friend.user_id}>
                   {friend.username}
                   <button className='add-attendee__button'
                     type='button'
@@ -121,7 +121,7 @@ const WishMoveForm = ({wishData, handleMove, handleClose, open}) => {
             <p>Selected Attendees:</p>
             <ul>
               {selectedAttendees.map((attendee) => (
-                <li key={attendee.username}>{attendee.username}</li>
+                <li key={attendee.user_id}>{attendee.username}</li>
               ))}
             </ul>
           </div>

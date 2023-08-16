@@ -5,7 +5,7 @@ import VisitEditForm from './VisitEditForm';
 
 import './Visit.css';
 
-const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMarker }) => {
+const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMarker, setSelectedMarker }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [deleteOpen, setDeleteOpen] = useState(false);
 	const [editOpen, setEditOpen] = useState(false);
@@ -23,7 +23,11 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 
 	const onSelectClick = () => {
 		handleSelect(visitData.visitId);
-		setIsOpen(props => !props);
+		if (selectedMarker === visitData.visitId){
+			setSelectedMarker(null)
+		} else {
+			setSelectedMarker(visitData.visitId)
+		}
 	}
 
 	const onConfirmDelete = () => {
@@ -31,7 +35,7 @@ const Visit = ({ visitData, handleEdit, handleDelete, handleSelect, selectedMark
 		handleDelete(visitData.visitId);
 	}
 
-	
+	console.log('in Visit, isOpen', isOpen)
 	return (
 		<section className='record history'>
 			<section className='record-title__container' onClick={onSelectClick}>

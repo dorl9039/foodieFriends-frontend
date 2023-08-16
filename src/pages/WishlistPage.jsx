@@ -94,7 +94,6 @@ const WishlistPage = ({userId}) => {
 		})
 	}, [view])
 
-console.log('in WishlistPage, wishlistData', wishlistData);
 	
 	const sortWishes = (type, ascending) => {
 		if (type === 'price') {
@@ -190,7 +189,6 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 				longitude: thisWishData.longitude,
 			})
 		)
-		setSelectedMarker(wishId)
 	}
 
 	const handleVisitSelect = (visitId) => {
@@ -203,7 +201,6 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 			longitude: thisVisitData.longitude
 			}
 			))
-		setSelectedMarker(visitId)
 	}
 
 	const handleVisitEdit = (visitId, data) => {
@@ -312,6 +309,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 							selectedMarker={selectedMarker}
 							sortWishes={sortWishes}
 							handleWishMove={handleWishMove}
+							setSelectedMarker={setSelectedMarker}
 							/>
 							:
 						<VisitList 
@@ -322,6 +320,7 @@ console.log('in WishlistPage, wishlistData', wishlistData);
 							selectedVisit={selectedVisit}
 							sortVisits={sortVisits}
 							selectedMarker={selectedMarker}
+							setSelectedMarker={setSelectedMarker}
 							/>
 						}
 				</div>
