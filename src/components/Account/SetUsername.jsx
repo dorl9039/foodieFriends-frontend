@@ -9,7 +9,7 @@ import './RegisterUsername.css';
 
 const SetUsername = ({ userId, updateUsername, purpose }) => {
 	const [formData, setFormData] = useState('');
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -25,7 +25,9 @@ const SetUsername = ({ userId, updateUsername, purpose }) => {
 			.then(res => {
 					updateUsername(res.data.username);
 					handleClose()
-					// navigate('/home');
+					if (!purpose) {
+						navigate('/home');
+					}
 			})
 			.catch(err => {
 					console.log("error in handleRegisterUsername", err);

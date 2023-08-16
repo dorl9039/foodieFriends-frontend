@@ -64,6 +64,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 						name='username'
 						value={formData.username}
 						onChange={onFormChange}
+						autoComplete='off'
 					/>
 					<label htmlFor='registerPassword'>Password</label>
 					<input
@@ -71,6 +72,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 						name='password'
 						value={formData.password}
 						onChange={onFormChange}
+						autoComplete='off'
 					/>
 					<label htmlFor='registerFirstName'>First name</label>
 					<input
@@ -78,6 +80,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 						name='firstName'
 						value={formData.firstName}
 						onChange={onFormChange}
+						autoComplete='off'
 					/>
 					<label htmlFor='registerLastName'>Last name</label>
 					<input
@@ -85,6 +88,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 						name='lastName'
 						value={formData.lastName}
 						onChange={onFormChange}
+						autoComplete='off'
 					/>
 					<label htmlFor='registerEmailName'>Email</label>
 					<input
@@ -92,6 +96,7 @@ export const RegisterBox = ({open, handleClose, handleSubmit, errorMessage}) => 
 						name='email'
 						value={formData.email}
 						onChange={onFormChange}
+						autoComplete='off'
 					/>
 					{checkFieldsValid(validForm) ? 
 						<input className='auth-button' type='Submit' value='Create account'/> 
