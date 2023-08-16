@@ -10,7 +10,9 @@ This app was created using a PERN (with Typescript) techstack.
 ### Add and organize restaurants in wishlist and history
 Users can organize, edit, sort, and use the search bar to filter their wishlist and history
 ![ffwishlist](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/f08b1192-d026-4fdb-b406-697dc5e22803)
+
 ![ffhistory](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/a5ac1f91-ce24-41ec-986f-7ff7e35bc3a2)
+
 ![ffadd](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/1321dc6e-8307-4df7-a641-3b71e966e016)
 
 
@@ -21,6 +23,7 @@ This app allows for user authentication with a local strategy as well as Google 
 
 ### Manage account details and friends list
 ![ffprofile](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/9e2544b0-621a-47c4-93b5-26f0da85ea30)
+
 ![ffprofile](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/1520aed6-90fe-4d15-8622-62269b208cdb)
 
 
