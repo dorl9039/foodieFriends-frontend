@@ -6,6 +6,23 @@ A user can add and organize the restaurants they want to try out, mark a restaur
 
 This app was created using a PERN (with Typescript) techstack.
 
+## Demo
+https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/0e20c340-a605-4244-b77b-6274eca9172b
+This app allows for user authentication with a local strategy as well as Google OAuth2.0
+
+https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/03bdfc2d-6345-4927-8f8a-cf3c9935714f
+Users can organize, edit, and filter their wishlist and visited restaurants
+
+https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/687b01a0-9060-4f27-9e5e-0f44adea0128
+Currently, this app restricts users to restaurants located in the US.
+
+https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/8485dcae-fff6-4400-85b1-c5540b2e7efe
+Users can update their usernames and change their passwords
+
+https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/ab291b26-a1a9-471b-921e-6b2109ee67f2
+Users can add new friends via username and remove them for whatever reason.
+
+
 ## Dependencies
 This project uses [Vite](https://vitejs.dev/guide/) for React and relies on the following libraries:
 * [React Router](https://reactrouter.com/en/main/start/overview) (specifically, react-router-dom)
