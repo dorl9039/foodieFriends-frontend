@@ -7,20 +7,22 @@ A user can add and organize the restaurants they want to try out, mark a restaur
 This app was created using a PERN (with Typescript) techstack.
 
 ## Demo
-https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/0e20c340-a605-4244-b77b-6274eca9172b
+### Add and organize restaurants in wishlist and history
+Users can organize, edit, sort, and use the search bar to filter their wishlist and history
+![ffwishlist](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/f08b1192-d026-4fdb-b406-697dc5e22803)
+![ffhistory](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/a5ac1f91-ce24-41ec-986f-7ff7e35bc3a2)
+![ffadd](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/1321dc6e-8307-4df7-a641-3b71e966e016)
+
+
+### Secure user authentication
 This app allows for user authentication with a local strategy as well as Google OAuth2.0
+![fflogin](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/4114fe98-0720-4f83-a166-199b3af0250f)
 
-https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/03bdfc2d-6345-4927-8f8a-cf3c9935714f
-Users can organize, edit, and filter their wishlist and visited restaurants
 
-https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/687b01a0-9060-4f27-9e5e-0f44adea0128
-Currently, this app restricts users to restaurants located in the US.
+### Manage account details and friends list
+![ffprofile](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/9e2544b0-621a-47c4-93b5-26f0da85ea30)
+![ffprofile](https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/1520aed6-90fe-4d15-8622-62269b208cdb)
 
-https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/8485dcae-fff6-4400-85b1-c5540b2e7efe
-Users can update their usernames and change their passwords
-
-https://github.com/dorl9039/foodieFriends-frontend/assets/121260645/ab291b26-a1a9-471b-921e-6b2109ee67f2
-Users can add new friends via username and remove them for whatever reason.
 
 
 ## Dependencies
