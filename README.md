@@ -6,6 +6,8 @@ A user can add and organize the restaurants they want to try out, mark a restaur
 
 This app was created using a PERN (with Typescript) techstack.
 
+**[FoodieFriends backend repo](https://github.com/dorl9039/foodieFriends-backend)**
+
 ## Demo
 ### Organize restaurants in wishlist and history
 Users can organize, edit, sort, and use the search bar to filter their wishlist and history
